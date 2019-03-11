@@ -1,0 +1,45 @@
+<resources>
+	<string name="app_name">Kalkulator cen v.1.0</string>
+	<string name="todo">TODO</string>
+	<string name="cost">Cost</string>
+	<string name="price">Price</string>
+	<string name="zeros">€ 0.00</string>
+	<string name="chk_vat">VAT Tax</string>
+	<string name="chk_vemc">VEMC - Recycling</string>
+	<string name="profit_spinner_title">Profit</string>
+	<string name="transport">Transport default 0.50 or enter charge below.</string>
+	<string name="margin40">40dp</string>
+	<string name="margin20">20dp</string>
+	<string name="hint_price">Enter price for item</string>
+	<string name="hint_transport">Enter transport charges</string>
+	<string name="chk_transport">Transport charges</string>
+	<string name="margin60">60dp</string>
+	<string name="percent">%</string>
+	<string name="calculate_btn">"CALCULATE"</string>
+	
+	<string-array name="profit_list">
+		<item>5</item>
+		<item>10</item>
+		<item>15</item>
+		<item>20</item>
+		<item>25</item>
+		<item>30</item>
+		<item>35</item>
+		<item>40</item>
+		<item>45</item>
+		<item>50</item>
+		<item>55</item>
+		<item>60</item>
+		<item>65</item>
+		<item>70</item>
+		<item>75</item>
+		<item>80</item>
+		<item>90</item>
+		<item>100</item>
+		<item>125</item>
+		<item>150</item>
+		<item>175</item>
+		<item>200</item>
+	</string-array>
+	
+</resources>
