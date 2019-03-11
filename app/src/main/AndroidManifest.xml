@@ -19,6 +19,10 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
+		<activity android:name=".activities.AppSetup"
+		          android:screenOrientation="portrait"
+		          android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+		</activity>
 		<activity android:name=".activities.TheApp"
 		          android:screenOrientation="portrait"
 		          android:theme="@android:style/Theme.NoTitleBar.Fullscreen">

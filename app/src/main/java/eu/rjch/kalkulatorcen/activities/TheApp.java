@@ -2,6 +2,9 @@ package eu.rjch.kalkulatorcen.activities;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import eu.rjch.kalkulatorcen.R;
@@ -10,11 +13,12 @@ import eu.rjch.kalkulatorcen.utilities.ItemSelectedListener;
 public class TheApp  extends Activity {
 	private Spinner profits;
 	private ItemSelectedListener isl;
-	private TextView costTV, priceTV;
+	private TextView costTV, priceTV, transportTV;
 	private EditText netPriceEV, transportEV;
 	private Button calculate;
 	private CheckBox vatChk, vemcChk, transChk;
 	
+	private char euro = '€', hash = '#';
 	private String profitS, costS, priceS;
 	private boolean vat, vemc, transB;
 	private float transF;
@@ -26,11 +30,9 @@ public class TheApp  extends Activity {
 		super.onCreate(savedInstanceState);
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			setContentView(R.layout.app_layout);
-		}else {
+		} else {
 			setContentView(R.layout.app_layout_old);
-			
 		}
-		
 		
 		init();
 	}
@@ -41,6 +43,51 @@ public class TheApp  extends Activity {
 	}
 	
 	private void update() {
+		updateCheckBoxes();
+		updateEditText();
+	}
+	
+	private void updateEditText() {
+		this.netPriceEV.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+				priceS = euro+" 0.00";
+			}
+			
+			@Override
+			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+				costTV.setText(euro+netPriceEV.getText().toString());
+			}
+			
+			@Override
+			public void afterTextChanged(Editable editable) {
+			}
+		});
+		
+		this.transportEV.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+			}
+			//todo work in progress
+			@Override
+			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+				String s = transportTV.getText().toString();
+				Log.v("WWW","S "+s);
+				String pattern = euro+"\\?.*?"+hash;
+				String trans = transportEV.getText().toString();
+				Log.v("WWW","trans "+trans);
+				s = s.replaceAll(pattern, "Transport charge "+euro+" "+trans+" "+hash);
+				Log.v("WWW","s2 "+s);
+				transportTV.setText(s);
+			}
+			
+			@Override
+			public void afterTextChanged(Editable editable) {
+			}
+		});
+	}
+	
+	private void updateCheckBoxes() {
 		vatChk.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -72,6 +119,7 @@ public class TheApp  extends Activity {
 		
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
+		this.transportTV = findViewById(R.id.transport);
 		
 		this.vatChk = findViewById(R.id.chkvat);
 		this.vemcChk = findViewById(R.id.chkvemc);

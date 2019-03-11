@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.VideoView;
+import eu.rjch.kalkulatorcen.activities.AppSetup;
 import eu.rjch.kalkulatorcen.activities.TheApp;
 
 public class MainA extends Activity {
@@ -40,7 +41,7 @@ public class MainA extends Activity {
 	}
 	
 	private void runApp() {
-		Intent i = new Intent(this, TheApp.class);
+		Intent i = new Intent(this, AppSetup.class);
 		startActivity(i);
 		finish();
 	}

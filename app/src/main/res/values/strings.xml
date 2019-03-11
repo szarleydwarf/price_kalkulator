@@ -7,7 +7,7 @@
 	<string name="chk_vat">VAT Tax</string>
 	<string name="chk_vemc">VEMC - Recycling</string>
 	<string name="profit_spinner_title">Profit</string>
-	<string name="transport">Transport default 0.50 or enter charge below.</string>
+	<string name="transport">Transport default € 0.50 # or enter charge below.</string>
 	<string name="margin40">40dp</string>
 	<string name="margin20">20dp</string>
 	<string name="hint_price">Enter price for item</string>
