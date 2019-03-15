@@ -14,7 +14,7 @@ public class ItemSelectedListener implements AdapterView.OnItemSelectedListener 
 		this.list = sp;
 		this.list.setSelection(5);
 		this.firstItem = String.valueOf(list.getSelectedItem());
-		
+		this.selectedItem = String.valueOf(list.getSelectedItem());
 	}
 	
 	@Override

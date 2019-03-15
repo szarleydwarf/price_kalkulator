@@ -10,6 +10,10 @@ import android.widget.*;
 import eu.rjch.kalkulatorcen.R;
 import eu.rjch.kalkulatorcen.utilities.ItemSelectedListener;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class TheApp  extends Activity {
 	private Spinner profits;
 	private ItemSelectedListener isl;
@@ -19,11 +23,12 @@ public class TheApp  extends Activity {
 	private CheckBox vatChk, vemcChk, transChk;
 	
 	private char euro = '€', hash = '#';
-	private String profitS, costS, priceS;
+	private String profitS, costS, priceS, transportStringTV;
 	private boolean vat, vemc, transB;
-	private float transF;
-	private double costD, priceD;
+	private double transF = 0.5f;
+	private double costD, priceD, vatD = 1.23, vemcD = 2.8;
 	private int profit;
+	private DecimalFormat df;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,45 @@ public class TheApp  extends Activity {
 	
 	private void init() {
 		setVariable();
+		setFormating();
 		update();
+	}
+	
+	private void setFormating() {
+		DecimalFormatSymbols symbols = new DecimalFormatSymbols( new Locale("en", "UK"));
+		symbols.setDecimalSeparator('.');
+		symbols.setGroupingSeparator(' ');
+		
+		this.df = new DecimalFormat("00,000.00", symbols);
 	}
 	
 	private void update() {
 		updateCheckBoxes();
 		updateEditText();
+		
+	}
+	
+	private void calculatePrice() {
+		double d = 0, t;
+		if (costD > 0)
+			d = costD;
+		
+		t = (isl.getSelectedItem() != null) ? Double.parseDouble(isl.getSelectedItem()) : 30;
+		
+		d = d + ((d * t) / 100);
+	
+	}
+	
+	private void calculateCost() {
+		double d = 0, t;
+		if (costD > 0)
+			d = costD;
+		
+		d = (vemc) ? d + vemcD : d;
+		d = (vat) ? d * vatD : d;
+		
+		d = (transB) ? (float)(d + transF) : d;
+		this.costTV.setText(euro + " " + df.format(d));
 	}
 	
 	private void updateEditText() {
@@ -56,7 +94,10 @@ public class TheApp  extends Activity {
 			
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				costTV.setText(euro+netPriceEV.getText().toString());
+				String s = netPriceEV.getText().toString();
+				costTV.setText(euro + s);
+				if(!s.equals("") || s != null) costD = Double.parseDouble(s);
+				else costD = 0.0;
 			}
 			
 			@Override
@@ -72,12 +113,14 @@ public class TheApp  extends Activity {
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 				String s = transportTV.getText().toString();
-				Log.v("WWW","S "+s);
-				String pattern = euro+"\\?.*?"+hash;
-				String trans = transportEV.getText().toString();
-				Log.v("WWW","trans "+trans);
-				s = s.replaceAll(pattern, "Transport charge "+euro+" "+trans+" "+hash);
-				Log.v("WWW","s2 "+s);
+//				String end = s.substring(s.indexOf(hash));
+				String start = s.substring(0, s.indexOf(" ")+1);
+				String middle = euro+transportEV.getText().toString();
+				s = start + middle;
+				if(s.equals("") || s == null)
+					s = transportStringTV;
+				
+				transF = Double.parseDouble(s.substring(s.indexOf(euro)+1));// : transF;
 				transportTV.setText(s);
 			}
 			
@@ -120,6 +163,7 @@ public class TheApp  extends Activity {
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
 		this.transportTV = findViewById(R.id.transport);
+//		this.transportStringTV = transportTV.getText().toString();
 		
 		this.vatChk = findViewById(R.id.chkvat);
 		this.vemcChk = findViewById(R.id.chkvemc);
@@ -129,6 +173,13 @@ public class TheApp  extends Activity {
 		this.transportEV = findViewById(R.id.transport_edit);
 		
 		this.calculate = findViewById(R.id.calculate_btn);
+		this.calculate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				calculateCost();
+				calculatePrice();
+			}
+		});
 	}
 	
 }
