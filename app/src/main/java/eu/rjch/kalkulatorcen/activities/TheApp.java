@@ -62,28 +62,22 @@ public class TheApp  extends Activity {
 		
 	}
 	
-	private void calculatePrice() {
-		double d = 0, t;
-		if (costD > 0)
-			d = costD;
-		
+	private double calculatePrice(double d) {
+		double t;
 		t = (isl.getSelectedItem() != null) ? Double.parseDouble(isl.getSelectedItem()) : 30;
 		
 		d = d + ((d * t) / 100);
-	
+		 return calculateCost(d);
 	}
 	
-	private void calculateCost() {
-		double d = 0, t;
-		if (costD > 0)
-			d = costD;
-		
+	private double calculateCost(double d) {
 		d = (vemc) ? d + vemcD : d;
 		d = (vat) ? d * vatD : d;
 		
-		d = (transB) ? (float)(d + transF) : d;
-		this.costTV.setText(euro + " " + df.format(d));
+		d = (transB) ? (d + transF) : d;
+		return d;
 	}
+	
 	
 	private void updateEditText() {
 		this.netPriceEV.addTextChangedListener(new TextWatcher() {
@@ -96,8 +90,7 @@ public class TheApp  extends Activity {
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 				String s = netPriceEV.getText().toString();
 				costTV.setText(euro + s);
-				if(!s.equals("") || s != null) costD = Double.parseDouble(s);
-				else costD = 0.0;
+				costD = (!s.equals("") && s != null) ? Double.parseDouble(s):  0.0;
 			}
 			
 			@Override
@@ -109,7 +102,7 @@ public class TheApp  extends Activity {
 			@Override
 			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 			}
-			//todo work in progress
+
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 				String s = transportTV.getText().toString();
@@ -117,10 +110,12 @@ public class TheApp  extends Activity {
 				String start = s.substring(0, s.indexOf(" ")+1);
 				String middle = euro+transportEV.getText().toString();
 				s = start + middle;
-				if(s.equals("") || s == null)
-					s = transportStringTV;
+				s = (s.equals("") || s == null) ? transportStringTV : s;
+				//todo work in progress
 				
-				transF = Double.parseDouble(s.substring(s.indexOf(euro)+1));// : transF;
+				String st = s.substring(s.indexOf(euro)+1);
+				Log.v("WWW", "st"+st+"r");
+				transF = (st.equals("")) ? transF : Double.parseDouble(st);
 				transportTV.setText(s);
 			}
 			
@@ -176,10 +171,18 @@ public class TheApp  extends Activity {
 		this.calculate.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				calculateCost();
-				calculatePrice();
+				double d = checkCost(), cd, pd;
+				cd = calculateCost(d);
+				pd = calculatePrice(d);
+				
+				costTV.setText(euro + " " + df.format(cd));
+				priceTV.setText(euro + " " + df.format(pd));
 			}
 		});
+	}
+	
+	private double checkCost() {
+		return (costD > 0) ? costD : 0;
 	}
 	
 }

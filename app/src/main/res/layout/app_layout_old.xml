@@ -78,7 +78,7 @@
 					android:background="#FFFF0000"
 					android:id="@+id/costTF"
 					android:text="@string/zeros"
-					android:textSize="36sp"
+					android:textSize="24sp"
 					android:gravity="center"
 					android:layout_weight="1"
 			/>
@@ -88,7 +88,7 @@
 					android:background="#ab0207"
 					android:id="@+id/priceTF"
 					android:text="@string/zeros"
-					android:textSize="36sp"
+					android:textSize="24sp"
 					android:textColor="#fff"
 					android:gravity="center"
 					android:layout_weight="1"
@@ -108,7 +108,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:id="@+id/netto"
-					android:textSize="20sp"
+					android:textSize="26sp"
 					android:background="#c7c5e2"
 					android:textColor="#000000"
 					android:inputType="numberDecimal"
@@ -129,21 +129,21 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/chk_vat"
-					android:textSize="20sp"
+					android:textSize="22sp"
 			/>
 			<CheckBox
 					android:id="@+id/chkvemc"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/chk_vemc"
-					android:textSize="20sp"
+					android:textSize="22sp"
 			/>
 			<CheckBox
 					android:id="@+id/chktransport"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/chk_transport"
-					android:textSize="20sp"
+					android:textSize="22sp"
 			/>
 		</LinearLayout>
 		
@@ -180,7 +180,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:id="@+id/transport_edit"
-					android:textSize="20sp"
+					android:textSize="24sp"
 					android:background="#c7c5e2"
 					android:textColor="#000000"
 					android:inputType="numberDecimal"
@@ -241,6 +241,7 @@
 					android:textColor="#ffff00"
 					android:background="#0000ff"
 					android:text="@string/calculate_btn"
+					android:textSize="24sp"
 					android:layout_marginRight="60dp"
 					android:layout_marginLeft="60dp"
 			/>

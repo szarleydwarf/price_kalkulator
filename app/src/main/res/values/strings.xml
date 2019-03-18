@@ -10,6 +10,8 @@
 	<string name="transport">Transport default € 0.50 # or enter charge below.</string>
 	<string name="margin40">40dp</string>
 	<string name="margin20">20dp</string>
+	<string name="text24">24sp</string>
+	<string name="text22">22sp</string>
 	<string name="hint_price">Enter price for item</string>
 	<string name="hint_transport">Enter transport charges</string>
 	<string name="chk_transport">Transport charges</string>
