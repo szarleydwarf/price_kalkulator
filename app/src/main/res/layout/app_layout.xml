@@ -30,8 +30,8 @@
 					android:textColor="#fff"
 					android:text="@string/app_name"
 					android:gravity="center"
-					android:layout_marginLeft="@string/margin20"
-					android:layout_marginRight="@string/margin20"
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
 			/>
 		</LinearLayout>
 		
@@ -42,8 +42,8 @@
 				android:orientation="horizontal"
 				android:id="@+id/label_layout"
 				android:layout_below="@id/app_name_layout"
-				android:layout_marginLeft="@string/margin40"
-				android:layout_marginRight="@string/margin40"
+				android:layout_marginLeft="40dp"
+				android:layout_marginRight="40dp"
 		>
 			<TextView
 					android:layout_width="wrap_content"
@@ -78,8 +78,8 @@
 				android:orientation="horizontal"
 				android:id="@+id/display_layout"
 				android:layout_below="@id/label_layout"
-				android:layout_marginLeft="@string/margin20"
-				android:layout_marginRight="@string/margin20"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
 		>
 			
 			<TextView
@@ -112,8 +112,8 @@
 				android:id="@+id/net_cost_layout"
 				android:orientation="horizontal"
 				android:layout_below="@id/display_layout"
-				android:layout_marginLeft="@string/margin20"
-				android:layout_marginRight="@string/margin20"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
 		>
 			<EditText
 					android:layout_width="match_parent"
@@ -143,8 +143,8 @@
 					android:layout_height="wrap_content"
 					android:text="@string/chk_vat"
 					android:textSize="22sp"
-					android:layout_marginLeft="@string/margin40"
-					android:layout_marginRight="@string/margin40"
+					android:layout_marginLeft="40dp"
+					android:layout_marginRight="40dp"
 			/>
 			<CheckBox
 					android:id="@+id/chkvemc"
@@ -152,8 +152,8 @@
 					android:layout_height="wrap_content"
 					android:text="@string/chk_vemc"
 					android:textSize="22sp"
-					android:layout_marginLeft="@string/margin40"
-					android:layout_marginRight="@string/margin40"
+					android:layout_marginLeft="40dp"
+					android:layout_marginRight="40dp"
 			/>
 			<CheckBox
 					android:id="@+id/chktransport"
@@ -161,8 +161,8 @@
 					android:layout_height="wrap_content"
 					android:text="@string/chk_transport"
 					android:textSize="22sp"
-					android:layout_marginLeft="@string/margin40"
-					android:layout_marginRight="@string/margin40"
+					android:layout_marginLeft="40dp"
+					android:layout_marginRight="40dp"
 			/>
 		</LinearLayout>
 		
@@ -174,8 +174,8 @@
 				android:layout_below="@id/checkboxes_layout"
 				android:id="@+id/transport_layout"
 				android:orientation="horizontal"
-				android:layout_marginLeft="@string/margin20"
-				android:layout_marginRight="@string/margin20"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
 		>
 			
 			<TextView
@@ -195,8 +195,8 @@
 				android:id="@+id/transport_edit_layout"
 				android:layout_below="@id/transport_layout"
 				android:orientation="horizontal"
-				android:layout_marginLeft="@string/margin20"
-				android:layout_marginRight="@string/margin20"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
 		>
 			<EditText
 					android:layout_width="match_parent"
@@ -217,33 +217,36 @@
 				android:id="@+id/spinner_layout"
 				android:layout_below="@id/transport_edit_layout"
 				android:orientation="horizontal"
-				android:layout_marginLeft="@string/margin60"
-				android:layout_marginRight="@string/margin40"
+				android:layout_marginLeft="40dp"
+				android:layout_marginRight="40dp"
+				android:layout_marginStart="40dp"
+				android:layout_marginEnd="40dp"
 		>
 			<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/profit_spinner_title"
 					android:gravity="center"
+					android:textColor="#000"
 					android:layout_weight="1"
+					android:maxWidth="40dp"
 			/>
 			<Spinner
-					android:layout_weight="2"
 					android:id="@+id/spinner"
-					android:layout_width="fill_parent"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:prompt="@string/profit_spinner_title"
 					android:entries="@array/profit_list"
 					android:textSize="28sp"
-					android:background="@drawable/border"
 					android:textAlignment="center"
-					android:layout_marginLeft="@string/margin40"
 			/>
 			<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text=" %"
+					android:text="@string/percent"
+					android:textColor="#000"
+					android:gravity="center"
 			/>
 		</LinearLayout>
 		

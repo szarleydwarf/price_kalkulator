@@ -23,11 +23,10 @@ public class TheApp  extends Activity {
 	private CheckBox vatChk, vemcChk, transChk;
 	
 	private char euro = '€', hash = '#';
-	private String profitS, costS, priceS, transportStringTV;
+	private String priceS, transportStringTV;
 	private boolean vat, vemc, transB;
-	private double transF = 0.5f;
-	private double costD, priceD, vatD = 1.23, vemcD = 2.8;
-	private int profit;
+	private double transD = 0.5;
+	private double costD, vatD = 1.23, vemcD = 3.44;
 	private DecimalFormat df;
 	
 	@Override
@@ -71,10 +70,10 @@ public class TheApp  extends Activity {
 	}
 	
 	private double calculateCost(double d) {
-		d = (vemc) ? d + vemcD : d;
 		d = (vat) ? d * vatD : d;
+		d = (vemc) ? d + vemcD : d;
 		
-		d = (transB) ? (d + transF) : d;
+		d = (transB) ? (d + transD) : d;
 		return d;
 	}
 	
@@ -105,18 +104,13 @@ public class TheApp  extends Activity {
 
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				String s = transportTV.getText().toString();
-//				String end = s.substring(s.indexOf(hash));
-				String start = s.substring(0, s.indexOf(" ")+1);
-				String middle = euro+transportEV.getText().toString();
-				s = start + middle;
-				s = (s.equals("") || s == null) ? transportStringTV : s;
-				//todo work in progress
+				//todo - get text from edit text, parse to double
+				String s = transportEV.getText().toString();
+				transD = (!s.equals("")) ? Double.parseDouble(s) : transD;
 				
-				String st = s.substring(s.indexOf(euro)+1);
-				Log.v("WWW", "st"+st+"r");
-				transF = (st.equals("")) ? transF : Double.parseDouble(st);
-				transportTV.setText(s);
+				String st = transportTV.getText().toString();
+				st = st.substring(0, st.indexOf(" ")+1) + euro + s;
+				transportTV.setText(st);
 			}
 			
 			@Override
@@ -158,7 +152,7 @@ public class TheApp  extends Activity {
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
 		this.transportTV = findViewById(R.id.transport);
-//		this.transportStringTV = transportTV.getText().toString();
+		this.transportStringTV = transportTV.getText().toString();
 		
 		this.vatChk = findViewById(R.id.chkvat);
 		this.vemcChk = findViewById(R.id.chkvemc);
