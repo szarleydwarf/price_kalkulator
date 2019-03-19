@@ -18,6 +18,8 @@
 	<string name="margin60">60dp</string>
 	<string name="percent">%</string>
 	<string name="calculate_btn">"CALCULATE"</string>
+	<string name="vat_setting">Please enter the correct value for a VAT charged in your country</string>
+	<string name="savebtn">SAVE</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>

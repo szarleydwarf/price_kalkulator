@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@android:color/darker_gray"
+		android:orientation="horizontal"
+		android:layout_gravity="center"
+>
+	
+	<!--app_name_layout-->
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:id="@+id/app_name_layout"
+	>
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/app_name"
+				android:background="@drawable/border"
+				android:textSize="18sp"
+				android:textColor="#fff"
+				android:text="@string/app_name"
+				android:gravity="center"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+		/>
+	</LinearLayout>
+	
+	<!--vat_tv_layout-->
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/vat_tv_layout"
+			android:layout_below="@+id/app_name_layout"
+			android:orientation="horizontal"
+	>
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/vat_setting"
+				android:id="@+id/vat_settings_tv"
+				android:textSize="24sp"
+				android:textColor="#000"
+				android:background="#fff"
+		/>
+	
+	</LinearLayout>
+	
+	<!--vat_et_layout-->
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/vat_et_layout"
+			android:layout_below="@+id/vat_tv_layout"
+			android:orientation="horizontal"
+	>
+		<EditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/vat_settings_et"
+				android:textSize="20sp"
+				android:inputType="numberDecimal"
+				android:hint="@string/vat_setting"
+		/>
+	</LinearLayout>
+	
+	<!--save_btn_layout-->
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/vat_et_layout"
+			android:orientation="horizontal"
+			android:id="@+id/save_btn_layout"
+	>
+		<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/savebtn"
+				android:id="@+id/save_btn"
+		/>
+	</LinearLayout>
+</RelativeLayout>
