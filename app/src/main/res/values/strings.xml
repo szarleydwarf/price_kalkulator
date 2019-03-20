@@ -21,6 +21,7 @@
 	<string name="vat_setting">Please enter below the correct value for a VAT charged in your country</string>
 	<string name="savebtn">SAVE</string>
 	<string name="vat_setting_ev">Enter VAT value</string>
+	<string name="first_use">first_use</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>

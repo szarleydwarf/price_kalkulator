@@ -1,5 +1,6 @@
 package eu.rjch.kalkulatorcen.activities;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -42,6 +43,15 @@ public class TheApp  extends Activity {
 	}
 	
 	private void init() {
+		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+//		SharedPreferences.Editor editor = pref.edit();
+		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
+		Toast.makeText(this, "1vat "+vatD+"\t"+vatS,Toast.LENGTH_LONG).show();
+		if(!vatS.equals("")) {
+			vatD = Double.parseDouble(vatS);
+		}
+		Toast.makeText(this, "2vat "+vatD+"\t"+vatS, Toast.LENGTH_LONG).show();
+		
 		setVariable();
 		setFormating();
 		update();

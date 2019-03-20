@@ -2,11 +2,13 @@ package eu.rjch.kalkulatorcen;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import android.widget.VideoView;
 import eu.rjch.kalkulatorcen.activities.AppSetup;
 import eu.rjch.kalkulatorcen.activities.TheApp;
@@ -41,9 +43,32 @@ public class MainA extends Activity {
 	}
 	
 	private void runApp() {
-		Intent i = new Intent(this, AppSetup.class);
-		startActivity(i);
-		finish();
+		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+		
+		String firstUse = getResources().getString( R.string.first_use );
+		boolean userFirstLogin = pref.getBoolean(firstUse, true);
+		
+		//todo delete 3 next lines
+		SharedPreferences.Editor editor = pref.edit();
+		editor.putBoolean(firstUse, true);
+		editor.commit();
+		
+		Toast.makeText(this, "first use "+userFirstLogin, Toast.LENGTH_LONG).show();
+		
+		if(userFirstLogin){
+//			editor.putBoolean(firstUse, false);
+//			editor.commit();
+			
+			Intent i = new Intent(this, AppSetup.class);
+			startActivity(i);
+			finish();
+		} else {
+			Intent i = new Intent(this, TheApp.class);
+			startActivity(i);
+			finish();
+		}
+		
+		
 	}
 	
 }
