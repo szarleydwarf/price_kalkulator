@@ -5,6 +5,9 @@
         android:layout_height="wrap_content"
         android:background="@android:color/darker_gray"
         android:orientation="horizontal"
+		android:layout_gravity="center"
+		android:layout_marginRight="30dp"
+		android:layout_marginLeft="30dp"
 	>
 	
 	<!--app_name_layout-->
@@ -35,12 +38,19 @@
 			android:id="@+id/vat_tv_layout"
 			android:layout_below="@+id/app_name_layout"
 			android:orientation="horizontal"
+			android:layout_marginTop="15dp"
 	>
 		<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/vat_setting"
 				android:id="@+id/vat_settings_tv"
+				android:gravity="center"
+				android:textSize="20sp"
+				android:textColor="#000"
+				android:background="#fff"
+				android:paddingLeft="10sp"
+				android:paddingRight="10sp"
 		/>
 		
 	</LinearLayout>
@@ -52,6 +62,7 @@
 			android:id="@+id/vat_et_layout"
 			android:layout_below="@+id/vat_tv_layout"
 			android:orientation="horizontal"
+			android:layout_marginTop="15dp"
 	>
 		<EditText
 				android:layout_width="match_parent"
@@ -59,10 +70,15 @@
 				android:id="@+id/vat_settings_et"
 				android:textSize="20sp"
 				android:inputType="numberDecimal"
-				android:hint="@string/vat_setting"
+				android:hint="@string/vat_setting_ev"
+				android:gravity="center"
 		/>
 	</LinearLayout>
 
+	<!--todo for feature add
+	1. range of values for a profit (min, max)
+	2. think about other fields to add-->
+	
 	<!--save_btn_layout-->
 	<LinearLayout
 			android:layout_width="match_parent"
@@ -70,11 +86,14 @@
 			android:layout_below="@+id/vat_et_layout"
 			android:orientation="horizontal"
 			android:id="@+id/save_btn_layout"
+			android:gravity="center"
+			android:layout_marginTop="15dp"
 	>
 		<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/savebtn"
+				android:background="@drawable/gradient_box"
 				android:id="@+id/save_btn"
 		/>
 	</LinearLayout>
