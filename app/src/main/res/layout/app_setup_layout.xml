@@ -76,8 +76,9 @@
 	</LinearLayout>
 
 	<!--todo for feature add
-	1. range of values for a profit (min, max)
-	2. think about other fields to add-->
+	1. range of values for a profit (min, max) slider
+	2. think about other fields to add
+	-->
 	
 	<!--save_btn_layout-->
 	<LinearLayout

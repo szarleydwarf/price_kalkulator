@@ -12,7 +12,8 @@ public class ItemSelectedListener implements AdapterView.OnItemSelectedListener 
 	
 	public ItemSelectedListener(Spinner sp) {
 		this.list = sp;
-		this.list.setSelection(5);
+		// ToDo figure out what wrong with the selection
+		this.list.setSelection(6);
 		this.firstItem = String.valueOf(list.getSelectedItem());
 		this.selectedItem = String.valueOf(list.getSelectedItem());
 	}
@@ -20,7 +21,6 @@ public class ItemSelectedListener implements AdapterView.OnItemSelectedListener 
 	@Override
 	public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 		if(firstItem.equals(String.valueOf(list.getSelectedItem()))){
-			// ToDo when first item is selected
 			selectedItem = list.getSelectedItem().toString();
 		} else {
 			selectedItem = list.getItemAtPosition(i).toString();

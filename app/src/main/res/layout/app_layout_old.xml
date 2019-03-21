@@ -8,14 +8,14 @@
 	<RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
 		android:background="@android:color/darker_gray"
 		android:orientation="horizontal"
 >
 	
 		<!--app_name_layout-->
 		<LinearLayout
-				android:layout_width="match_parent"
+				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
 				android:id="@+id/app_name_layout"
@@ -25,10 +25,19 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:id="@+id/app_name"
-					android:textSize="18sp"
 					android:textColor="#fff"
+					android:layout_gravity="left|center_vertical"
+					android:layout_weight="1"
+					android:ellipsize="end"
+					android:gravity="left|center_vertical"
 					android:text="@string/app_name"
-					android:gravity="center"
+					android:textSize="22sp"
+			/>
+			<Button
+					android:id="@+id/settings_btn"
+					android:layout_width="45dp"
+					android:layout_height="45dp"
+					android:background="@drawable/settings_btn"
 			/>
 		</LinearLayout>
 		

@@ -22,6 +22,7 @@
 	<string name="savebtn">SAVE</string>
 	<string name="vat_setting_ev">Enter VAT value</string>
 	<string name="first_use">first_use</string>
+	<string name="setting">Settings</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>

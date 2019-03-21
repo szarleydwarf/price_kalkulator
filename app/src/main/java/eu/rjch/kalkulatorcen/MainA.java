@@ -53,7 +53,7 @@ public class MainA extends Activity {
 		editor.putBoolean(firstUse, true);
 		editor.commit();
 		
-		Toast.makeText(this, "first use "+userFirstLogin, Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, "first use "+userFirstLogin, Toast.LENGTH_LONG).show();
 		
 		if(userFirstLogin){
 //			editor.putBoolean(firstUse, false);

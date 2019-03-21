@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.*;
 import eu.rjch.kalkulatorcen.R;
 import eu.rjch.kalkulatorcen.utilities.ItemSelectedListener;
+import eu.rjch.kalkulatorcen.utilities.MathsUt;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -27,8 +28,9 @@ public class TheApp  extends Activity {
 	private String priceS, transportStringTV;
 	private boolean vat, vemc, transB;
 	private double transD = 0.5;
-	private double costD, vatD = 1.23, vemcD = 3.44;
+	private double costD, vatD = 23, vemcD = 3.44;
 	private DecimalFormat df;
+	private MathsUt mu;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +48,11 @@ public class TheApp  extends Activity {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 //		SharedPreferences.Editor editor = pref.edit();
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
-		Toast.makeText(this, "1vat "+vatD+"\t"+vatS,Toast.LENGTH_LONG).show();
+		Log.v("WWW", "1vat "+vatD+"\t"+vatS);
 		if(!vatS.equals("")) {
 			vatD = Double.parseDouble(vatS);
 		}
-		Toast.makeText(this, "2vat "+vatD+"\t"+vatS, Toast.LENGTH_LONG).show();
+		Log.v("WWW", "2vat "+vatD+"\t"+vatS);
 		
 		setVariable();
 		setFormating();
@@ -75,12 +77,12 @@ public class TheApp  extends Activity {
 		double t;
 		t = (isl.getSelectedItem() != null) ? Double.parseDouble(isl.getSelectedItem()) : 30;
 		
-		d = d + ((d * t) / 100);
+		d = d + mu.calculatePercentage(d, t);
 		 return calculateCost(d);
 	}
 	
 	private double calculateCost(double d) {
-		d = (vat) ? d * vatD : d;
+		d = (vat) ? d + mu.calculatePercentage(d, vatD) : d;
 		d = (vemc) ? d + vemcD : d;
 		
 		d = (transB) ? (d + transD) : d;
@@ -92,7 +94,6 @@ public class TheApp  extends Activity {
 		this.netPriceEV.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				priceS = euro+" 0.00";
 			}
 			
 			@Override
@@ -114,7 +115,6 @@ public class TheApp  extends Activity {
 
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				//todo - get text from edit text, parse to double
 				String s = transportEV.getText().toString();
 				transD = (!s.equals("")) ? Double.parseDouble(s) : transD;
 				
@@ -151,6 +151,7 @@ public class TheApp  extends Activity {
 	}
 	
 	private void setVariable() {
+		mu = new MathsUt();
 		this.profits = findViewById(R.id.spinner);
 		this.isl = new ItemSelectedListener(this.profits);
 		
@@ -170,6 +171,8 @@ public class TheApp  extends Activity {
 		
 		this.netPriceEV = findViewById(R.id.netto);
 		this.transportEV = findViewById(R.id.transport_edit);
+		
+		//todo add settings button
 		
 		this.calculate = findViewById(R.id.calculate_btn);
 		this.calculate.setOnClickListener(new View.OnClickListener() {
