@@ -1,11 +1,11 @@
 package eu.rjch.kalkulatorcen.activities;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import eu.rjch.kalkulatorcen.R;
@@ -21,7 +21,7 @@ public class TheApp  extends Activity {
 	private ItemSelectedListener isl;
 	private TextView costTV, priceTV, transportTV;
 	private EditText netPriceEV, transportEV;
-	private Button calculate;
+	private Button calculate, settings;
 	private CheckBox vatChk, vemcChk, transChk;
 	
 	private char euro = '€', hash = '#';
@@ -31,6 +31,7 @@ public class TheApp  extends Activity {
 	private double costD, vatD = 23, vemcD = 3.44;
 	private DecimalFormat df;
 	private MathsUt mu;
+	private SeekBar seekbar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +49,9 @@ public class TheApp  extends Activity {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 //		SharedPreferences.Editor editor = pref.edit();
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
-		Log.v("WWW", "1vat "+vatD+"\t"+vatS);
 		if(!vatS.equals("")) {
 			vatD = Double.parseDouble(vatS);
 		}
-		Log.v("WWW", "2vat "+vatD+"\t"+vatS);
 		
 		setVariable();
 		setFormating();
@@ -70,7 +69,28 @@ public class TheApp  extends Activity {
 	private void update() {
 		updateCheckBoxes();
 		updateEditText();
-		
+		updateSeekBar();
+	}
+	
+	private void updateSeekBar() {
+		this.seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			int progressChangedValue = 0;
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+				progressChangedValue = i;
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+			
+			}
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				Toast.makeText(TheApp.this, "Seek bar progress is :" + progressChangedValue,
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 	
 	private double calculatePrice(double d) {
@@ -153,12 +173,14 @@ public class TheApp  extends Activity {
 	private void setVariable() {
 		mu = new MathsUt();
 		this.profits = findViewById(R.id.spinner);
-		this.isl = new ItemSelectedListener(this.profits);
-		
 		ArrayAdapter a = ArrayAdapter.createFromResource(this, R.array.profit_list, R.layout.spinner_t_size);
 		this.profits.setAdapter(a);
+		this.isl = new ItemSelectedListener(this.profits);
+		
 		this.profits.setOnItemSelectedListener(this.isl);
 		
+		this.seekbar = findViewById(R.id.vat_seek_bar);
+		this.seekbar.setMax(50);
 		
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
@@ -172,7 +194,15 @@ public class TheApp  extends Activity {
 		this.netPriceEV = findViewById(R.id.netto);
 		this.transportEV = findViewById(R.id.transport_edit);
 		
-		//todo add settings button
+		this.settings = findViewById(R.id.settings_btn);
+		this.settings.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent i = new Intent(view.getContext(), AppSetup.class);
+				startActivity(i);
+				finish();
+			}
+		});
 		
 		this.calculate = findViewById(R.id.calculate_btn);
 		this.calculate.setOnClickListener(new View.OnClickListener() {

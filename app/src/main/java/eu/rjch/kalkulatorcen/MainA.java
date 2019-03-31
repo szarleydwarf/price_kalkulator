@@ -20,44 +20,39 @@ public class MainA extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_main);
 		runApp();
-		//todo - uncomment bellow
-//		VideoView vv = findViewById(R.id.VideoView);
-//
-//		try{
-//			String pkgName = getPackageName();
-//			int id = getResources().getIdentifier("intro", "raw", pkgName);
-//			vv.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+id));
-//
-//			vv.start();
-//			vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//				@Override
-//				public void onCompletion(MediaPlayer mediaPlayer) {
-//					runApp();
-//				}
-//			});
-//		} catch (Exception e) {
-//			Log.e("ERR", e.getMessage());
-//			e.printStackTrace();
-//		}
+		VideoView vv = findViewById(R.id.VideoView);
+
+		try{
+			String pkgName = getPackageName();
+			int id = getResources().getIdentifier("intro", "raw", pkgName);
+			vv.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+id));
+
+			vv.start();
+			vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+				@Override
+				public void onCompletion(MediaPlayer mediaPlayer) {
+					runApp();
+				}
+			});
+		} catch (Exception e) {
+			Log.e("ERR", e.getMessage());
+			e.printStackTrace();
+		}
 		
 	}
 	
 	private void runApp() {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+		SharedPreferences.Editor editor = pref.edit();
 		
 		String firstUse = getResources().getString( R.string.first_use );
 		boolean userFirstLogin = pref.getBoolean(firstUse, true);
 		
-		//todo delete 3 next lines
-		SharedPreferences.Editor editor = pref.edit();
-		editor.putBoolean(firstUse, true);
-		editor.commit();
-		
-//		Toast.makeText(this, "first use "+userFirstLogin, Toast.LENGTH_LONG).show();
+
 		
 		if(userFirstLogin){
-//			editor.putBoolean(firstUse, false);
-//			editor.commit();
+			editor.putBoolean(firstUse, false);
+			editor.commit();
 			
 			Intent i = new Intent(this, AppSetup.class);
 			startActivity(i);

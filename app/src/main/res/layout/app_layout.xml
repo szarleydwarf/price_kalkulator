@@ -133,16 +133,30 @@
 					android:hint="@string/hint_price"
 			/>
 		</LinearLayout>
+		<!--vat_seek_bar_layout-->
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/vat_seek_bar_layout"
+				android:layout_below="@id/net_cost_layout"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+		>
+			<SeekBar
+					android:id="@+id/vat_seek_bar"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+			/>
+		</LinearLayout>
 		
 		<!--checkboxes_layout-->
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/checkboxes_layout"
 				android:orientation="vertical"
-				android:layout_below="@id/net_cost_layout"
+				android:id="@+id/checkboxes_layout"
+				android:layout_below="@id/vat_seek_bar_layout"
 		>
-			
 			<CheckBox
 					android:id="@+id/chkvat"
 					android:layout_width="match_parent"

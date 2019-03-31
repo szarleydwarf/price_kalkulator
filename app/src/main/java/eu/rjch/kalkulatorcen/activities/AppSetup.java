@@ -1,12 +1,13 @@
 package eu.rjch.kalkulatorcen.activities;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +17,7 @@ import eu.rjch.kalkulatorcen.R;
 public class AppSetup extends Activity {
 	
 	private EditText vatET;
-	private String vatSET;
+	private String vatSET, vatSETSaved;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,8 @@ public class AppSetup extends Activity {
 	private void init() {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		final SharedPreferences.Editor editor = pref.edit();
-		//todo check for existance of the vat value and if vatet empty save it as it is
+		vatSETSaved = pref.getString(getResources().getString(R.string.chk_vat), "");
+		vatSET = "";
 		
 		vatET = findViewById(R.id.vat_settings_et);
 		vatET.addTextChangedListener(new TextWatcher() {
@@ -47,7 +49,6 @@ public class AppSetup extends Activity {
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 				vatSET = vatET.getText().toString();
-				Log.v("WWW", "ap setup "+vatSET);
 			}
 			
 			@Override
@@ -60,14 +61,55 @@ public class AppSetup extends Activity {
 		save.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Log.v("WWW", "setup "+vatSET);
+				String s = null;
+				do {
+					s = isThereStringTosave();
+
+				}while( s == null);
 				
-				editor.putString(getResources().getString(R.string.chk_vat), vatSET);
+				editor.putString(getResources().getString(R.string.chk_vat), s);
 				editor.commit();
 				Intent i = new Intent(view.getContext(), TheApp.class);
 				startActivity(i);
 				finish();
 			}
 		});
+	}
+	
+	private String isThereStringTosave() {
+		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
+			//if both empty display messgage prompt
+			showDialog("No vat value saved and typed in. Please enter vat value");
+			Toast.makeText(this,"No vat value saved and typed in. Please enter vat value ",Toast.LENGTH_LONG).show();
+			return null;
+		} else if(vatSET.isEmpty()) {
+			//if et empty and saved has some value save it
+			showDialog("Vat value set at "+vatSETSaved+"%");
+			Toast.makeText(this,"vVat value set at "+vatSETSaved+"%",Toast.LENGTH_LONG).show();
+			return vatSETSaved;
+		} else if(!vatSET.isEmpty()) {
+			//if et not ampty save it
+			showDialog("Vat saved at "+vatSET + "%");
+			Toast.makeText(this,"Vat saved at "+vatSET + "%",Toast.LENGTH_LONG).show();
+			return vatSET;
+		}
+		
+		
+		return null;
+	}
+	
+	private void showDialog(String s) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(s);
+		
+		builder.setPositiveButton("OK",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+//						Toast.makeText(AppSetup.this, "You clicked yes button",Toast.LENGTH_LONG).show();
+					}
+				});
+		AlertDialog alertDialog = builder.create();
+		alertDialog.show();
 	}
 }
