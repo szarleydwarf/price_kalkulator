@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import eu.rjch.kalkulatorcen.R;
@@ -168,6 +169,11 @@ public class TheApp  extends Activity {
 				transB = transChk.isChecked() ? true : false;
 			}
 		});
+		
+		String s = vatChk.getText().toString();
+		s += " - " + vatD + "%";
+		vatChk.setText(s);
+		
 	}
 	
 	private void setVariable() {
@@ -180,7 +186,7 @@ public class TheApp  extends Activity {
 		this.profits.setOnItemSelectedListener(this.isl);
 		
 		this.seekbar = findViewById(R.id.vat_seek_bar);
-		this.seekbar.setMax(50);
+		this.seekbar.setMax(200);
 		
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
