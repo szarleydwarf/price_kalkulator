@@ -90,7 +90,7 @@ public class TheApp  extends Activity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				Toast.makeText(TheApp.this, "Seek bar progress is :" + progressChangedValue,
-						Toast.LENGTH_SHORT).show();
+						Toast.LENGTH_LONG).show();
 				seekBarValue = true;
 				profitPercent = progressChangedValue;
 			}
@@ -99,8 +99,7 @@ public class TheApp  extends Activity {
 	
 	private double calculatePrice(double d) {
 		profitPercent = (isl.getSelectedItem() != null && !seekBarValue) ? (int) Double.parseDouble(isl.getSelectedItem()) : profitPercent;
-		Log.v("WWW","calc price "+profitPercent + " "+seekBarValue);
-//		seekBarValue = false;
+
 		d = d + mu.calculatePercentage(d, profitPercent);
 		return calculateCost(d);
 	}
@@ -191,7 +190,6 @@ public class TheApp  extends Activity {
 		this.profits.setOnItemSelectedListener(this.isl);
 		
 		this.seekbar = findViewById(R.id.vat_seek_bar);
-		this.seekbar.setMax(200);
 		
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
