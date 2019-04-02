@@ -28,11 +28,12 @@ public class TheApp  extends Activity {
 	private char euro = '€', hash = '#';
 	private String priceS, transportStringTV;
 	private boolean vat, vemc, transB;
-	private double transD = 0.5;
-	private double costD, vatD = 23, vemcD = 3.44;
+	private int profitPercent;
+	private double costD, vatD = 23, vemcD = 3.44, transD = 0.5;
 	private DecimalFormat df;
 	private MathsUt mu;
 	private SeekBar seekbar;
+	private boolean seekBarValue;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,16 +91,18 @@ public class TheApp  extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				Toast.makeText(TheApp.this, "Seek bar progress is :" + progressChangedValue,
 						Toast.LENGTH_SHORT).show();
+				seekBarValue = true;
+				profitPercent = progressChangedValue;
 			}
 		});
 	}
 	
 	private double calculatePrice(double d) {
-		double t;
-		t = (isl.getSelectedItem() != null) ? Double.parseDouble(isl.getSelectedItem()) : 30;
-		
-		d = d + mu.calculatePercentage(d, t);
-		 return calculateCost(d);
+		profitPercent = (isl.getSelectedItem() != null && !seekBarValue) ? (int) Double.parseDouble(isl.getSelectedItem()) : profitPercent;
+		Log.v("WWW","calc price "+profitPercent + " "+seekBarValue);
+//		seekBarValue = false;
+		d = d + mu.calculatePercentage(d, profitPercent);
+		return calculateCost(d);
 	}
 	
 	private double calculateCost(double d) {
@@ -178,10 +181,12 @@ public class TheApp  extends Activity {
 	
 	private void setVariable() {
 		mu = new MathsUt();
+		profitPercent = 0;
+		
 		this.profits = findViewById(R.id.spinner);
 		ArrayAdapter a = ArrayAdapter.createFromResource(this, R.array.profit_list, R.layout.spinner_t_size);
 		this.profits.setAdapter(a);
-		this.isl = new ItemSelectedListener(this.profits);
+		this.isl = new ItemSelectedListener(this.profits, this);
 		
 		this.profits.setOnItemSelectedListener(this.isl);
 		
@@ -224,8 +229,9 @@ public class TheApp  extends Activity {
 		});
 	}
 	
-	private double checkCost() {
-		return (costD > 0) ? costD : 0;
-	}
+	private double checkCost() { return (costD > 0) ? costD : 0;	}
+	
+	public void setSeekBarValue(boolean seekBarValue) { this.seekBarValue = seekBarValue; }
+	
 	
 }
