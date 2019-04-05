@@ -20,7 +20,7 @@ import java.util.Locale;
 public class TheApp  extends Activity {
 	private Spinner profits;
 	private ItemSelectedListener isl;
-	private TextView costTV, priceTV, transportTV;
+	private TextView costTV, priceTV, transportTV, profitPercentTV;
 	private EditText netPriceEV, transportEV;
 	private Button calculate, settings;
 	private CheckBox vatChk, vemcChk, transChk;
@@ -89,16 +89,18 @@ public class TheApp  extends Activity {
 			
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				Toast.makeText(TheApp.this, "Seek bar progress is :" + progressChangedValue,
-						Toast.LENGTH_LONG).show();
+//				Toast.makeText(TheApp.this, "Seek bar progress is :" + progressChangedValue,
+//						Toast.LENGTH_LONG).show();
 				seekBarValue = true;
 				profitPercent = progressChangedValue;
+				profitPercentTV.setText("Profit @ " + profitPercent + "%");
 			}
 		});
 	}
 	
 	private double calculatePrice(double d) {
 		profitPercent = (isl.getSelectedItem() != null && !seekBarValue) ? (int) Double.parseDouble(isl.getSelectedItem()) : profitPercent;
+		profitPercentTV.setText("Profit @ " + profitPercent + "%");
 
 		d = d + mu.calculatePercentage(d, profitPercent);
 		return calculateCost(d);
@@ -196,6 +198,8 @@ public class TheApp  extends Activity {
 		this.transportTV = findViewById(R.id.transport);
 		this.transportStringTV = transportTV.getText().toString();
 		
+		this.profitPercentTV = findViewById(R.id.profit_percent);
+		
 		this.vatChk = findViewById(R.id.chkvat);
 		this.vemcChk = findViewById(R.id.chkvemc);
 		this.transChk = findViewById(R.id.chktransport);
@@ -231,5 +235,14 @@ public class TheApp  extends Activity {
 	
 	public void setSeekBarValue(boolean seekBarValue) { this.seekBarValue = seekBarValue; }
 	
+	@Override
+	public void onPause() {
+		//todo check if that reset app status
+		super.onPause();
+	}
 	
+	@Override
+	public void onResume(){
+		super.onResume();
+	}
 }
