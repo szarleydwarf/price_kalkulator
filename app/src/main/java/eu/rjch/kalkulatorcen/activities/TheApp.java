@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import eu.rjch.kalkulatorcen.R;
@@ -25,8 +24,7 @@ public class TheApp  extends Activity {
 	private Button calculate, settings;
 	private CheckBox vatChk, vemcChk, transChk;
 	
-	private char euro = '€', hash = '#';
-	private String priceS, transportStringTV;
+	private char euro = '€';
 	private boolean vat, vemc, transB;
 	private int profitPercent;
 	private double costD, vatD = 23, vemcD = 3.44, transD = 0.5;
@@ -89,8 +87,6 @@ public class TheApp  extends Activity {
 			
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-//				Toast.makeText(TheApp.this, "Seek bar progress is :" + progressChangedValue,
-//						Toast.LENGTH_LONG).show();
 				seekBarValue = true;
 				profitPercent = progressChangedValue;
 				profitPercentTV.setText("Profit @ " + profitPercent + "%");
@@ -196,7 +192,6 @@ public class TheApp  extends Activity {
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
 		this.transportTV = findViewById(R.id.transport);
-		this.transportStringTV = transportTV.getText().toString();
 		
 		this.profitPercentTV = findViewById(R.id.profit_percent);
 		
@@ -239,6 +234,7 @@ public class TheApp  extends Activity {
 	public void onPause() {
 		//todo check if that reset app status
 		super.onPause();
+		finish();
 	}
 	
 	@Override

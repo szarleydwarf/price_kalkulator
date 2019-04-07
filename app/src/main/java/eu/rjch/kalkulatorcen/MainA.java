@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 import android.widget.VideoView;
 import eu.rjch.kalkulatorcen.activities.AppSetup;
 import eu.rjch.kalkulatorcen.activities.TheApp;
@@ -35,7 +32,6 @@ public class MainA extends Activity {
 				}
 			});
 		} catch (Exception e) {
-			Log.e("ERR", e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -44,7 +40,8 @@ public class MainA extends Activity {
 	private void runApp() {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		SharedPreferences.Editor editor = pref.edit();
-		
+		editor.clear();
+		editor.apply();
 		String firstUse = getResources().getString( R.string.first_use );
 		boolean userFirstLogin = pref.getBoolean(firstUse, true);
 		

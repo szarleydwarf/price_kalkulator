@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ public class AppSetup extends Activity {
 	
 	private EditText vatET;
 	private String vatSET, vatSETSaved;
+	private boolean saved;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,7 @@ public class AppSetup extends Activity {
 		vatET.addTextChangedListener(new TextWatcher() {
 			
 			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-			
-			}
+			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 			
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -52,53 +52,54 @@ public class AppSetup extends Activity {
 			}
 			
 			@Override
-			public void afterTextChanged(Editable editable) {
-			
-			}
+			public void afterTextChanged(Editable editable) {}
 		});
-
+		
 		Button save = findViewById(R.id.save_btn);
 		save.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				String s = null;
+				String s;
 				do {
 					s = isThereStringTosave();
-
-				}while( s == null);
+//					showDialog("No vat value saved and typed in. Please enter vat value");
+					Toast.makeText(AppSetup.this,"No vat value saved and typed in. Please enter vat value ",
+							Toast.LENGTH_LONG).show();
+				/// TODO: 5/4/19 fix this
+				}while(s == null);
 				
 				editor.putString(getResources().getString(R.string.chk_vat), s);
 				editor.commit();
-				Intent i = new Intent(view.getContext(), TheApp.class);
-				startActivity(i);
-				finish();
 			}
 		});
+
+	}
+	
+	private void goBack(){
+		Intent i = new Intent(/*view.getContext()*/this, TheApp.class);
+		startActivity(i);
+		finish();
 	}
 	
 	private String isThereStringTosave() {
 		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
-			showDialog("No vat value saved and typed in. Please enter vat value");
-			Toast.makeText(this,"No vat value saved and typed in. Please enter vat value ",Toast.LENGTH_LONG).show();
-			return null;
+						return null;
 		} else if(vatSET.isEmpty()) {
 			//if et empty and saved has some value save it
-			showDialog("Vat value set at "+vatSETSaved+"%");
-			Toast.makeText(this,"vVat value set at "+vatSETSaved+"%",Toast.LENGTH_LONG).show();
+//			showDialog("Vat value set at "+vatSETSaved+"%");
+			Toast.makeText(this,"Vat value set at "+vatSETSaved+"%",Toast.LENGTH_LONG).show();
 			return vatSETSaved;
 		} else if(!vatSET.isEmpty()) {
-			//if et not ampty save it
-			showDialog("Vat saved at "+vatSET + "%");
+			//if et not empty save it
+//			showDialog("Vat saved at "+vatSET + "%");
 			Toast.makeText(this,"Vat saved at "+vatSET + "%",Toast.LENGTH_LONG).show();
 			return vatSET;
 		}
-		
-		
 		return null;
 	}
 	
-	private void showDialog(String s) {
+	private void showDialog(final String s) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(s);
 		
@@ -106,10 +107,12 @@ public class AppSetup extends Activity {
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
-//						Toast.makeText(AppSetup.this, "You clicked yes button",Toast.LENGTH_LONG).show();
+						goBack();
 					}
 				});
 		AlertDialog alertDialog = builder.create();
 		alertDialog.show();
 	}
+	
+	//todo send feedback option,
 }
