@@ -20,6 +20,7 @@ public class AppSetup extends Activity {
 	private EditText vatET;
 	private String vatSET, vatSETSaved;
 	private boolean saved;
+	private boolean isOk = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class AppSetup extends Activity {
 	
 	private void init() {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-		final SharedPreferences.Editor editor = pref.edit();
+
 		vatSETSaved = pref.getString(getResources().getString(R.string.chk_vat), "");
 		vatSET = "";
 		
@@ -54,25 +55,40 @@ public class AppSetup extends Activity {
 			@Override
 			public void afterTextChanged(Editable editable) {}
 		});
-		
 		Button save = findViewById(R.id.save_btn);
+		Button email = findViewById(R.id.email_me);
+		
+		sendEmail(email);
+		saving(pref, save);
+
+	}
+	
+	private void sendEmail(Button email) {
+		email.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//todo how to send emails?
+			}
+		});
+	}
+	
+	private void saving(SharedPreferences pref, Button save) {
+		final SharedPreferences.Editor editor = pref.edit();
+		
 		save.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				String s;
-				do {
-					s = isThereStringTosave();
-//					showDialog("No vat value saved and typed in. Please enter vat value");
-					Toast.makeText(AppSetup.this,"No vat value saved and typed in. Please enter vat value ",
-							Toast.LENGTH_LONG).show();
-				/// TODO: 5/4/19 fix this
-				}while(s == null);
+				s = isThereStringTosave();
 				
 				editor.putString(getResources().getString(R.string.chk_vat), s);
 				editor.commit();
+				
+				if(isOk)
+					goBack();
+				
 			}
 		});
-
 	}
 	
 	private void goBack(){
@@ -84,15 +100,18 @@ public class AppSetup extends Activity {
 	private String isThereStringTosave() {
 		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
-						return null;
+			showDialog("No vat value saved and typed in. Please enter vat value");
+//			Toast.makeText(AppSetup.this,"No vat value saved and typed in. Please enter vat value ",
+//					Toast.LENGTH_LONG).show();
+			return null;
 		} else if(vatSET.isEmpty()) {
 			//if et empty and saved has some value save it
-//			showDialog("Vat value set at "+vatSETSaved+"%");
+			showDialog("Vat value set at "+vatSETSaved+"%");
 			Toast.makeText(this,"Vat value set at "+vatSETSaved+"%",Toast.LENGTH_LONG).show();
 			return vatSETSaved;
 		} else if(!vatSET.isEmpty()) {
 			//if et not empty save it
-//			showDialog("Vat saved at "+vatSET + "%");
+			showDialog("Vat saved at "+vatSET + "%");
 			Toast.makeText(this,"Vat saved at "+vatSET + "%",Toast.LENGTH_LONG).show();
 			return vatSET;
 		}
@@ -107,12 +126,10 @@ public class AppSetup extends Activity {
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
-						goBack();
+						isOk = true;
 					}
 				});
 		AlertDialog alertDialog = builder.create();
 		alertDialog.show();
 	}
-	
-	//todo send feedback option,
 }

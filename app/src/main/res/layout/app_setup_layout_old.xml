@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#fff"
+		android:orientation="horizontal">
+	
+	<RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -10,86 +17,133 @@
 		android:layout_marginLeft="30dp"
 	>
 	
-	<!--app_name_layout-->
-	<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:id="@+id/app_name_layout"
-	>
-		<TextView
+		<!--app_name_layout-->
+		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/app_name"
-				android:background="@drawable/border"
-				android:textSize="18sp"
-				android:textColor="#fff"
-				android:text="@string/app_name"
-				android:gravity="center"
-				android:layout_marginLeft="20dp"
-				android:layout_marginRight="20dp"
-		/>
-	</LinearLayout>
-	
-	<!--vat_tv_layout-->
-	<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/vat_tv_layout"
-			android:layout_below="@+id/app_name_layout"
-			android:orientation="horizontal"
-			android:layout_marginTop="15dp"
-	>
-		<TextView
+				android:orientation="horizontal"
+				android:id="@+id/app_name_layout"
+		>
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/app_name"
+					android:background="@drawable/border"
+					android:textSize="18sp"
+					android:textColor="#fff"
+					android:text="@string/app_name"
+					android:gravity="center"
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+			/>
+		</LinearLayout>
+		
+		<!--vat_tv_layout-->
+		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/vat_setting"
-				android:id="@+id/vat_settings_tv"
-				android:textSize="20sp"
-				android:gravity="center"
-				android:textColor="#000"
-				android:background="#fff"
-				android:paddingLeft="10sp"
-				android:paddingRight="10sp"
-		/>
-	
-	</LinearLayout>
-	
-	<!--vat_et_layout-->
-	<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/vat_et_layout"
-			android:layout_below="@+id/vat_tv_layout"
-			android:orientation="horizontal"
-			android:layout_marginTop="15dp"
-	>
-		<EditText
+				android:id="@+id/vat_tv_layout"
+				android:layout_below="@+id/app_name_layout"
+				android:orientation="horizontal"
+				android:layout_marginTop="15dp"
+		>
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/vat_setting"
+					android:id="@+id/vat_settings_tv"
+					android:textSize="20sp"
+					android:gravity="center"
+					android:textColor="#000"
+					android:background="#fff"
+					android:paddingLeft="10sp"
+					android:paddingRight="10sp"
+			/>
+		
+		</LinearLayout>
+		
+		<!--vat_et_layout-->
+		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/vat_settings_et"
-				android:textSize="20sp"
-				android:inputType="numberDecimal"
-				android:hint="@string/vat_setting_ev"
-				android:gravity="center"
-		/>
-	</LinearLayout>
-	
-	<!--save_btn_layout-->
-	<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/vat_et_layout"
-			android:orientation="horizontal"
-			android:id="@+id/save_btn_layout"
-			android:gravity="center"
-			android:layout_marginTop="15dp"
-	>
-		<Button
-				android:layout_width="wrap_content"
+				android:id="@+id/vat_et_layout"
+				android:layout_below="@+id/vat_tv_layout"
+				android:orientation="horizontal"
+				android:layout_marginTop="15dp"
+		>
+			<EditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/vat_settings_et"
+					android:textSize="20sp"
+					android:inputType="numberDecimal"
+					android:hint="@string/vat_setting_ev"
+					android:gravity="center"
+			/>
+		</LinearLayout>
+		
+		<!--save_btn_layout-->
+		<LinearLayout
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/savebtn"
-				android:id="@+id/save_btn"
-		/>
-	</LinearLayout>
-</RelativeLayout>
+				android:layout_below="@+id/vat_et_layout"
+				android:orientation="horizontal"
+				android:id="@+id/save_btn_layout"
+				android:gravity="center"
+				android:layout_marginTop="15dp"
+		>
+			<Button
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/savebtn"
+					android:id="@+id/save_btn"
+			/>
+		</LinearLayout>
+		
+		<!--contact_layout-->
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginTop="5dp"
+				android:orientation="horizontal"
+				android:id="@+id/contact_layout"
+				android:layout_below="@id/save_btn_layout"
+		>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:textSize="18sp"
+					android:text="Contact developer team"
+					android:layout_weight="1"
+			
+			/>
+			<Button
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/email_me"
+					android:text="Email"
+					android:textSize="12sp"
+					android:layout_weight="3"
+			/>
+		</LinearLayout>
+		
+		<!--todo buy me a coffee & sounds & rate the app & -->
+		<!--todo for feature add range of values for a profit (min, max) slider-->
+		
+		<!--go_back_layout-->
+		<LinearLayout
+			android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+			android:id="@+id/go_back_layout"
+			android:layout_below="@id/contact_layout"
+			android:orientation="horizontal"
+		>
+			<Button
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/go_back"
+					android:text="Go Back"
+			/>
+		</LinearLayout>
+	</RelativeLayout>
+</ScrollView>

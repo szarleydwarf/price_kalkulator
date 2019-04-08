@@ -16,14 +16,13 @@ public class MainA extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_main);
-		runApp();
 		VideoView vv = findViewById(R.id.VideoView);
-
+		
 		try{
 			String pkgName = getPackageName();
 			int id = getResources().getIdentifier("intro", "raw", pkgName);
 			vv.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+id));
-
+			
 			vv.start();
 			vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 				@Override
@@ -35,6 +34,7 @@ public class MainA extends Activity {
 			e.printStackTrace();
 		}
 		
+		runApp();
 	}
 	
 	private void runApp() {
