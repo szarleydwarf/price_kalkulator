@@ -5,7 +5,7 @@
 	<string name="price">Price</string>
 	<string name="zeros">€ 0.00</string>
 	<string name="chk_vat">VAT Tax</string>
-	<string name="chk_vemc">VEMC - Recycling</string>
+	<string name="chk_vemc">Recycling</string>
 	<string name="profit_spinner_title">Profit</string>
 	<string name="transport">Transport default € 0.50 # or enter charge below.</string>
 	<string name="margin40">40dp</string>
@@ -23,6 +23,8 @@
 	<string name="vat_setting_ev">Enter VAT value</string>
 	<string name="first_use">first_use</string>
 	<string name="setting">Settings</string>
+	<string name="contact_team">Contact team</string>
+	<string name="back">Go Back</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>

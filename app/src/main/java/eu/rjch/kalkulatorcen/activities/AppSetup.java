@@ -57,10 +57,20 @@ public class AppSetup extends Activity {
 		});
 		Button save = findViewById(R.id.save_btn);
 		Button email = findViewById(R.id.email_me);
+		Button back = findViewById(R.id.go_back);
 		
 		sendEmail(email);
 		saving(pref, save);
-
+		returnToMain(back);
+	}
+	
+	private void returnToMain(Button back) {
+		back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				goBack();
+			}
+		});
 	}
 	
 	private void sendEmail(Button email) {
@@ -72,14 +82,14 @@ public class AppSetup extends Activity {
 		});
 	}
 	
-	private void saving(SharedPreferences pref, Button save) {
+	private void saving(SharedPreferences pref, final Button save) {
 		final SharedPreferences.Editor editor = pref.edit();
 		
 		save.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				String s;
-				s = isThereStringTosave();
+				s = isThereStringTosave(save);
 				
 				editor.putString(getResources().getString(R.string.chk_vat), s);
 				editor.commit();
@@ -97,7 +107,7 @@ public class AppSetup extends Activity {
 		finish();
 	}
 	
-	private String isThereStringTosave() {
+	private String isThereStringTosave(Button save) {
 		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
 			showDialog("No vat value saved and typed in. Please enter vat value");
