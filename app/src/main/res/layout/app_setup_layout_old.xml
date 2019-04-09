@@ -82,13 +82,13 @@
 					android:layout_weight="2"
 					android:maxWidth="20dp"
 			/>
-			<Button
+			<ImageButton
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:id="@+id/save_btn"
 					android:layout_weight="1"
-					android:maxHeight="40dp"
 					android:background="@drawable/save"
+					android:scaleType="fitXY"
 			/>
 		</LinearLayout>
 		

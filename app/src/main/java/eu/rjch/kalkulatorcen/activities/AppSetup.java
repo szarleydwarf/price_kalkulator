@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import eu.rjch.kalkulatorcen.R;
 
@@ -55,7 +56,7 @@ public class AppSetup extends Activity {
 			@Override
 			public void afterTextChanged(Editable editable) {}
 		});
-		Button save = findViewById(R.id.save_btn);
+		ImageButton save = findViewById(R.id.save_btn);
 		Button email = findViewById(R.id.email_me);
 		Button back = findViewById(R.id.go_back);
 		
@@ -78,11 +79,19 @@ public class AppSetup extends Activity {
 			@Override
 			public void onClick(View v) {
 				//todo how to send emails?
+				String[] reciepent = {"szarleydwarf@gmail.com"};
+				String subject = "Test";
+				
+				Intent i = new Intent(Intent.ACTION_SEND);
+				i.putExtra(Intent.EXTRA_EMAIL, reciepent);
+				i.putExtra(Intent.EXTRA_SUBJECT, subject);
+				i.setType("message/rfc822");
+				startActivity(Intent.createChooser(i, "Choose your email"));
 			}
 		});
 	}
 	
-	private void saving(SharedPreferences pref, final Button save) {
+	private void saving(SharedPreferences pref, final ImageButton save) {
 		final SharedPreferences.Editor editor = pref.edit();
 		
 		save.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +116,7 @@ public class AppSetup extends Activity {
 		finish();
 	}
 	
-	private String isThereStringTosave(Button save) {
+	private String isThereStringTosave(ImageButton save) {
 		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
 			showDialog("No vat value saved and typed in. Please enter vat value");
