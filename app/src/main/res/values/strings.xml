@@ -1,5 +1,10 @@
 <resources>
-	<string name="app_name">Kalkulator cen v.1.0</string>
+	<string name="app_name">Kalkulator cen v.1.1</string>
+	<string name="ad_mob_id">ca-app-pub-1421069741839692~9245051310</string>
+	<string name="ad_mob_test">ca-app-pub-3940256099942544/6300978111</string>
+<!--	<string name="ad_mob_test">ca-app-pub-3940256099942544~3347511713</string>-->
+	<string name="ad_mob_banner">ca-app-pub-1421069741839692/5923919254</string>
+	
 	<string name="todo">TODO</string>
 	<string name="cost">Cost</string>
 	<string name="price">Price</string>
@@ -50,5 +55,7 @@
 		<item>175</item>
 		<item>200</item>
 	</string-array>
+	
+
 	
 </resources>

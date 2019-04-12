@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.VideoView;
 import eu.rjch.kalkulatorcen.activities.AppSetup;
 import eu.rjch.kalkulatorcen.activities.TheApp;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainA extends Activity {
 	
@@ -16,6 +17,8 @@ public class MainA extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_main);
+		
+//		MobileAds.initialize(this, getResources().getString(R.string.ad_mob_id));
 		VideoView vv = findViewById(R.id.VideoView);
 		
 		try{

@@ -8,20 +8,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import eu.rjch.kalkulatorcen.R;
 
 public class AppSetup extends Activity {
 	
 	private EditText vatET;
 	private String vatSET, vatSETSaved;
-	private boolean saved;
 	private boolean isOk = false;
+	private AdView adBanner;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,9 @@ public class AppSetup extends Activity {
 	}
 	
 	private void init() {
+		getAds();
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-
+		
 		vatSETSaved = pref.getString(getResources().getString(R.string.chk_vat), "");
 		vatSET = "";
 		
@@ -65,6 +68,12 @@ public class AppSetup extends Activity {
 		returnToMain(back);
 	}
 	
+	private void getAds() {
+		adBanner = findViewById(R.id.adView);
+		AdRequest ar = new AdRequest.Builder().build();
+		adBanner.loadAd(ar);
+	}
+	
 	private void returnToMain(Button back) {
 		back.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -78,9 +87,9 @@ public class AppSetup extends Activity {
 		email.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//todo how to send emails?
-				String[] reciepent = {"szarleydwarf@gmail.com"};
-				String subject = "Test";
+				//todo add system config to the message, maybe some error log file as well?
+				String[] reciepent = {"r.j.chomik@gmail.com"};
+				String subject = "Feedback from Price Calc";
 				
 				Intent i = new Intent(Intent.ACTION_SEND);
 				i.putExtra(Intent.EXTRA_EMAIL, reciepent);
