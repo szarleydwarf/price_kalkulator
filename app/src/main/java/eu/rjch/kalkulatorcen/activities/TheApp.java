@@ -47,7 +47,6 @@ public class TheApp  extends Activity {
 	
 	private void init() {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-//		SharedPreferences.Editor editor = pref.edit();
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
 		if(!vatS.equals("")) {
 			vatD = Double.parseDouble(vatS);
@@ -232,7 +231,6 @@ public class TheApp  extends Activity {
 	
 	@Override
 	public void onPause() {
-		//todo check if that reset app status
 		super.onPause();
 		finish();
 	}

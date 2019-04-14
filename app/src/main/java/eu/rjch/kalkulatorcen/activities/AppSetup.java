@@ -17,6 +17,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import eu.rjch.kalkulatorcen.R;
+import eu.rjch.kalkulatorcen.utilities.AdsHandler;
+import eu.rjch.kalkulatorcen.utilities.RJErrorsHandler;
 
 public class AppSetup extends Activity {
 	
@@ -32,7 +34,7 @@ public class AppSetup extends Activity {
 			setContentView(R.layout.app_setup_layout);
 		}else {
 			setContentView(R.layout.app_setup_layout_old);
-			
+			//todo catch crash of the app
 		}
 		
 		init();
@@ -69,9 +71,11 @@ public class AppSetup extends Activity {
 	}
 	
 	private void getAds() {
-		adBanner = findViewById(R.id.adView);
-		AdRequest ar = new AdRequest.Builder().build();
-		adBanner.loadAd(ar);
+		AdsHandler ah = new AdsHandler();
+		ah.getAds((AdView) findViewById(R.id.adView));
+//		adBanner = findViewById(R.id.adView);
+//		AdRequest ar = new AdRequest.Builder().build();
+//		adBanner.loadAd(ar);
 	}
 	
 	private void returnToMain(Button back) {
@@ -87,15 +91,10 @@ public class AppSetup extends Activity {
 		email.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//todo add system config to the message, maybe some error log file as well?
-				String[] reciepent = {"r.j.chomik@gmail.com"};
 				String subject = "Feedback from Price Calc";
-				
-				Intent i = new Intent(Intent.ACTION_SEND);
-				i.putExtra(Intent.EXTRA_EMAIL, reciepent);
-				i.putExtra(Intent.EXTRA_SUBJECT, subject);
-				i.setType("message/rfc822");
-				startActivity(Intent.createChooser(i, "Choose your email"));
+				RJErrorsHandler eh = new RJErrorsHandler();
+
+				startActivity(Intent.createChooser(eh.sendEmail(subject, getResources().getString(R.string.email_msg_1)), "Choose your email"));
 			}
 		});
 	}
@@ -135,12 +134,12 @@ public class AppSetup extends Activity {
 		} else if(vatSET.isEmpty()) {
 			//if et empty and saved has some value save it
 			showDialog("Vat value set at "+vatSETSaved+"%");
-			Toast.makeText(this,"Vat value set at "+vatSETSaved+"%",Toast.LENGTH_LONG).show();
+//			Toast.makeText(this,"Vat value set at "+vatSETSaved+"%",Toast.LENGTH_LONG).show();
 			return vatSETSaved;
 		} else if(!vatSET.isEmpty()) {
 			//if et not empty save it
 			showDialog("Vat saved at "+vatSET + "%");
-			Toast.makeText(this,"Vat saved at "+vatSET + "%",Toast.LENGTH_LONG).show();
+//			Toast.makeText(this,"Vat saved at "+vatSET + "%",Toast.LENGTH_LONG).show();
 			return vatSET;
 		}
 		return null;
