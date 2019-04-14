@@ -304,6 +304,7 @@
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"
 				android:layout_alignParentBottom="true"
+				android:layout_below="@+id/calculate_btn_layout"
 				ads:adSize="BANNER"
 				ads:adUnitId="@string/ad_mob_test">
 		</com.google.android.gms.ads.AdView>

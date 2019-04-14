@@ -8,7 +8,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.*;
+import com.google.android.gms.ads.AdView;
 import eu.rjch.kalkulatorcen.R;
+import eu.rjch.kalkulatorcen.utilities.AdsHandler;
 import eu.rjch.kalkulatorcen.utilities.ItemSelectedListener;
 import eu.rjch.kalkulatorcen.utilities.MathsUt;
 
@@ -46,6 +48,7 @@ public class TheApp  extends Activity {
 	}
 	
 	private void init() {
+		loadAds();
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
 		if(!vatS.equals("")) {
@@ -55,6 +58,11 @@ public class TheApp  extends Activity {
 		setVariable();
 		setFormating();
 		update();
+	}
+	
+	private void loadAds() {
+		AdsHandler ah = new AdsHandler();
+		ah.getAds((AdView) findViewById(R.id.adView));
 	}
 	
 	private void setFormating() {

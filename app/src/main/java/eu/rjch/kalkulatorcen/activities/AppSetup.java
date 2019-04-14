@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import eu.rjch.kalkulatorcen.R;
@@ -25,7 +23,6 @@ public class AppSetup extends Activity {
 	private EditText vatET;
 	private String vatSET, vatSETSaved;
 	private boolean isOk = false;
-	private AdView adBanner;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +70,6 @@ public class AppSetup extends Activity {
 	private void getAds() {
 		AdsHandler ah = new AdsHandler();
 		ah.getAds((AdView) findViewById(R.id.adView));
-//		adBanner = findViewById(R.id.adView);
-//		AdRequest ar = new AdRequest.Builder().build();
-//		adBanner.loadAd(ar);
 	}
 	
 	private void returnToMain(Button back) {
