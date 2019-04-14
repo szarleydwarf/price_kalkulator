@@ -120,7 +120,7 @@ public class AppSetup extends Activity {
 	}
 	
 	private void goBack(){
-		Intent i = new Intent(/*view.getContext()*/this, TheApp.class);
+		Intent i = new Intent(this, TheApp.class);
 		startActivity(i);
 		finish();
 	}
