@@ -109,18 +109,17 @@
 					android:layout_weight="1"
 			
 			/>
-			<Button
+			<ImageButton
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:id="@+id/email_me"
-					android:text="Email"
-					android:textSize="12sp"
+					android:background="@drawable/email"
 					android:layout_weight="3"
 			/>
 		</LinearLayout>
 		
 		<!--todo buy me a coffee & sounds & rate the app & -->
-		<!--todo for feature add range of values for a profit (min, max) slider-->
+		<!--todo for feature add range of values for a profit (min, max)-->
 		
 		<!--go_back_layout-->
 		<LinearLayout

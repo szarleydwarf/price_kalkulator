@@ -59,7 +59,7 @@ public class AppSetup extends Activity {
 			public void afterTextChanged(Editable editable) {}
 		});
 		ImageButton save = findViewById(R.id.save_btn);
-		Button email = findViewById(R.id.email_me);
+		ImageButton email = findViewById(R.id.email_me);
 		Button back = findViewById(R.id.go_back);
 		
 		sendEmail(email);
@@ -81,7 +81,7 @@ public class AppSetup extends Activity {
 		});
 	}
 	
-	private void sendEmail(Button email) {
+	private void sendEmail(ImageButton email) {
 		email.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

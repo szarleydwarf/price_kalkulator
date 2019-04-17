@@ -30,9 +30,8 @@
 	<string name="setting">Settings</string>
 	<string name="contact_team">Contact team</string>
 	<string name="back">Go Back</string>
-	<string name="email_msg_1">Please leave the above information for developers to find easier what\'s wrong.\\nType
-		your message bellow
-	</string>
+	<string name="email_msg_1">Please leave the above for developers to find easier whats wrong. Describe your
+		issue bellow.</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>
