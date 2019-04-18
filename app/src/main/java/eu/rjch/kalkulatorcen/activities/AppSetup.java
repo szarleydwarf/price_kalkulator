@@ -58,13 +58,45 @@ public class AppSetup extends Activity {
 			@Override
 			public void afterTextChanged(Editable editable) {}
 		});
-		ImageButton save = findViewById(R.id.save_btn);
+		ImageButton saveVAT = findViewById(R.id.save_btn);
+		ImageButton saveRec = findViewById(R.id.save_r_btn);
 		ImageButton email = findViewById(R.id.email_me);
+		
 		Button back = findViewById(R.id.go_back);
 		
 		sendEmail(email);
-		saving(pref, save);
+		savingVAT(pref, saveVAT);
+		savingRec(pref, saveRec);
 		returnToMain(back);
+	}
+	
+	private void savingRec(SharedPreferences pref, ImageButton saveRec) {
+		SharedPreferences.Editor editor = pref.edit();
+		saveRec.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showDialog("Saving Recycling");
+//				todo
+			}
+		});
+	}
+	
+	private void savingVAT(SharedPreferences pref, final ImageButton save) {
+		final SharedPreferences.Editor editor = pref.edit();
+		
+		save.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String s;
+				s = isThereStringTosave();
+				
+				editor.putString(getResources().getString(R.string.chk_vat), s);
+				editor.commit();
+				
+				goBack();
+				
+			}
+		});
 	}
 	
 	private void getAds() {
@@ -87,27 +119,8 @@ public class AppSetup extends Activity {
 			public void onClick(View v) {
 				String subject = "Feedback from Price Calc";
 				RJErrorsHandler eh = new RJErrorsHandler();
-
+				
 				startActivity(Intent.createChooser(eh.sendEmail(subject, getResources().getString(R.string.email_msg_1)), "Choose your email"));
-			}
-		});
-	}
-	
-	private void saving(SharedPreferences pref, final ImageButton save) {
-		final SharedPreferences.Editor editor = pref.edit();
-		
-		save.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				String s;
-				s = isThereStringTosave(save);
-				
-				editor.putString(getResources().getString(R.string.chk_vat), s);
-				editor.commit();
-				
-				if(isOk)
-					goBack();
-				
 			}
 		});
 	}
@@ -118,22 +131,20 @@ public class AppSetup extends Activity {
 		finish();
 	}
 	
-	private String isThereStringTosave(ImageButton save) {
+	private String isThereStringTosave() {
 		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
-			showDialog("No vat value saved and typed in. Please enter vat value");
-//			Toast.makeText(AppSetup.this,"No vat value saved and typed in. Please enter vat value ",
-//					Toast.LENGTH_LONG).show();
+			showDialog("No vat value saved and typed in. By default VAT will be set to "
+					+getResources().getString(R.string.vat_default)
+					+getResources().getString(R.string.percent));
 			return null;
 		} else if(vatSET.isEmpty()) {
 			//if et empty and saved has some value save it
 			showDialog("Vat value set at "+vatSETSaved+"%");
-//			Toast.makeText(this,"Vat value set at "+vatSETSaved+"%",Toast.LENGTH_LONG).show();
 			return vatSETSaved;
 		} else if(!vatSET.isEmpty()) {
 			//if et not empty save it
 			showDialog("Vat saved at "+vatSET + "%");
-//			Toast.makeText(this,"Vat saved at "+vatSET + "%",Toast.LENGTH_LONG).show();
 			return vatSET;
 		}
 		return null;

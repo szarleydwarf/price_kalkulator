@@ -13,14 +13,10 @@
 	<string name="chk_vemc">Recycling</string>
 	<string name="profit_spinner_title">Profit</string>
 	<string name="transport">Transport default € 0.50 # or enter charge below.</string>
-	<string name="margin40">40dp</string>
-	<string name="margin20">20dp</string>
-	<string name="text24">24sp</string>
-	<string name="text22">22sp</string>
+	<string name="vat_default">23</string>
 	<string name="hint_price">Enter price for item</string>
 	<string name="hint_transport">Enter transport charges</string>
 	<string name="chk_transport">Transport charges</string>
-	<string name="margin60">60dp</string>
 	<string name="percent">%</string>
 	<string name="calculate_btn">"CALCULATE"</string>
 	<string name="vat_setting">Please enter below the correct value for a VAT charged in your country</string>
@@ -32,6 +28,7 @@
 	<string name="back">Go Back</string>
 	<string name="email_msg_1">Please leave the above for developers to find easier whats wrong. Describe your
 		issue bellow.</string>
+	<string name="recycling_et">Enter recycling charge</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>

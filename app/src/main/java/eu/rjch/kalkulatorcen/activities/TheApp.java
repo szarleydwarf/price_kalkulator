@@ -29,7 +29,7 @@ public class TheApp  extends Activity {
 	private char euro = '€';
 	private boolean vat, vemc, transB;
 	private int profitPercent;
-	private double costD, vatD = 23, vemcD = 3.44, transD = 0.5;
+	private double costD, vatD, vemcD = 3.44, transD = 0.5;
 	private DecimalFormat df;
 	private MathsUt mu;
 	private SeekBar seekbar;
@@ -53,6 +53,8 @@ public class TheApp  extends Activity {
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
 		if(!vatS.equals("")) {
 			vatD = Double.parseDouble(vatS);
+		} else {
+			vatD = Double.parseDouble(getResources().getString(R.string.vat_default));
 		}
 		
 		setVariable();
