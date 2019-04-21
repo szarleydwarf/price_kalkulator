@@ -20,8 +20,8 @@ import eu.rjch.kalkulatorcen.utilities.RJErrorsHandler;
 
 public class AppSetup extends Activity {
 	
-	private EditText vatET;
-	private String vatSET, vatSETSaved;
+	private EditText vatET, recET;
+	private String vatSET, vatSETSaved, recStr;
 	private boolean isOk = false;
 	
 	@Override
@@ -40,6 +40,8 @@ public class AppSetup extends Activity {
 	private void init() {
 		getAds();
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+		
+		recET = findViewById(R.id.recycling_et);
 		
 		vatSETSaved = pref.getString(getResources().getString(R.string.chk_vat), "");
 		vatSET = "";
@@ -71,12 +73,19 @@ public class AppSetup extends Activity {
 	}
 	
 	private void savingRec(SharedPreferences pref, ImageButton saveRec) {
-		SharedPreferences.Editor editor = pref.edit();
+		final SharedPreferences.Editor editor = pref.edit();
 		saveRec.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				showDialog("Saving Recycling");
 //				todo
+				if(!recET.getText().toString().isEmpty()) {
+					recStr = recET.getText().toString();
+					
+					editor.putString(getResources().getString(R.string.recycling), recStr);
+					editor.commit();
+				}
+				
 			}
 		});
 	}
@@ -89,12 +98,13 @@ public class AppSetup extends Activity {
 			public void onClick(View view) {
 				String s;
 				s = isThereStringTosave();
-				
-				editor.putString(getResources().getString(R.string.chk_vat), s);
-				editor.commit();
-				
-				goBack();
-				
+				//????todo???
+				if(s != null) {
+					editor.putString(getResources().getString(R.string.chk_vat), s);
+					editor.commit();
+					
+//					goBack();
+				}
 			}
 		});
 	}

@@ -29,6 +29,8 @@
 	<string name="email_msg_1">Please leave the above for developers to find easier whats wrong. Describe your
 		issue bellow.</string>
 	<string name="recycling_et">Enter recycling charge</string>
+	<string name="recycling">recycling charge</string>
+	<string name="rec_defaoult">0,50</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>

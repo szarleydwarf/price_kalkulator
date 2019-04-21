@@ -49,15 +49,10 @@ public class TheApp  extends Activity {
 	
 	private void init() {
 		loadAds();
-		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
-		if(!vatS.equals("")) {
-			vatD = Double.parseDouble(vatS);
-		} else {
-			vatD = Double.parseDouble(getResources().getString(R.string.vat_default));
-		}
 		
 		setVariable();
+		
+		findByIDs();
 		setFormating();
 		update();
 	}
@@ -185,7 +180,24 @@ public class TheApp  extends Activity {
 		
 	}
 	
-	private void setVariable() {
+	private void setVariable(){
+		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
+		
+		if(!vatS.equals("")) {
+			vatD = Double.parseDouble(vatS);
+		} else {
+			vatD = Double.parseDouble(getResources().getString(R.string.vat_default));
+		}
+		
+		String recS = pref.getString(getResources().getString(R.string.recycling),"");
+		if(!recS.equals("")){
+			vemcD = Double.parseDouble(recS);
+		} else {
+			vemcD = Double.parseDouble(getResources().getString(R.string.rec_defaoult));
+		}
+	}
+	private void findByIDs() {
 		mu = new MathsUt();
 		profitPercent = 0;
 		
