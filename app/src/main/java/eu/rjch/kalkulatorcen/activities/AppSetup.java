@@ -42,7 +42,19 @@ public class AppSetup extends Activity {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		
 		recET = findViewById(R.id.recycling_et);
-		
+		recET.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+			
+			@Override
+			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+				recStr = recET.getText().toString();
+			}
+			
+			@Override
+			public void afterTextChanged(Editable editable) {}
+		});
 		vatSETSaved = pref.getString(getResources().getString(R.string.chk_vat), "");
 		vatSET = "";
 		
@@ -77,13 +89,14 @@ public class AppSetup extends Activity {
 		saveRec.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				showDialog("Saving Recycling");
 //				todo
 				if(!recET.getText().toString().isEmpty()) {
 					recStr = recET.getText().toString();
 					
 					editor.putString(getResources().getString(R.string.recycling), recStr);
 					editor.commit();
+					
+					showDialog("Saving Recycling charge "+recStr);
 				}
 				
 			}

@@ -10,7 +10,7 @@
 	<string name="price">Price</string>
 	<string name="zeros">€ 0.00</string>
 	<string name="chk_vat">VAT Tax</string>
-	<string name="chk_vemc">Recycling</string>
+	<string name="chk_vemc">Recycling charges € </string>
 	<string name="profit_spinner_title">Profit</string>
 	<string name="transport">Transport default € 0.50 # or enter charge below.</string>
 	<string name="vat_default">23</string>
@@ -30,7 +30,7 @@
 		issue bellow.</string>
 	<string name="recycling_et">Enter recycling charge</string>
 	<string name="recycling">recycling charge</string>
-	<string name="rec_defaoult">0,50</string>
+	<string name="rec_defaoult">3.44</string>
 	
 	<string-array name="profit_list">
 		<item>5</item>

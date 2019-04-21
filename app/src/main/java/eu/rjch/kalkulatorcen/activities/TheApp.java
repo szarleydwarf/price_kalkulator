@@ -50,9 +50,9 @@ public class TheApp  extends Activity {
 	private void init() {
 		loadAds();
 		
+		findByIDs();
 		setVariable();
 		
-		findByIDs();
 		setFormating();
 		update();
 	}
@@ -143,9 +143,7 @@ public class TheApp  extends Activity {
 				String s = transportEV.getText().toString();
 				transD = (!s.equals("")) ? Double.parseDouble(s) : transD;
 				
-				String st = transportTV.getText().toString();
-				st = st.substring(0, st.indexOf(" ")+1) + euro + s;
-				transportTV.setText(st);
+				setText(transportTV, s);
 			}
 			
 			@Override
@@ -196,7 +194,22 @@ public class TheApp  extends Activity {
 		} else {
 			vemcD = Double.parseDouble(getResources().getString(R.string.rec_defaoult));
 		}
+		
+		setTextC(vemcChk, ""+vemcD);
 	}
+	
+	private void setTextC(CheckBox vemcChk, String s) {
+		String st = vemcChk.getText().toString();
+		st = st.substring(0, st.indexOf(" ")+1) + euro + s;
+		vemcChk.setText(st);
+	}
+	
+	private void setText(TextView tv, String s) {
+		String st = tv.getText().toString();
+		st = st.substring(0, st.indexOf(" ")+1) + euro + s;
+		tv.setText(st);
+	}
+	
 	private void findByIDs() {
 		mu = new MathsUt();
 		profitPercent = 0;
@@ -222,6 +235,7 @@ public class TheApp  extends Activity {
 		
 		this.netPriceEV = findViewById(R.id.netto);
 		this.transportEV = findViewById(R.id.transport_edit);
+		
 		
 		this.settings = findViewById(R.id.settings_btn);
 		this.settings.setOnClickListener(new View.OnClickListener() {
