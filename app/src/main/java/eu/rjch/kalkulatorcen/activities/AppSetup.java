@@ -75,12 +75,25 @@ public class AppSetup extends Activity {
 		ImageButton saveRec = findViewById(R.id.save_r_btn);
 		ImageButton email = findViewById(R.id.email_me);
 		
+		Button eula = findViewById(R.id.eula_btn);
 		Button back = findViewById(R.id.go_back);
 		
 		sendEmail(email);
 		savingVAT(pref, saveVAT);
 		savingRec(pref, saveRec);
 		returnToMain(back);
+		showEULA(eula);
+	}
+	
+	private void showEULA(Button eula) {
+		eula.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(v.getContext(), EulaAct.class);
+				startActivity(i);
+				finish();
+			}
+		});
 	}
 	
 	private void savingRec(SharedPreferences pref, ImageButton saveRec) {

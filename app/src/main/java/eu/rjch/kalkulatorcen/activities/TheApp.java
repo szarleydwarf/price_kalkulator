@@ -123,9 +123,9 @@ public class TheApp  extends Activity {
 			
 			@Override
 			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				String s = netPriceEV.getText().toString();
-				s = euro + s;
-				costTV.setText(s);
+				String s = netPriceEV.getText().toString(), se;
+				se = euro + s;
+				costTV.setText(se);
 				costD = (!s.equals("") && s != null) ? Double.parseDouble(s):  0.0;
 			}
 			

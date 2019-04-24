@@ -150,12 +150,30 @@
 		<!--todo buy me a coffee & sounds & rate the app & -->
 		<!--todo for feature add range of values for a profit (min, max)-->
 		
+		<!--eula_btn_layout-->
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/eula_btn_layout"
+			android:layout_below="@id/contact_layout"
+			android:orientation="horizontal"
+			android:gravity="center"
+		>
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/eula_btn"
+				android:text="@string/eula_title"
+			/>
+			
+		</LinearLayout>
+		
 		<!--go_back_layout-->
 		<LinearLayout
 			android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 			android:id="@+id/go_back_layout"
-			android:layout_below="@id/contact_layout"
+			android:layout_below="@id/eula_btn_layout"
 			android:orientation="horizontal"
 			android:gravity="center"
 		>
