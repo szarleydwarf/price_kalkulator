@@ -36,8 +36,6 @@ public class MainA extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-//		runApp();
 	}
 	
 	private void runApp() {
