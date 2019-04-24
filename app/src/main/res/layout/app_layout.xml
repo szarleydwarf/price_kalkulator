@@ -333,7 +333,7 @@
 				android:layout_alignParentBottom="true"
 				android:layout_below="@+id/calculate_btn_layout"
 				ads:adSize="BANNER"
-				ads:adUnitId="@string/ad_mob_test">
+				ads:adUnitId="@string/ad_mob_banner">
 		</com.google.android.gms.ads.AdView>
 	</RelativeLayout>
 </ScrollView>

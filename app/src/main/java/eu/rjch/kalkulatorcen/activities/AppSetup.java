@@ -22,7 +22,6 @@ public class AppSetup extends Activity {
 	
 	private EditText vatET, recET;
 	private String vatSET, vatSETSaved, recStr;
-	private boolean isOk = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -181,7 +180,9 @@ public class AppSetup extends Activity {
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
-						isOk = true;
+//						boolean isOk = true;
+//						if(isOk)
+//							return;
 					}
 				});
 		AlertDialog alertDialog = builder.create();
