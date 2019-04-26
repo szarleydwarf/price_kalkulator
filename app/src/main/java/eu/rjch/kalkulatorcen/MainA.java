@@ -41,8 +41,7 @@ public class MainA extends Activity {
 	private void runApp() {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		SharedPreferences.Editor editor = pref.edit();
-		editor.clear();
-		editor.apply();
+
 		String firstUse = getResources().getString( R.string.first_use );
 		boolean userFirstLogin = pref.getBoolean(firstUse, true);
 		
