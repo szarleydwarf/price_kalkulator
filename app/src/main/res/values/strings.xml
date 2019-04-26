@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Kalkulator cen v.1.1</string>
+	<string name="app_name">Kalkulator cen v.1.2</string>
 	<string name="ad_mob_id">ca-app-pub-1421069741839692~9245051310</string>
 <!--	<string name="ad_mob_test">ca-app-pub-3940256099942544/6300978111</string>-->
 	<string name="ad_mob_banner">ca-app-pub-1421069741839692/5923919254</string>
@@ -102,5 +102,6 @@
 	
 	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">af</span>.</p></string>
 	<string name="eula_title">End-User License Agreement (EULA)</string>
+	<string name="ok_btn">OK</string>
 
 </resources>

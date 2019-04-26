@@ -71,8 +71,8 @@ public class AppSetup extends Activity {
 			@Override
 			public void afterTextChanged(Editable editable) {}
 		});
-		ImageButton saveVAT = findViewById(R.id.save_btn);
-		ImageButton saveRec = findViewById(R.id.save_r_btn);
+		Button saveVAT = findViewById(R.id.save_btn);
+		Button saveRec = findViewById(R.id.save_r_btn);
 		ImageButton email = findViewById(R.id.email_me);
 		
 		Button eula = findViewById(R.id.eula_btn);
@@ -96,12 +96,11 @@ public class AppSetup extends Activity {
 		});
 	}
 	
-	private void savingRec(SharedPreferences pref, ImageButton saveRec) {
+	private void savingRec(SharedPreferences pref, Button saveRec) {
 		final SharedPreferences.Editor editor = pref.edit();
 		saveRec.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				todo
 				if(!recET.getText().toString().isEmpty()) {
 					recStr = recET.getText().toString();
 					
@@ -115,7 +114,7 @@ public class AppSetup extends Activity {
 		});
 	}
 	
-	private void savingVAT(SharedPreferences pref, final ImageButton save) {
+	private void savingVAT(SharedPreferences pref, final Button save) {
 		final SharedPreferences.Editor editor = pref.edit();
 		
 		save.setOnClickListener(new View.OnClickListener() {
@@ -123,12 +122,9 @@ public class AppSetup extends Activity {
 			public void onClick(View view) {
 				String s;
 				s = isThereStringTosave();
-				//????todo???
 				if(s != null) {
 					editor.putString(getResources().getString(R.string.chk_vat), s);
 					editor.commit();
-					
-//					goBack();
 				}
 			}
 		});

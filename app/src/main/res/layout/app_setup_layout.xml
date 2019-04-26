@@ -82,12 +82,12 @@
 				android:layout_weight="2"
 				android:maxWidth="20dp"
 			/>
-			<ImageButton
+			<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:id="@+id/save_btn"
 				android:layout_weight="1"
-				android:background="@drawable/save"
+				android:text="@string/savebtn"
 				android:scaleType="fitXY"
 			/>
 		</LinearLayout>
@@ -111,12 +111,12 @@
 					android:gravity="center"
 					android:layout_weight="2"
 			/>
-			<ImageButton
+			<Button
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:id="@+id/save_r_btn"
 					android:layout_weight="1"
-					android:background="@drawable/save"
+					android:text="@string/savebtn"
 					android:scaleType="fitXY"
 			/>
 		</LinearLayout>

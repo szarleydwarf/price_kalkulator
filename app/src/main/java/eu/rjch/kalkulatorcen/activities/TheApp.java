@@ -55,19 +55,6 @@ public class TheApp  extends Activity {
 		update();
 	}
 	
-	private void loadAds() {
-		AdsHandler ah = new AdsHandler();
-		ah.getAds((AdView) findViewById(R.id.adView));
-	}
-	
-	private void setFormating() {
-		DecimalFormatSymbols symbols = new DecimalFormatSymbols( new Locale("en", "UK"));
-		symbols.setDecimalSeparator('.');
-		symbols.setGroupingSeparator(' ');
-		
-		this.df = new DecimalFormat("00,000.00", symbols);
-	}
-	
 	private void update() {
 		updateCheckBoxes();
 		updateEditText();
@@ -93,6 +80,7 @@ public class TheApp  extends Activity {
 				profitPercent = progressChangedValue;
 				String s = "Profit @ " + profitPercent + "%";
 				profitPercentTV.setText(s);
+				setTVs();
 			}
 		});
 	}
@@ -127,6 +115,7 @@ public class TheApp  extends Activity {
 				se = euro + s;
 				costTV.setText(se);
 				costD = (!s.equals("") && s != null) ? Double.parseDouble(s):  0.0;
+				setTVs();
 			}
 			
 			@Override
@@ -145,6 +134,7 @@ public class TheApp  extends Activity {
 				transD = (!s.equals("")) ? Double.parseDouble(s) : transD;
 				
 				setText(transportTV, s);
+				setTVs();
 			}
 			
 			@Override
@@ -157,19 +147,22 @@ public class TheApp  extends Activity {
 		vatChk.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				vat = vatChk.isChecked();// ? true : false;
+				vat = vatChk.isChecked();
+				setTVs();
 			}
 		});
 		vemcChk.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				vemc = vemcChk.isChecked();// ? true : false;
+				vemc = vemcChk.isChecked();
+				setTVs();
 			}
 		});
 		transChk.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				transB = transChk.isChecked();// ? true : false;
+				transB = transChk.isChecked();
+				setTVs();
 			}
 		});
 		
@@ -252,22 +245,51 @@ public class TheApp  extends Activity {
 		calculate.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				double d = checkCost(), cd, pd;
-				cd = calculateCost(d);
-				pd = calculatePrice(d);
-				
-				String c = euro + " " + df.format(cd);
-				costTV.setText(c);
-				String p = euro + " " + df.format(pd);
-				priceTV.setText(p);
+				setTVs();
+//				double d = checkCost(), cd, pd;
+//				cd = calculateCost(d);
+//				pd = calculatePrice(d);
+//
+//				String c = euro + " " + df.format(cd);
+//				costTV.setText(c);
+//				String p = euro + " " + df.format(pd);
+//				priceTV.setText(p);
 			}
 		});
 	}
-	
+
+	protected void setTVs(){
+		double d = checkCost(), cd, pd;
+		cd = calculateCost(d);
+		pd = calculatePrice(d);
+
+		String c = euro + " " + df.format(cd);
+		costTV.setText(c);
+		String p = euro + " " + df.format(pd);
+		priceTV.setText(p);
+
+		Intent i = new Intent(this, PriceAct.class);
+		i.putExtra(String.valueOf(R.string.price), p);
+		startActivity(i);
+	}
+
 	private double checkCost() { return (costD > 0) ? costD : 0;	}
 	
 	public void setSeekBarValue(boolean seekBarValue) { this.seekBarValue = seekBarValue; }
-	
+
+	private void loadAds() {
+		AdsHandler ah = new AdsHandler();
+		ah.getAds((AdView) findViewById(R.id.adView));
+	}
+
+	private void setFormating() {
+		DecimalFormatSymbols symbols = new DecimalFormatSymbols( new Locale("en", "UK"));
+		symbols.setDecimalSeparator('.');
+		symbols.setGroupingSeparator(' ');
+
+		this.df = new DecimalFormat("00,000.00", symbols);
+	}
+
 	@Override
 	public void onPause() {
 		super.onPause();

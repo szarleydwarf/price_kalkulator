@@ -94,7 +94,7 @@
 					android:layout_weight="1"
 					android:id="@+id/costTF"
 					android:text="@string/zeros"
-					android:textSize="20sp"
+					android:textSize="22sp"
 					android:gravity="center"
 					android:textColor="#fff"
 			/>
@@ -104,7 +104,7 @@
 					android:background="#02ab21"
 					android:id="@+id/priceTF"
 					android:text="@string/zeros"
-					android:textSize="20sp"
+					android:textSize="22sp"
 					android:textColor="#fff"
 					android:layout_weight="1"
 					android:gravity="center"
@@ -123,15 +123,16 @@
 				android:layout_marginTop="5dp"
 		>
 			<EditText
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:id="@+id/netto"
-					android:textSize="26sp"
-					android:gravity="center"
-					android:background="#f3f3f5"
-					android:textColor="#000000"
-					android:inputType="numberDecimal"
-					android:hint="@string/hint_price"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/netto"
+				android:textSize="26sp"
+				android:gravity="center"
+				android:background="#f3f3f5"
+				android:textColor="#000000"
+				android:inputType="numberDecimal"
+				android:hint="@string/hint_price"
+				android:autofillHints="@string/hint_price"
 			/>
 		</LinearLayout>
 		

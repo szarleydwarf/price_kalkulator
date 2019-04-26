@@ -6,7 +6,6 @@
 		android:background="#fff"
 		android:orientation="horizontal">
 	<RelativeLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
@@ -25,10 +24,10 @@
 					android:layout_height="wrap_content"
 					android:id="@+id/app_name"
 					android:textColor="#fff"
-					android:layout_gravity="left|center_vertical"
+					android:layout_gravity="start|center_vertical"
 					android:layout_weight="1"
 					android:ellipsize="end"
-					android:gravity="left|center_vertical"
+					android:gravity="start|center_vertical"
 					android:text="@string/app_name"
 					android:textSize="22sp"
 			/>
@@ -86,7 +85,7 @@
 					android:background="#df3535"
 					android:id="@+id/costTF"
 					android:text="@string/zeros"
-					android:textSize="20sp"
+					android:textSize="22sp"
 					android:textColor="#fff"
 					android:gravity="center"
 					android:layout_weight="1"
@@ -97,7 +96,7 @@
 					android:background="#02ab21"
 					android:id="@+id/priceTF"
 					android:text="@string/zeros"
-					android:textSize="20sp"
+					android:textSize="22sp"
 					android:textColor="#fff"
 					android:gravity="center"
 					android:layout_weight="1"
@@ -114,14 +113,15 @@
 				android:layout_marginTop="5dp"
 		>
 			<EditText
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:id="@+id/netto"
-					android:textSize="26sp"
-					android:background="#f3f3f5"
-					android:textColor="#000000"
-					android:inputType="numberDecimal"
-					android:hint="@string/hint_price"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/netto"
+				android:textSize="26sp"
+				android:background="#f3f3f5"
+				android:textColor="#000000"
+				android:inputType="numberDecimal"
+				android:hint="@string/hint_price"
+				android:autofillHints="@string/hint_price"
 			/>
 		</LinearLayout>
 		
