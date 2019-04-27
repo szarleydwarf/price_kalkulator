@@ -13,6 +13,7 @@ import eu.rjch.kalkulatorcen.R;
 import eu.rjch.kalkulatorcen.utilities.AdsHandler;
 import eu.rjch.kalkulatorcen.utilities.ItemSelectedListener;
 import eu.rjch.kalkulatorcen.utilities.MathsUt;
+import eu.rjch.kalkulatorcen.utilities.Utilities;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -23,15 +24,18 @@ public class TheApp  extends Activity {
 	private TextView costTV, priceTV, transportTV, profitPercentTV;
 	private EditText netPriceEV, transportEV;
 	private CheckBox vatChk, vemcChk, transChk;
-	
+
+    private DecimalFormat df;
+    private MathsUt mu;
+    private Utilities u;
+    private SeekBar seekbar;
+
 	private char euro = '€';
 	private boolean vat, vemc, transB;
 	private int profitPercent;
 	private double costD, vatD, vemcD = 3.44, transD = 0.5;
-	private DecimalFormat df;
-	private MathsUt mu;
-	private SeekBar seekbar;
 	private boolean seekBarValue;
+	private String suggestedPrice;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -206,6 +210,7 @@ public class TheApp  extends Activity {
 	
 	private void findByIDs() {
 		mu = new MathsUt();
+		u = new Utilities();
 		profitPercent = 0;
 		
 		Spinner profits = findViewById(R.id.spinner);
@@ -245,7 +250,9 @@ public class TheApp  extends Activity {
 		calculate.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				setTVs();
+				u.showDialog(view.getContext(), suggestedPrice);
+
+//				setTVs();
 //				double d = checkCost(), cd, pd;
 //				cd = calculateCost(d);
 //				pd = calculatePrice(d);
@@ -266,11 +273,13 @@ public class TheApp  extends Activity {
 		String c = euro + " " + df.format(cd);
 		costTV.setText(c);
 		String p = euro + " " + df.format(pd);
+		this.suggestedPrice = p;
 		priceTV.setText(p);
+//todo think if wan't be better to use showDialog from appsetup
+//		Intent i = new Intent(this, PriceAct.class);
+//		i.putExtra(String.valueOf(R.string.price), p);
+//		startActivity(i);
 
-		Intent i = new Intent(this, PriceAct.class);
-		i.putExtra(String.valueOf(R.string.price), p);
-		startActivity(i);
 	}
 
 	private double checkCost() { return (costD > 0) ? costD : 0;	}

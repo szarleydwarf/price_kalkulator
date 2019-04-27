@@ -79,10 +79,10 @@
 					android:inputType="numberDecimal"
 					android:hint="@string/vat_setting_ev"
 					android:gravity="center"
-					android:layout_weight="2"
+					android:layout_weight="4"
 					android:maxWidth="20dp"
 			/>
-			Button
+			<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:id="@+id/save_btn"
@@ -109,7 +109,7 @@
 					android:inputType="numberDecimal"
 					android:hint="@string/recycling_et"
 					android:gravity="center"
-					android:layout_weight="2"
+					android:layout_weight="4"
 			/>
 			<Button
 				android:layout_width="wrap_content"

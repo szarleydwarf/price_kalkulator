@@ -17,11 +17,13 @@ import com.google.android.gms.ads.AdView;
 import eu.rjch.kalkulatorcen.R;
 import eu.rjch.kalkulatorcen.utilities.AdsHandler;
 import eu.rjch.kalkulatorcen.utilities.RJErrorsHandler;
+import eu.rjch.kalkulatorcen.utilities.Utilities;
 
 public class AppSetup extends Activity {
 	
 	private EditText vatET, recET;
 	private String vatSET, vatSETSaved, recStr;
+	private Utilities u;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,53 +40,63 @@ public class AppSetup extends Activity {
 	
 	private void init() {
 		getAds();
+		this.u = new Utilities();
+
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-		
-		recET = findViewById(R.id.recycling_et);
-		recET.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-			
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				recStr = recET.getText().toString();
-			}
-			
-			@Override
-			public void afterTextChanged(Editable editable) {}
-		});
 		vatSETSaved = pref.getString(getResources().getString(R.string.chk_vat), "");
+
 		vatSET = "";
-		
+
+		recET = findViewById(R.id.recycling_et);
 		vatET = findViewById(R.id.vat_settings_et);
-		vatET.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-			
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				vatSET = vatET.getText().toString();
-			}
-			
-			@Override
-			public void afterTextChanged(Editable editable) {}
-		});
+
+
+		ImageButton email = findViewById(R.id.email_me);
+
 		Button saveVAT = findViewById(R.id.save_btn);
 		Button saveRec = findViewById(R.id.save_r_btn);
-		ImageButton email = findViewById(R.id.email_me);
-		
 		Button eula = findViewById(R.id.eula_btn);
 		Button back = findViewById(R.id.go_back);
-		
+
+		checkForTextChanges();
 		sendEmail(email);
 		savingVAT(pref, saveVAT);
 		savingRec(pref, saveRec);
 		returnToMain(back);
 		showEULA(eula);
 	}
-	
+
+	private void checkForTextChanges() {
+		vatET.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+			@Override
+			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+				vatSET = vatET.getText().toString();
+			}
+
+			@Override
+			public void afterTextChanged(Editable editable) {}
+		});
+
+		recET.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+			@Override
+			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+				recStr = recET.getText().toString();
+			}
+
+			@Override
+			public void afterTextChanged(Editable editable) {}
+		});
+
+	}
+
 	private void showEULA(Button eula) {
 		eula.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -107,7 +119,7 @@ public class AppSetup extends Activity {
 					editor.putString(getResources().getString(R.string.recycling), recStr);
 					editor.commit();
 					
-					showDialog("Saving Recycling charge "+recStr);
+					u.showDialog(v.getContext(),"Saving Recycling charge "+recStr);
 				}
 				
 			}
@@ -165,36 +177,19 @@ public class AppSetup extends Activity {
 	private String isThereStringTosave() {
 		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
-			showDialog("No vat value saved and typed in. By default VAT will be set to "
+			u.showDialog(this,"No vat value saved and typed in. By default VAT will be set to "
 					+getResources().getString(R.string.vat_default)
 					+getResources().getString(R.string.percent));
 			return null;
 		} else if(vatSET.isEmpty()) {
 			//if et empty and saved has some value save it
-			showDialog("Vat value set at "+vatSETSaved+"%");
+            u.showDialog(this,"Vat value set at "+vatSETSaved+"%");
 			return vatSETSaved;
 		} else if(!vatSET.isEmpty()) {
 			//if et not empty save it
-			showDialog("Vat saved at "+vatSET + "%");
+            u.showDialog(this,"Vat saved at "+vatSET + "%");
 			return vatSET;
 		}
 		return null;
-	}
-	
-	private void showDialog(final String s) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(s);
-		
-		builder.setPositiveButton("OK",
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface arg0, int arg1) {
-//						boolean isOk = true;
-//						if(isOk)
-//							return;
-					}
-				});
-		AlertDialog alertDialog = builder.create();
-		alertDialog.show();
 	}
 }

@@ -45,8 +45,6 @@ public class MainA extends Activity {
 		String firstUse = getResources().getString( R.string.first_use );
 		boolean userFirstLogin = pref.getBoolean(firstUse, true);
 		
-
-		
 		if(userFirstLogin){
 			editor.putBoolean(firstUse, false);
 			editor.commit();
