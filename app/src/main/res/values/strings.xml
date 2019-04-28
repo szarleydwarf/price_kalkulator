@@ -18,7 +18,7 @@
 	<string name="chk_transport">Transport charges</string>
 	<string name="percent">%</string>
 	<string name="calculate_btn">"CALCULATE"</string>
-	<string name="vat_setting">Please enter below the correct value for a VAT charged in your country</string>
+	<string name="vat_setting">Please enter below the correct whole number for a VAT and recycling charged in your country. You can set also max profit percentage</string>
 	<string name="savebtn">SAVE</string>
 	<string name="vat_setting_ev">Enter VAT value</string>
 	<string name="first_use">first_use</string>
@@ -103,5 +103,8 @@
 	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">af</span>.</p></string>
 	<string name="eula_title">End-User License Agreement (EULA)</string>
 	<string name="ok_btn">OK</string>
+    <string name="seek_bar_hint">For more acurate profit setting use seekbar below.</string>
+	<string name="max_profit_et">Enter whole number for max profit</string>
+	<string name="max_profit">max profit</string>
 
 </resources>

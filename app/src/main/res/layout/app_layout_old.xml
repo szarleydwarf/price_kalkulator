@@ -217,6 +217,7 @@
 					android:layout_weight="1"
 					android:textColor="#000"
 			/>
+			<!--todo chceck if the size of spinner changed-->
 			<Spinner
 					android:id="@+id/spinner"
 					android:layout_width="wrap_content"
@@ -226,6 +227,7 @@
 					android:background="@drawable/border"
 					android:gravity="center"
 					android:minWidth="80dp"
+					android:scrollbarSize="12sp"
 			/>
 			<TextView
 					android:layout_width="match_parent"
@@ -251,18 +253,27 @@
 					android:gravity="center"
 					android:layout_weight="1"
 					android:textColor="#000"
+					android:textSize="20sp"
 			/>
 		</LinearLayout>
 		
-		<!--vat_seek_bar_layout-->
+		<!--profit_seek_bar_layout-->
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/vat_seek_bar_layout"
+				android:id="@+id/profit_seek_bar_layout"
 				android:layout_below="@id/profit_text_view_layout"
 				android:layout_marginTop="10dp"
 				android:layout_marginBottom="10dp"
+				android:orientation="vertical"
 		>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="18sp"
+				android:textColor="#000"
+				android:text="@string/seek_bar_hint"
+			/>
 			<SeekBar
 					android:id="@+id/vat_seek_bar"
 					style="@style/Base.Widget.AppCompat.SeekBar.Discrete"
@@ -280,7 +291,7 @@
 				android:layout_height="wrap_content"
 				android:id="@+id/calculate_btn_layout"
 				android:orientation="horizontal"
-				android:layout_below="@id/vat_seek_bar_layout"
+				android:layout_below="@id/profit_seek_bar_layout"
 				android:layout_marginTop="5dp"
 		>
 			<Button

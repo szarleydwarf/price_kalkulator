@@ -282,11 +282,11 @@
 			/>
 		</LinearLayout>
 		
-		<!--vat_seek_bar_layout-->
+		<!--profit_seek_bar_layout-->
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/vat_seek_bar_layout"
+				android:id="@+id/profit_seek_bar_layout"
 				android:layout_below="@id/profit_text_view_layout"
 				android:layout_marginTop="10dp"
 				android:layout_marginBottom="10dp"
@@ -308,7 +308,7 @@
 				android:layout_height="wrap_content"
 				android:id="@+id/calculate_btn_layout"
 				android:orientation="horizontal"
-				android:layout_below="@id/vat_seek_bar_layout"
+				android:layout_below="@id/profit_seek_bar_layout"
 				android:layout_marginTop="5dp"
 		>
 			<Button

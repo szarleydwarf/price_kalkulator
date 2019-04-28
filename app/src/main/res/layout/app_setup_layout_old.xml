@@ -102,14 +102,14 @@
 				android:layout_below="@id/vat_et_layout"
 		>
 			<EditText
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:id="@+id/recycling_et"
-					android:textSize="20sp"
-					android:inputType="numberDecimal"
-					android:hint="@string/recycling_et"
-					android:gravity="center"
-					android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycling_et"
+                android:textSize="20sp"
+                android:inputType="numberDecimal"
+                android:hint="@string/recycling_et"
+                android:gravity="center"
+                android:layout_weight="4"
 			/>
 			<Button
 				android:layout_width="wrap_content"
@@ -121,6 +121,35 @@
 			/>
 		</LinearLayout>
 		
+		<!--max_profit_et_layout-->
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal"
+				android:id="@+id/max_profit_et_layout"
+				android:layout_marginTop="5dp"
+				android:layout_below="@id/recycling_et_layout"
+		>
+			<EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/max_profit_et"
+                android:textSize="20sp"
+                android:inputType="numberDecimal"
+                android:hint="@string/max_profit_et"
+                android:gravity="center"
+                android:layout_weight="4"
+			/>
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/save_max_profit_btn"
+				android:layout_weight="1"
+				android:text="@string/savebtn"
+				android:scaleType="fitXY"
+			/>
+		</LinearLayout>
+
 		<!--contact_layout-->
 		<LinearLayout
 				android:layout_width="match_parent"
@@ -128,7 +157,7 @@
 				android:layout_marginTop="5dp"
 				android:orientation="horizontal"
 				android:id="@+id/contact_layout"
-				android:layout_below="@id/recycling_et_layout"
+				android:layout_below="@id/max_profit_et_layout"
 		>
 			<TextView
 					android:layout_width="match_parent"

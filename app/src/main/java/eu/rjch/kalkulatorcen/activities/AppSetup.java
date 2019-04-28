@@ -21,7 +21,7 @@ import eu.rjch.kalkulatorcen.utilities.Utilities;
 
 public class AppSetup extends Activity {
 	
-	private EditText vatET, recET;
+	private EditText vatET, recET, maxProfitET;
 	private String vatSET, vatSETSaved, recStr;
 	private Utilities u;
 	
@@ -49,24 +49,27 @@ public class AppSetup extends Activity {
 
 		recET = findViewById(R.id.recycling_et);
 		vatET = findViewById(R.id.vat_settings_et);
+		maxProfitET = findViewById(R.id.max_profit_et);
 
 
 		ImageButton email = findViewById(R.id.email_me);
 
 		Button saveVAT = findViewById(R.id.save_btn);
 		Button saveRec = findViewById(R.id.save_r_btn);
-		Button eula = findViewById(R.id.eula_btn);
-		Button back = findViewById(R.id.go_back);
+        Button saveMaxProf = findViewById(R.id.save_max_profit_btn);
+        Button eula = findViewById(R.id.eula_btn);
+        Button back = findViewById(R.id.go_back);
 
 		checkForTextChanges();
 		sendEmail(email);
 		savingVAT(pref, saveVAT);
 		savingRec(pref, saveRec);
+		saveMaxProfit(pref, saveMaxProf, R.string.max_profit);
 		returnToMain(back);
 		showEULA(eula);
 	}
 
-	private void checkForTextChanges() {
+    private void checkForTextChanges() {
 		vatET.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -107,7 +110,24 @@ public class AppSetup extends Activity {
 			}
 		});
 	}
-	
+
+    private void saveMaxProfit(SharedPreferences pref, Button saveMaxProf, final int recycling) {
+        final SharedPreferences.Editor e = pref.edit();
+        saveMaxProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!maxProfitET.getText().toString().isEmpty()) {
+                    //todo check if the ontextchanged is necessary
+                    String s = maxProfitET.getText().toString();
+                    e.putString(getResources().getString(recycling), s);
+                    e.commit();
+
+                    u.showDialog(v.getContext(), "Max profit saved at " + s);
+                }
+            }
+        });
+    }
+
 	private void savingRec(SharedPreferences pref, Button saveRec) {
 		final SharedPreferences.Editor editor = pref.edit();
 		saveRec.setOnClickListener(new View.OnClickListener() {
@@ -115,20 +135,20 @@ public class AppSetup extends Activity {
 			public void onClick(View v) {
 				if(!recET.getText().toString().isEmpty()) {
 					recStr = recET.getText().toString();
-					
+
 					editor.putString(getResources().getString(R.string.recycling), recStr);
 					editor.commit();
-					
+
 					u.showDialog(v.getContext(),"Saving Recycling charge "+recStr);
 				}
-				
+
 			}
 		});
 	}
-	
+
 	private void savingVAT(SharedPreferences pref, final Button save) {
 		final SharedPreferences.Editor editor = pref.edit();
-		
+
 		save.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -141,7 +161,7 @@ public class AppSetup extends Activity {
 			}
 		});
 	}
-	
+
 	private void getAds() {
 		AdsHandler ah = new AdsHandler();
 		ah.getAds((AdView) findViewById(R.id.adView));
