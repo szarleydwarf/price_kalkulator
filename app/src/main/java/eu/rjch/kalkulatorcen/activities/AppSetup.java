@@ -111,7 +111,7 @@ public class AppSetup extends Activity {
 		});
 	}
 
-    private void saveMaxProfit(SharedPreferences pref, Button saveMaxProf, final int recycling) {
+    private void saveMaxProfit(SharedPreferences pref, Button saveMaxProf, final int ri) {
         final SharedPreferences.Editor e = pref.edit();
         saveMaxProf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +119,7 @@ public class AppSetup extends Activity {
                 if(!maxProfitET.getText().toString().isEmpty()) {
                     //todo check if the ontextchanged is necessary
                     String s = maxProfitET.getText().toString();
-                    e.putString(getResources().getString(recycling), s);
+                    e.putString(getResources().getString(ri), s);
                     e.commit();
 
                     u.showDialog(v.getContext(), "Max profit saved at " + s);

@@ -17,6 +17,8 @@ import eu.rjch.kalkulatorcen.utilities.Utilities;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class TheApp  extends Activity {
@@ -29,6 +31,7 @@ public class TheApp  extends Activity {
     private MathsUt mu;
     private Utilities u;
     private SeekBar seekbar;
+	private Spinner profits;
 
 	private char euro = '€';
 	private boolean vat, vemc, transB;
@@ -36,7 +39,8 @@ public class TheApp  extends Activity {
 	private double costD, vatD, vemcD = 3.44, transD = 0.5;
 	private boolean seekBarValue;
 	private String suggestedPrice;
-	
+	private int maxProfit;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -105,8 +109,7 @@ public class TheApp  extends Activity {
 		d = (transB) ? (d + transD) : d;
 		return d;
 	}
-	
-	
+
 	private void updateEditText() {
 		this.netPriceEV.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -173,13 +176,20 @@ public class TheApp  extends Activity {
 		String s = vatChk.getText().toString();
 		s += " - " + vatD + "%";
 		vatChk.setText(s);
-		
 	}
 	
 	private void setVariable(){
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
-		
+		String s = pref.getString(getResources().getString(R.string.max_profit), "200");
+
+		if(!s.equals("")) {
+			maxProfit = Integer.parseInt(s);
+		} else {
+			maxProfit = 200;
+		}
+		addItemsToSpinnerSeekBar();
+
 		if(!vatS.equals("")) {
 			vatD = Double.parseDouble(vatS);
 		} else {
@@ -195,7 +205,32 @@ public class TheApp  extends Activity {
 		
 		setTextC(vemcChk, ""+vemcD);
 	}
-	
+
+	private void addItemsToSpinnerSeekBar() {
+		// add items into spinner dynamically
+			List<String> list = new ArrayList<String>();
+			int t = 0;
+			for(int i = 0; i < maxProfit; i++){
+				if(t < maxProfit) {
+					if(i % 5 == 0)
+						list.add(t + "");
+					t++;
+				}
+			}
+
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, list);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		profits.setAdapter(dataAdapter);
+//		ArrayAdapter a = ArrayAdapter.createFromResource(this, R.array.profit_list, R.layout.spinner_t_size);
+//		profits.setAdapter(a);
+		this.isl = new ItemSelectedListener(profits, this);
+
+		profits.setOnItemSelectedListener(this.isl);
+
+		seekbar.setMax(maxProfit);
+	}
+
 	private void setTextC(CheckBox vemcChk, String s) {
 		String st = vemcChk.getText().toString();
 		st = st.substring(0, st.indexOf(" ")+1) + euro + s;
@@ -213,13 +248,8 @@ public class TheApp  extends Activity {
 		u = new Utilities();
 		profitPercent = 0;
 		
-		Spinner profits = findViewById(R.id.spinner);
-		ArrayAdapter a = ArrayAdapter.createFromResource(this, R.array.profit_list, R.layout.spinner_t_size);
-		profits.setAdapter(a);
-		this.isl = new ItemSelectedListener(profits, this);
-		
-		profits.setOnItemSelectedListener(this.isl);
-		
+		profits = findViewById(R.id.spinner);
+
 		this.seekbar = findViewById(R.id.vat_seek_bar);
 		
 		this.costTV = findViewById(R.id.costTF);

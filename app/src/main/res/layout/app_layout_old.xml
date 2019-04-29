@@ -20,7 +20,7 @@
 				android:background="#343280"
 		>
 			<TextView
-					android:layout_width="match_parent"
+					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:id="@+id/app_name"
 					android:textColor="#fff"
@@ -227,7 +227,7 @@
 					android:background="@drawable/border"
 					android:gravity="center"
 					android:minWidth="80dp"
-					android:scrollbarSize="12sp"
+					android:scrollbarSize="14sp"
 			/>
 			<TextView
 					android:layout_width="match_parent"
