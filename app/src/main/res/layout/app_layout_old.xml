@@ -96,7 +96,7 @@
 					android:background="#02ab21"
 					android:id="@+id/priceTF"
 					android:text="@string/zeros"
-					android:textSize="22sp"
+					android:textSize="26sp"
 					android:textColor="#fff"
 					android:gravity="center"
 					android:layout_weight="1"
