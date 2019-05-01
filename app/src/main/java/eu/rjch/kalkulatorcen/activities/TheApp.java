@@ -11,7 +11,6 @@ import android.widget.*;
 import com.google.android.gms.ads.AdView;
 import eu.rjch.kalkulatorcen.R;
 import eu.rjch.kalkulatorcen.utilities.AdsHandler;
-import eu.rjch.kalkulatorcen.utilities.ItemSelectedListener;
 import eu.rjch.kalkulatorcen.utilities.MathsUt;
 import eu.rjch.kalkulatorcen.utilities.Utilities;
 
@@ -22,7 +21,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class TheApp  extends Activity {
-	private ItemSelectedListener isl;
 	private TextView costTV, priceTV, transportTV, profitPercentTV;
 	private EditText netPriceEV, transportEV;
 	private CheckBox vatChk, vemcChk, transChk;
@@ -31,7 +29,6 @@ public class TheApp  extends Activity {
     private MathsUt mu;
     private Utilities u;
     private SeekBar seekbar;
-	private Spinner profits;
 
 	private char euro = '€';
 	private boolean vat, vemc, transB;
@@ -94,10 +91,6 @@ public class TheApp  extends Activity {
 	}
 	
 	private double calculatePrice(double d) {
-		profitPercent = (isl.getSelectedItem() != null && !seekBarValue) ? (int) Double.parseDouble(isl.getSelectedItem()) : profitPercent;
-		String s = "Profit @ " + profitPercent + "%";
-		profitPercentTV.setText(s);
-
 		d = d + mu.calculatePercentage(d, profitPercent);
 		return calculateCost(d);
 	}
@@ -207,27 +200,6 @@ public class TheApp  extends Activity {
 	}
 
 	private void addItemsToSpinnerSeekBar() {
-		// add items into spinner dynamically
-			List<String> list = new ArrayList<String>();
-			int t = 0;
-			for(int i = 0; i < maxProfit; i++){
-				if(t < maxProfit) {
-					if(i % 5 == 0)
-						list.add(t + "");
-					t++;
-				}
-			}
-
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, list);
-		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		profits.setAdapter(dataAdapter);
-//		ArrayAdapter a = ArrayAdapter.createFromResource(this, R.array.profit_list, R.layout.spinner_t_size);
-//		profits.setAdapter(a);
-		this.isl = new ItemSelectedListener(profits, this);
-
-		profits.setOnItemSelectedListener(this.isl);
-
 		seekbar.setMax(maxProfit);
 	}
 
@@ -247,8 +219,6 @@ public class TheApp  extends Activity {
 		mu = new MathsUt();
 		u = new Utilities();
 		profitPercent = 0;
-		
-		profits = findViewById(R.id.spinner);
 
 		this.seekbar = findViewById(R.id.vat_seek_bar);
 		
@@ -276,23 +246,13 @@ public class TheApp  extends Activity {
 			}
 		});
 		
-		Button calculate = findViewById(R.id.calculate_btn);
-		calculate.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				u.showDialog(view.getContext(), suggestedPrice);
-
-//				setTVs();
-//				double d = checkCost(), cd, pd;
-//				cd = calculateCost(d);
-//				pd = calculatePrice(d);
-//
-//				String c = euro + " " + df.format(cd);
-//				costTV.setText(c);
-//				String p = euro + " " + df.format(pd);
-//				priceTV.setText(p);
-			}
-		});
+//		Button calculate = findViewById(R.id.calculate_btn);
+//		calculate.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View view) {
+//				u.showDialog(view.getContext(), suggestedPrice);
+//			}
+//		});
 	}
 
 	protected void setTVs(){
@@ -305,11 +265,6 @@ public class TheApp  extends Activity {
 		String p = euro + " " + df.format(pd);
 		this.suggestedPrice = p;
 		priceTV.setText(p);
-//todo think if wan't be better to use showDialog from appsetup
-//		Intent i = new Intent(this, PriceAct.class);
-//		i.putExtra(String.valueOf(R.string.price), p);
-//		startActivity(i);
-
 	}
 
 	private double checkCost() { return (costD > 0) ? costD : 0;	}

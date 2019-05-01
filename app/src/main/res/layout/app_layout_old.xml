@@ -17,13 +17,13 @@
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
 				android:id="@+id/app_name_layout"
-				android:background="#343280"
+				android:background="@color/navy"
 		>
 			<TextView
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:id="@+id/app_name"
-					android:textColor="#fff"
+					android:textColor="@color/white"
 					android:layout_gravity="start|center_vertical"
 					android:layout_weight="1"
 					android:ellipsize="end"
@@ -54,7 +54,7 @@
 					android:id="@+id/costLabel"
 					android:text="@string/cost"
 					android:textSize="18sp"
-					android:background="#FFFF0000"
+					android:background="@color/red"
 					android:gravity="center"
 					android:layout_weight="1"
 			/>
@@ -63,9 +63,9 @@
 					android:layout_height="wrap_content"
 					android:id="@+id/priceLabel"
 					android:text="@string/price"
-					android:textColor="#fff"
+					android:textColor="@color/white"
 					android:textSize="18sp"
-					android:background="#09c42c"
+					android:background="@color/green"
 					android:gravity="center"
 					android:layout_weight="1"
 			/>
@@ -82,18 +82,18 @@
 			<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="#df3535"
+					android:background="@color/red"
 					android:id="@+id/costTF"
 					android:text="@string/zeros"
 					android:textSize="22sp"
-					android:textColor="#fff"
+					android:textColor="@color/white"
 					android:gravity="center"
 					android:layout_weight="1"
 			/>
 			<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="#02ab21"
+					android:background="@color/green"
 					android:id="@+id/priceTF"
 					android:text="@string/zeros"
 					android:textSize="26sp"
@@ -118,7 +118,7 @@
 				android:id="@+id/netto"
 				android:textSize="26sp"
 				android:background="#f3f3f5"
-				android:textColor="#000000"
+				android:textColor="@color/black"
 				android:inputType="numberDecimal"
 				android:hint="@string/hint_price"
 				android:autofillHints="@string/hint_price"
@@ -138,7 +138,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/chk_vat"
-					android:textColor="#000"
+					android:textColor="@color/black"
 					android:textSize="20sp"
 			/>
 			<CheckBox
@@ -146,7 +146,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/chk_vemc"
-					android:textColor="#000"
+					android:textColor="@color/black"
 					android:textSize="20sp"
 			/>
 			<CheckBox
@@ -154,7 +154,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/chk_transport"
-					android:textColor="#000"
+					android:textColor="@color/black"
 					android:textSize="20sp"
 			/>
 		</LinearLayout>
@@ -163,7 +163,7 @@
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:background="#f0f0f0"
+				android:background="@color/l_grey"
 				android:id="@+id/transport_layout"
 				android:orientation="horizontal"
 				android:layout_below="@id/checkboxes_layout"
@@ -175,7 +175,7 @@
 					android:id="@+id/transport"
 					android:text="@string/transport"
 					android:textSize="14sp"
-					android:textColor="#000"
+					android:textColor="@color/black"
 			/>
 		</LinearLayout>
 		
@@ -193,56 +193,55 @@
 					android:layout_height="wrap_content"
 					android:id="@+id/transport_edit"
 					android:textSize="24sp"
-					android:background="#c7c5e2"
-					android:textColor="#000000"
+					android:background="@color/l_grey"
+					android:textColor="@color/black"
 					android:inputType="numberDecimal"
 					android:hint="@string/hint_transport"
 			/>
 		</LinearLayout>
 		
-		<!--spinner_layout-->
-		<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/spinner_layout"
-				android:orientation="horizontal"
-				android:layout_below="@id/transport_edit_layout"
-				android:layout_marginTop="5dp"
-		>
-			<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/profit_spinner_title"
-					android:gravity="center"
-					android:layout_weight="1"
-					android:textColor="#000"
-			/>
-			<!--todo chceck if the size of spinner changed-->
-			<Spinner
-					android:id="@+id/spinner"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:prompt="@string/profit_spinner_title"
-					android:entries="@array/profit_list"
-					android:background="@drawable/border"
-					android:gravity="center"
-					android:minWidth="80dp"
-					android:scrollbarSize="14sp"
-			/>
-			<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/percent"
-					android:gravity="center"
-					android:layout_weight="1"
-					android:textColor="#000"
-			/>
-		</LinearLayout>
+		<!--&lt;!&ndash;spinner_layout&ndash;&gt;-->
+		<!--<LinearLayout-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:id="@+id/spinner_layout"-->
+				<!--android:orientation="horizontal"-->
+				<!--android:layout_below="@id/transport_edit_layout"-->
+				<!--android:layout_marginTop="5dp"-->
+		<!--&gt;-->
+			<!--<TextView-->
+					<!--android:layout_width="match_parent"-->
+					<!--android:layout_height="wrap_content"-->
+					<!--android:text="@string/profit_spinner_title"-->
+					<!--android:gravity="center"-->
+					<!--android:layout_weight="1"-->
+					<!--android:textColor="#000"-->
+			<!--/>-->
+			<!--<Spinner-->
+					<!--android:id="@+id/spinner"-->
+					<!--android:layout_width="wrap_content"-->
+					<!--android:layout_height="wrap_content"-->
+					<!--android:prompt="@string/profit_spinner_title"-->
+					<!--android:entries="@array/profit_list"-->
+					<!--android:background="@drawable/border"-->
+					<!--android:gravity="center"-->
+					<!--android:minWidth="80dp"-->
+					<!--android:scrollbarSize="14sp"-->
+			<!--/>-->
+			<!--<TextView-->
+					<!--android:layout_width="match_parent"-->
+					<!--android:layout_height="wrap_content"-->
+					<!--android:text="@string/percent"-->
+					<!--android:gravity="center"-->
+					<!--android:layout_weight="1"-->
+					<!--android:textColor="#000"-->
+			<!--/>-->
+		<!--</LinearLayout>-->
 		
 		<!--profit_text_view_layout-->
 		<LinearLayout
 				android:id="@+id/profit_text_view_layout"
-				android:layout_below="@id/spinner_layout"
+				android:layout_below="@id/transport_edit_layout"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 			<TextView
@@ -252,7 +251,7 @@
 					android:text=""
 					android:gravity="center"
 					android:layout_weight="1"
-					android:textColor="#000"
+					android:textColor="@color/black"
 					android:textSize="20sp"
 			/>
 		</LinearLayout>
@@ -271,7 +270,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textSize="18sp"
-				android:textColor="#000"
+				android:textColor="@color/black"
 				android:text="@string/seek_bar_hint"
 			/>
 			<SeekBar
@@ -281,37 +280,37 @@
 					android:layout_height="wrap_content"
 					android:max="200"
 					android:progress="25"
-					android:background="#0f7"
+					android:background="@color/green"
 			/>
 		</LinearLayout>
-		
-		<!--calculate_btn-->
-		<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/calculate_btn_layout"
-				android:orientation="horizontal"
-				android:layout_below="@id/profit_seek_bar_layout"
-				android:layout_marginTop="5dp"
-		>
-			<Button
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:id="@+id/calculate_btn"
-					android:textColor="#ffffff"
-					android:background="#0d0dc9"
-					android:text="@string/calculate_btn"
-					android:textSize="24sp"
-					android:layout_marginRight="60dp"
-					android:layout_marginLeft="60dp"
-			/>
-		</LinearLayout>
+		<!---->
+		<!--&lt;!&ndash;calculate_btn&ndash;&gt;-->
+		<!--<LinearLayout-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:id="@+id/calculate_btn_layout"-->
+				<!--android:orientation="horizontal"-->
+				<!--android:layout_below="@id/profit_seek_bar_layout"-->
+				<!--android:layout_marginTop="5dp"-->
+		<!--&gt;-->
+			<!--<Button-->
+					<!--android:layout_width="match_parent"-->
+					<!--android:layout_height="match_parent"-->
+					<!--android:id="@+id/calculate_btn"-->
+					<!--android:textColor="#ffffff"-->
+					<!--android:background="#0d0dc9"-->
+					<!--android:text="@string/calculate_btn"-->
+					<!--android:textSize="24sp"-->
+					<!--android:layout_marginRight="60dp"-->
+					<!--android:layout_marginLeft="60dp"-->
+			<!--/>-->
+		<!--</LinearLayout>-->
 		
 		<!--google add layout-->
 		<com.google.android.gms.ads.AdView
 				xmlns:ads="http://schemas.android.com/apk/res-auto"
 				android:id="@+id/adView"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"
 				android:layout_alignParentBottom="true"
