@@ -227,7 +227,15 @@ public class TheApp  extends Activity {
 		
 		this.netPriceEV = findViewById(R.id.netto);
 		this.transportEV = findViewById(R.id.transport_edit);
-		
+
+		Button showCost = findViewById(R.id.costLabel);
+		showCost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleCost();
+            }
+        });
+
 		
 		Button settings = findViewById(R.id.settings_btn);
 		settings.setOnClickListener(new View.OnClickListener() {
@@ -240,7 +248,14 @@ public class TheApp  extends Activity {
 		});
 	}
 
-	protected void setTVs(){
+    private void toggleCost() {
+        if(costTV.getVisibility() ==  View.VISIBLE)
+            costTV.setVisibility(View.INVISIBLE);
+        else
+            costTV.setVisibility(View.VISIBLE);
+    }
+
+    protected void setTVs(){
 		double d = checkCost(), cd, pd;
 		cd = calculateCost(d);
 		pd = calculatePrice(d);
