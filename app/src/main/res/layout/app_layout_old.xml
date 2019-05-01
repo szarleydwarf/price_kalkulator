@@ -124,14 +124,53 @@
 				android:autofillHints="@string/hint_price"
 			/>
 		</LinearLayout>
-		
+
+		<!--profit_text_view_layout-->
+		<LinearLayout
+			android:id="@+id/profit_text_view_layout"
+			android:layout_below="@id/net_cost_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			<TextView
+				android:id="@+id/profit_percent"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text=""
+				android:gravity="center"
+				android:layout_weight="1"
+				android:textColor="@color/black"
+				android:textSize="20sp"
+				/>
+		</LinearLayout>
+
+		<!--profit_seek_bar_layout-->
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/profit_seek_bar_layout"
+			android:layout_below="@id/profit_text_view_layout"
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp"
+			android:orientation="vertical"
+			>
+			<SeekBar
+				android:id="@+id/vat_seek_bar"
+				style="@style/Base.Widget.AppCompat.SeekBar.Discrete"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:max="200"
+				android:progress="25"
+				android:background="@color/green"
+				/>
+		</LinearLayout>
+
 		<!--checkboxes_layout-->
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
 				android:id="@+id/checkboxes_layout"
-				android:layout_below="@id/net_cost_layout"
+				android:layout_below="@id/profit_seek_bar_layout"
 		>
 			<CheckBox
 					android:id="@+id/chkvat"
@@ -199,113 +238,7 @@
 					android:hint="@string/hint_transport"
 			/>
 		</LinearLayout>
-		
-		<!--&lt;!&ndash;spinner_layout&ndash;&gt;-->
-		<!--<LinearLayout-->
-				<!--android:layout_width="match_parent"-->
-				<!--android:layout_height="wrap_content"-->
-				<!--android:id="@+id/spinner_layout"-->
-				<!--android:orientation="horizontal"-->
-				<!--android:layout_below="@id/transport_edit_layout"-->
-				<!--android:layout_marginTop="5dp"-->
-		<!--&gt;-->
-			<!--<TextView-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:text="@string/profit_spinner_title"-->
-					<!--android:gravity="center"-->
-					<!--android:layout_weight="1"-->
-					<!--android:textColor="#000"-->
-			<!--/>-->
-			<!--<Spinner-->
-					<!--android:id="@+id/spinner"-->
-					<!--android:layout_width="wrap_content"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:prompt="@string/profit_spinner_title"-->
-					<!--android:entries="@array/profit_list"-->
-					<!--android:background="@drawable/border"-->
-					<!--android:gravity="center"-->
-					<!--android:minWidth="80dp"-->
-					<!--android:scrollbarSize="14sp"-->
-			<!--/>-->
-			<!--<TextView-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="wrap_content"-->
-					<!--android:text="@string/percent"-->
-					<!--android:gravity="center"-->
-					<!--android:layout_weight="1"-->
-					<!--android:textColor="#000"-->
-			<!--/>-->
-		<!--</LinearLayout>-->
-		
-		<!--profit_text_view_layout-->
-		<LinearLayout
-				android:id="@+id/profit_text_view_layout"
-				android:layout_below="@id/transport_edit_layout"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content">
-			<TextView
-					android:id="@+id/profit_percent"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:text=""
-					android:gravity="center"
-					android:layout_weight="1"
-					android:textColor="@color/black"
-					android:textSize="20sp"
-			/>
-		</LinearLayout>
-		
-		<!--profit_seek_bar_layout-->
-		<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/profit_seek_bar_layout"
-				android:layout_below="@id/profit_text_view_layout"
-				android:layout_marginTop="10dp"
-				android:layout_marginBottom="10dp"
-				android:orientation="vertical"
-		>
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textSize="18sp"
-				android:textColor="@color/black"
-				android:text="@string/seek_bar_hint"
-			/>
-			<SeekBar
-					android:id="@+id/vat_seek_bar"
-					style="@style/Base.Widget.AppCompat.SeekBar.Discrete"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:max="200"
-					android:progress="25"
-					android:background="@color/green"
-			/>
-		</LinearLayout>
-		<!---->
-		<!--&lt;!&ndash;calculate_btn&ndash;&gt;-->
-		<!--<LinearLayout-->
-				<!--android:layout_width="match_parent"-->
-				<!--android:layout_height="wrap_content"-->
-				<!--android:id="@+id/calculate_btn_layout"-->
-				<!--android:orientation="horizontal"-->
-				<!--android:layout_below="@id/profit_seek_bar_layout"-->
-				<!--android:layout_marginTop="5dp"-->
-		<!--&gt;-->
-			<!--<Button-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="match_parent"-->
-					<!--android:id="@+id/calculate_btn"-->
-					<!--android:textColor="#ffffff"-->
-					<!--android:background="#0d0dc9"-->
-					<!--android:text="@string/calculate_btn"-->
-					<!--android:textSize="24sp"-->
-					<!--android:layout_marginRight="60dp"-->
-					<!--android:layout_marginLeft="60dp"-->
-			<!--/>-->
-		<!--</LinearLayout>-->
-		
+
 		<!--google add layout-->
 		<com.google.android.gms.ads.AdView
 				xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -314,7 +247,7 @@
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"
 				android:layout_alignParentBottom="true"
-				android:layout_below="@+id/calculate_btn_layout"
+				android:layout_below="@+id/transport_edit_layout"
 				ads:adSize="BANNER"
 				ads:adUnitId="@string/ad_mob_banner">
 		</com.google.android.gms.ads.AdView>

@@ -12,12 +12,9 @@ import com.google.android.gms.ads.AdView;
 import eu.rjch.kalkulatorcen.R;
 import eu.rjch.kalkulatorcen.utilities.AdsHandler;
 import eu.rjch.kalkulatorcen.utilities.MathsUt;
-import eu.rjch.kalkulatorcen.utilities.Utilities;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class TheApp  extends Activity {
@@ -27,15 +24,12 @@ public class TheApp  extends Activity {
 
     private DecimalFormat df;
     private MathsUt mu;
-    private Utilities u;
     private SeekBar seekbar;
 
 	private char euro = '€';
 	private boolean vat, vemc, transB;
 	private int profitPercent;
 	private double costD, vatD, vemcD = 3.44, transD = 0.5;
-	private boolean seekBarValue;
-	private String suggestedPrice;
 	private int maxProfit;
 
 	@Override
@@ -81,7 +75,6 @@ public class TheApp  extends Activity {
 			
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				seekBarValue = true;
 				profitPercent = progressChangedValue;
 				String s = "Profit @ " + profitPercent + "%";
 				profitPercentTV.setText(s);
@@ -114,7 +107,7 @@ public class TheApp  extends Activity {
 				String s = netPriceEV.getText().toString(), se;
 				se = euro + s;
 				costTV.setText(se);
-				costD = (!s.equals("") && s != null) ? Double.parseDouble(s):  0.0;
+				costD = (!s.equals("")) ? Double.parseDouble(s):  0.0;
 				setTVs();
 			}
 			
@@ -217,17 +210,17 @@ public class TheApp  extends Activity {
 	
 	private void findByIDs() {
 		mu = new MathsUt();
-		u = new Utilities();
-		profitPercent = 0;
 
-		this.seekbar = findViewById(R.id.vat_seek_bar);
-		
+        this.seekbar = findViewById(R.id.vat_seek_bar);
+        profitPercent = seekbar.getProgress();
+
 		this.costTV = findViewById(R.id.costTF);
 		this.priceTV = findViewById(R.id.priceTF);
 		this.transportTV = findViewById(R.id.transport);
 		
 		this.profitPercentTV = findViewById(R.id.profit_percent);
-		
+		setText(profitPercentTV, "Profit @ "+profitPercent+"%");
+
 		this.vatChk = findViewById(R.id.chkvat);
 		this.vemcChk = findViewById(R.id.chkvemc);
 		this.transChk = findViewById(R.id.chktransport);
@@ -245,14 +238,6 @@ public class TheApp  extends Activity {
 				finish();
 			}
 		});
-		
-//		Button calculate = findViewById(R.id.calculate_btn);
-//		calculate.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View view) {
-//				u.showDialog(view.getContext(), suggestedPrice);
-//			}
-//		});
 	}
 
 	protected void setTVs(){
@@ -263,14 +248,11 @@ public class TheApp  extends Activity {
 		String c = euro + " " + df.format(cd);
 		costTV.setText(c);
 		String p = euro + " " + df.format(pd);
-		this.suggestedPrice = p;
 		priceTV.setText(p);
 	}
 
 	private double checkCost() { return (costD > 0) ? costD : 0;	}
 	
-	public void setSeekBarValue(boolean seekBarValue) { this.seekBarValue = seekBarValue; }
-
 	private void loadAds() {
 		AdsHandler ah = new AdsHandler();
 		ah.getAds((AdView) findViewById(R.id.adView));
