@@ -5,7 +5,7 @@
 	<string name="ad_mob_banner">ca-app-pub-1421069741839692/5923919254</string>
 	
 	<string name="todo">TODO</string>
-	<string name="cost">Cost</string>
+	<string name="cost">Check Cost</string>
 	<string name="price">Price</string>
 	<string name="zeros">€ 0.00</string>
 	<string name="chk_vat">VAT Tax</string>
