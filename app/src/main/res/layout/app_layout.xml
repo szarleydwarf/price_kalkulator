@@ -121,19 +121,28 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
-            >
+        >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/toggle_net_et"
+                android:background="@drawable/border"
+                android:text="@string/hide_net"
+            />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/netto"
                 android:textSize="26sp"
-                android:gravity="center"
-                android:background="#f3f3f5"
-                android:textColor="@color/white"
+                android:gravity="center_horizontal"
+                android:background="@color/l_grey"
+                android:textColor="@color/black"
                 android:inputType="numberDecimal"
                 android:hint="@string/hint_price"
                 android:autofillHints="@string/hint_price"
-                />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+            />
         </LinearLayout>
 
         <!--profit_text_view_layout-->
@@ -267,7 +276,9 @@
                 android:textColor="@color/black"
                 android:inputType="numberDecimal"
                 android:hint="@string/hint_transport"
-                />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+            />
         </LinearLayout>
 
         <!--google add layout-->

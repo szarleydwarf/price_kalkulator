@@ -5,7 +5,7 @@
 	<string name="ad_mob_banner">ca-app-pub-1421069741839692/5923919254</string>
 	
 	<string name="todo">TODO</string>
-	<string name="cost">Check Cost</string>
+	<string name="cost">Show Cost</string>
 	<string name="price">Price</string>
 	<string name="zeros">€ 0.00</string>
 	<string name="chk_vat">VAT Tax</string>
@@ -30,7 +30,14 @@
 	<string name="recycling_et">Enter recycling charge</string>
 	<string name="recycling">recycling charge</string>
 	<string name="rec_defaoult">3.44</string>
-	
+	<string name="eula_title">End-User License Agreement (EULA)</string>
+	<string name="ok_btn">OK</string>
+	<string name="seek_bar_hint">For more acurate profit setting use seekbar below.</string>
+	<string name="max_profit_et">Enter max profit</string>
+	<string name="max_profit">max profit</string>
+	<string name="profit_at">Profit @</string>
+	<string name="hide_net">Toggle Price</string>
+
 	<string-array name="profit_list">
 		<item>5</item>
 		<item>10</item>
@@ -100,12 +107,7 @@
 	
 	<h3>Governing Law</h3>
 	
-	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">af</span>.</p></string>
-	<string name="eula_title">End-User License Agreement (EULA)</string>
-	<string name="ok_btn">OK</string>
-    <string name="seek_bar_hint">For more acurate profit setting use seekbar below.</string>
-	<string name="max_profit_et">Enter whole number for max profit</string>
-	<string name="max_profit">max profit</string>
-    <string name="profit_at">Profit @</string>
+	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">af</span>.</p>
+</string>
 
 </resources>

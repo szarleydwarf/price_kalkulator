@@ -248,6 +248,13 @@ public class TheApp  extends Activity {
             }
         });
 
+		Button hideNet = findViewById(R.id.toggle_net_et);
+		hideNet.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				toggleViewVisibility(netPriceEV);
+			}
+		});
 		
 		Button settings = findViewById(R.id.settings_btn);
 		settings.setOnClickListener(new View.OnClickListener() {
