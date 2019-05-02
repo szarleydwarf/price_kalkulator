@@ -60,7 +60,6 @@ public class AppSetup extends Activity {
         Button eula = findViewById(R.id.eula_btn);
         Button back = findViewById(R.id.go_back);
 
-		checkForTextChanges();
 		sendEmail(email);
 		savingVAT(pref, saveVAT);
 		savingRec(pref, saveRec);
@@ -69,36 +68,6 @@ public class AppSetup extends Activity {
 		showEULA(eula);
 	}
 
-    private void checkForTextChanges() {
-		vatET.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				vatSET = vatET.getText().toString();
-			}
-
-			@Override
-			public void afterTextChanged(Editable editable) {}
-		});
-
-		recET.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-				recStr = recET.getText().toString();
-			}
-
-			@Override
-			public void afterTextChanged(Editable editable) {}
-		});
-
-	}
 
 	private void showEULA(Button eula) {
 		eula.setOnClickListener(new View.OnClickListener() {
@@ -195,20 +164,21 @@ public class AppSetup extends Activity {
 	}
 	
 	private String isThereStringTosave() {
-		if(vatSET.isEmpty() && vatSETSaved.isEmpty()) {
+		String s  = vatET.getText().toString();
+		if(s.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
 			u.showDialog(this,"No vat value saved and typed in. By default VAT will be set to "
 					+getResources().getString(R.string.vat_default)
 					+getResources().getString(R.string.percent));
 			return null;
-		} else if(vatSET.isEmpty()) {
+		} else if(s.isEmpty()) {
 			//if et empty and saved has some value save it
             u.showDialog(this,"Vat value set at "+vatSETSaved+"%");
 			return vatSETSaved;
-		} else if(!vatSET.isEmpty()) {
+		} else if(!s.isEmpty()) {
 			//if et not empty save it
-            u.showDialog(this,"Vat saved at "+vatSET + "%");
-			return vatSET;
+            u.showDialog(this,"Vat saved at "+s + "%");
+			return s;
 		}
 		return null;
 	}

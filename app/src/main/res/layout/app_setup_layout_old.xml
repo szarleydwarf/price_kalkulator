@@ -177,8 +177,7 @@
 		</LinearLayout>
 		
 		<!--todo buy me a coffee & sounds & rate the app & -->
-		<!--todo for feature add range of values for a profit (min, max)-->
-		
+
 		<!--eula_btn_layout-->
 		<LinearLayout
 			android:layout_width="match_parent"

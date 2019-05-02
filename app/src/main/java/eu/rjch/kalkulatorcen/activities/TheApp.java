@@ -18,9 +18,12 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 public class TheApp  extends Activity {
-	private TextView costTV, priceTV, transportTV, profitPercentTV;
+	private TextView costTV;
+    private TextView priceTV;
+    private TextView transportTV;
+    private TextView profitPercentTV;
 	private EditText netPriceEV, transportEV;
-	private CheckBox vatChk, vemcChk, transChk;
+	private CheckBox vatChk, vemcChk, transChk, profitChk;
 
     private DecimalFormat df;
     private MathsUt mu;
@@ -76,8 +79,9 @@ public class TheApp  extends Activity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				profitPercent = progressChangedValue;
-				String s = "Profit @ " + profitPercent + "%";
+				String s =  profitPercent + "%";
 				profitPercentTV.setText(s);
+				Toast.makeText(getBaseContext(), "Profit @ "+s,Toast.LENGTH_LONG).show();
 				setTVs();
 			}
 		});
@@ -158,13 +162,20 @@ public class TheApp  extends Activity {
 				setTVs();
 			}
 		});
-		
+
+		profitChk.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				toggleViewVisibility(profitPercentTV);
+			}
+		});
+
 		String s = vatChk.getText().toString();
 		s += " - " + vatD + "%";
 		vatChk.setText(s);
 	}
-	
-	private void setVariable(){
+
+    private void setVariable(){
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
 		String s = pref.getString(getResources().getString(R.string.max_profit), "200");
@@ -196,10 +207,10 @@ public class TheApp  extends Activity {
 		seekbar.setMax(maxProfit);
 	}
 
-	private void setTextC(CheckBox vemcChk, String s) {
-		String st = vemcChk.getText().toString();
+	private void setTextC(CheckBox chk, String s) {
+		String st = chk.getText().toString();
 		st = st.substring(0, st.indexOf(" ")+1) + euro + s;
-		vemcChk.setText(st);
+        chk.setText(st);
 	}
 	
 	private void setText(TextView tv, String s) {
@@ -219,11 +230,12 @@ public class TheApp  extends Activity {
 		this.transportTV = findViewById(R.id.transport);
 		
 		this.profitPercentTV = findViewById(R.id.profit_percent);
-		setText(profitPercentTV, "Profit @ "+profitPercent+"%");
+		setText(profitPercentTV, profitPercent+"%");
 
 		this.vatChk = findViewById(R.id.chkvat);
 		this.vemcChk = findViewById(R.id.chkvemc);
 		this.transChk = findViewById(R.id.chktransport);
+		this.profitChk = findViewById(R.id.profit_percent_chkbox);
 		
 		this.netPriceEV = findViewById(R.id.netto);
 		this.transportEV = findViewById(R.id.transport_edit);
@@ -232,7 +244,7 @@ public class TheApp  extends Activity {
 		showCost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toggleCost();
+                toggleViewVisibility(costTV);
             }
         });
 
@@ -248,11 +260,11 @@ public class TheApp  extends Activity {
 		});
 	}
 
-    private void toggleCost() {
-        if(costTV.getVisibility() ==  View.VISIBLE)
-            costTV.setVisibility(View.INVISIBLE);
+    private <T extends View> void toggleViewVisibility(T v) {
+        if(v.getVisibility() ==  View.VISIBLE)
+            v.setVisibility(View.INVISIBLE);
         else
-            costTV.setVisibility(View.VISIBLE);
+            v.setVisibility(View.VISIBLE);
     }
 
     protected void setTVs(){

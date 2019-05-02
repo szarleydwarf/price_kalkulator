@@ -106,5 +106,6 @@
     <string name="seek_bar_hint">For more acurate profit setting use seekbar below.</string>
 	<string name="max_profit_et">Enter whole number for max profit</string>
 	<string name="max_profit">max profit</string>
+    <string name="profit_at">Profit @</string>
 
 </resources>

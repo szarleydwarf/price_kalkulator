@@ -18,9 +18,8 @@ public class MainA extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_main);
 		
-//		MobileAds.initialize(this, getResources().getString(R.string.ad_mob_id));
 		VideoView vv = findViewById(R.id.VideoView);
-		
+
 		try{
 			String pkgName = getPackageName();
 			int id = getResources().getIdentifier("intro", "raw", pkgName);
