@@ -49,25 +49,25 @@
 				android:layout_marginTop="5dp"
 		>
 			<Button
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:id="@+id/costLabel"
-					android:text="@string/cost"
-					android:textSize="18sp"
-					android:background="@drawable/border"
-					android:gravity="center"
-					android:layout_weight="1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/costLabel"
+				android:text="@string/cost"
+				android:textSize="18sp"
+				android:background="@drawable/border"
+				android:gravity="center"
+				android:layout_weight="1"
 			/>
 			<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:id="@+id/priceLabel"
-					android:text="@string/price"
-					android:textColor="@color/white"
-					android:textSize="20sp"
-					android:background="@color/green"
-					android:gravity="center"
-					android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:id="@+id/priceLabel"
+                android:text="@string/price"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+				android:layout_weight="2"
 			/>
 		</LinearLayout>
 		
@@ -80,38 +80,38 @@
 				android:layout_below="@id/label_layout"
 		>
 			<TextView
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:background="@color/red"
-					android:id="@+id/costTF"
-					android:text="@string/zeros"
-					android:textSize="22sp"
-					android:textColor="@color/white"
-					android:gravity="center"
-					android:layout_weight="1"
-					android:visibility="invisible"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/red"
+				android:layout_weight="1"
+				android:id="@+id/costTF"
+				android:text="@string/zeros"
+				android:textSize="22sp"
+				android:textColor="@color/white"
+				android:gravity="center"
+				android:visibility="invisible"
 			/>
 			<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:background="@color/green"
-					android:id="@+id/priceTF"
-					android:text="@string/zeros"
-					android:textSize="26sp"
-					android:textColor="#fff"
-					android:gravity="center"
-					android:layout_weight="1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/green"
+				android:id="@+id/priceTF"
+				android:text="@string/zeros"
+				android:textSize="26sp"
+				android:textColor="#fff"
+				android:layout_weight="1"
+				android:gravity="center"
 			/>
 		</LinearLayout>
 		
 		<!--net_cost_layout-->
 		<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/net_cost_layout"
-				android:orientation="horizontal"
-				android:layout_below="@id/display_layout"
-				android:layout_marginTop="5dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/net_cost_layout"
+			android:orientation="horizontal"
+			android:layout_below="@id/display_layout"
+			android:layout_marginTop="5dp"
 		>
 			<Button
 				android:layout_width="wrap_content"
@@ -124,15 +124,13 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:id="@+id/netto"
-				android:textSize="26sp"
+				android:textSize="24sp"
+				android:gravity="center_horizontal"
 				android:background="@color/l_grey"
 				android:textColor="@color/black"
 				android:inputType="numberDecimal"
 				android:hint="@string/hint_price"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                android:autofillHints="@string/hint_price"
-				android:gravity="center_horizontal"
+				android:autofillHints="@string/hint_price"
 			/>
 		</LinearLayout>
 
@@ -267,15 +265,16 @@
 
 		<!--google add layout-->
 		<com.google.android.gms.ads.AdView
-				xmlns:ads="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/adView"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_centerHorizontal="true"
-				android:layout_alignParentBottom="true"
-				android:layout_below="@+id/transport_edit_layout"
-				ads:adSize="BANNER"
-				ads:adUnitId="@string/ad_mob_banner">
+			xmlns:ads="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/adView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_alignParentBottom="true"
+			android:layout_below="@+id/transport_edit_layout"
+			android:layout_marginTop="5dp"
+			ads:adSize="BANNER"
+			ads:adUnitId="@string/ad_mob_banner">
 		</com.google.android.gms.ads.AdView>
 	</RelativeLayout>
 </ScrollView>

@@ -43,7 +43,7 @@ public class TheApp  extends Activity {
 		} else {
 			setContentView(R.layout.app_layout_old);
 		}
-		
+
 		init();
 	}
 	

@@ -41,15 +41,13 @@
         </LinearLayout>
 
         <!--label_layout-->
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/label_layout"
             android:layout_below="@id/app_name_layout"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
             >
             <Button
                 android:layout_width="wrap_content"
@@ -64,15 +62,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/green"
                 android:background="@drawable/round_border_r"
                 android:id="@+id/priceLabel"
                 android:text="@string/price"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:layout_weight="1"
-                />
+                android:layout_weight="2"
+            />
         </LinearLayout>
 
         <!--display_layout-->
@@ -82,9 +79,7 @@
             android:orientation="horizontal"
             android:id="@+id/display_layout"
             android:layout_below="@id/label_layout"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
+        >
 
             <TextView
                 android:layout_width="match_parent"
@@ -118,8 +113,6 @@
             android:id="@+id/net_cost_layout"
             android:orientation="horizontal"
             android:layout_below="@id/display_layout"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
         >
             <Button
@@ -133,15 +126,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/netto"
-                android:textSize="26sp"
+                android:textSize="24sp"
                 android:gravity="center_horizontal"
                 android:background="@color/l_grey"
                 android:textColor="@color/black"
                 android:inputType="numberDecimal"
                 android:hint="@string/hint_price"
                 android:autofillHints="@string/hint_price"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
             />
         </LinearLayout>
 
@@ -290,6 +281,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/transport_edit_layout"
+            android:layout_marginTop="5dp"
             ads:adSize="BANNER"
             ads:adUnitId="@string/ad_mob_banner">
         </com.google.android.gms.ads.AdView>
