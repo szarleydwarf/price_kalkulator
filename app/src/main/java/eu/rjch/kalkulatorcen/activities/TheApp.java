@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import com.google.android.gms.ads.AdView;
@@ -54,7 +55,8 @@ public class TheApp  extends Activity {
 		loadAds();
 		
 		findByIDs();
-		setVariable();
+        createButtons();
+        setVariable();
 		
 		setFormating();
 		update();
@@ -241,33 +243,49 @@ public class TheApp  extends Activity {
 		
 		this.netPriceEV = findViewById(R.id.netto);
 		this.transportEV = findViewById(R.id.transport_edit);
+	}
 
-		Button showCost = findViewById(R.id.costLabel);
-		showCost.setOnClickListener(new View.OnClickListener() {
+    private void createButtons() {
+
+        Button showCost = findViewById(R.id.costLabel);
+        showCost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toggleViewVisibility(costTV);
             }
         });
 
-		Button hideNet = findViewById(R.id.toggle_net_et);
-		hideNet.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				toggleViewVisibility(netPriceEV);
-			}
-		});
-		
-		Button settings = findViewById(R.id.settings_btn);
-		settings.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent i = new Intent(view.getContext(), AppSetup.class);
-				startActivity(i);
-				finish();
-			}
-		});
-	}
+        Button hideNet = findViewById(R.id.toggle_net_et);
+        hideNet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleViewVisibility(netPriceEV);
+            }
+        });
+
+        Button displayPrice = findViewById(R.id.priceLabel);
+        displayPrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), PriceAct.class);
+                String s = priceTV.getText().toString();
+                i.putExtra(getResources().getString(R.string.price), s);
+
+                startActivity(i);
+                finish();
+            }
+        });
+
+        Button settings = findViewById(R.id.settings_btn);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), AppSetup.class);
+                startActivity(i);
+                finish();
+            }
+        });
+    }
 
     private <T extends View> void toggleViewVisibility(T v) {
         if(v.getVisibility() ==  View.VISIBLE)

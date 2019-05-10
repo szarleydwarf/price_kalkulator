@@ -7,13 +7,14 @@
 	<string name="todo">TODO</string>
 	<string name="cost">Show Cost</string>
 	<string name="price">Price View</string>
+	<string name="price_prev">Final price</string>
 	<string name="zeros">€ 0.00</string>
 	<string name="chk_vat">VAT Tax</string>
 	<string name="chk_vemc">Recycling charges € </string>
 	<string name="profit_spinner_title">Profit</string>
 	<string name="transport">Transport default € 0.50 # or enter charge below.</string>
 	<string name="vat_default">23</string>
-	<string name="hint_price">Enter price for item</string>
+	<string name="hint_price">Enter price</string>
 	<string name="hint_transport">Enter transport charges</string>
 	<string name="chk_transport">Transport charges</string>
 	<string name="percent">%</string>

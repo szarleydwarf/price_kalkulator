@@ -22,14 +22,17 @@ public class PriceAct extends Activity {
     private void init() {
         TextView price = findViewById(R.id.suggested_price);
         Intent i = getIntent();
-        String s = i.getExtras().getString(String.valueOf(R.string.price));
+        String s = i.getExtras().getString(getResources().getString(R.string.price));
+
         price.setText(s);
+
         Button ok = findViewById(R.id.ok_btn);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ib = new Intent(v.getContext(), TheApp.class);
                 startActivity(ib);
+                finish();
             }
         });
     }
