@@ -6,7 +6,7 @@
 	
 	<string name="todo">TODO</string>
 	<string name="cost">Show Cost</string>
-	<string name="price">Price</string>
+	<string name="price">Price View</string>
 	<string name="zeros">€ 0.00</string>
 	<string name="chk_vat">VAT Tax</string>
 	<string name="chk_vemc">Recycling charges € </string>
@@ -37,6 +37,8 @@
 	<string name="max_profit">max profit</string>
 	<string name="profit_at">Profit @</string>
 	<string name="hide_net">Toggle Price</string>
+	<string name="orien">orientation</string>
+
 
 	<string-array name="profit_list">
 		<item>5</item>

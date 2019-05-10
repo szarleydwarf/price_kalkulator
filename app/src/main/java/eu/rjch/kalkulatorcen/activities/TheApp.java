@@ -25,9 +25,10 @@ public class TheApp  extends Activity {
 	private EditText netPriceEV, transportEV;
 	private CheckBox vatChk, vemcChk, transChk, profitChk;
 
-    private DecimalFormat df;
-    private MathsUt mu;
-    private SeekBar seekbar;
+	private SharedPreferences pref;
+	private DecimalFormat df;
+	private MathsUt mu;
+	private SeekBar seekbar;
 
 	private char euro = '€';
 	private boolean vat, vemc, transB;
@@ -38,11 +39,13 @@ public class TheApp  extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			setContentView(R.layout.app_layout);
-		} else {
-			setContentView(R.layout.app_layout_old);
-		}
+		pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+		boolean horizont = pref.getBoolean(getResources().getString(R.string.orien),true);
+
+		if(horizont)
+			setContentView(R.layout.app_layout_h);
+		else
+			setContentView(R.layout.app_layout_v);
 
 		init();
 	}
@@ -176,7 +179,6 @@ public class TheApp  extends Activity {
 	}
 
     private void setVariable(){
-		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		String vatS = pref.getString(getResources().getString(R.string.chk_vat), "");
 		String s = pref.getString(getResources().getString(R.string.max_profit), "200");
 
@@ -288,8 +290,10 @@ public class TheApp  extends Activity {
 	private double checkCost() { return (costD > 0) ? costD : 0;	}
 	
 	private void loadAds() {
-		AdsHandler ah = new AdsHandler();
-		ah.getAds((AdView) findViewById(R.id.adView));
+		AdsHandler ahb = new AdsHandler();
+		ahb.getAds((AdView) findViewById(R.id.adViewB));
+		AdsHandler aht = new AdsHandler();
+		aht.getAds((AdView) findViewById(R.id.adViewT));
 	}
 
 	private void setFormating() {

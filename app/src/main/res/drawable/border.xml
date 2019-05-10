@@ -6,7 +6,7 @@
 	<!--<solid android:color="@android:color/white" />-->
 	<!--<stroke android:width="2dip" android:color="#4fa5d5"/>-->
 <solid
-			android:color="@color/green" >
+			android:color="@color/blue" >
 </solid>
 	
 	<!-- View border color and width -->

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -9,8 +8,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
+
+        <!--google add layout-->
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adViewT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/transport_edit_layout"
+            android:layout_marginTop="5dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ad_mob_banner">
+        </com.google.android.gms.ads.AdView>
 
         <!--app_name_layout-->
         <LinearLayout
@@ -41,57 +54,25 @@
         </LinearLayout>
 
         <!--label_layout-->
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:id="@+id/label_layout"
             android:layout_below="@id/app_name_layout"
             android:layout_marginTop="5dp"
             >
+
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/costLabel"
-                android:text="@string/cost"
                 android:background="@drawable/border"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:layout_weight="1"
-            />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_border_r"
                 android:id="@+id/priceLabel"
                 android:text="@string/price"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="26sp"
                 android:gravity="center"
-                android:layout_weight="2"
-            />
-        </LinearLayout>
-
-        <!--display_layout-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/display_layout"
-            android:layout_below="@id/label_layout"
-        >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/red"
                 android:layout_weight="1"
-                android:id="@+id/costTF"
-                android:text="@string/zeros"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:visibility="invisible"
             />
             <TextView
                 android:layout_width="match_parent"
@@ -100,28 +81,52 @@
                 android:id="@+id/priceTF"
                 android:text="@string/zeros"
                 android:textSize="26sp"
-                android:textColor="#fff"
-                android:layout_weight="1"
+                android:textColor="@color/black"
                 android:gravity="center"
                 />
         </LinearLayout>
 
-        <!--net cost layout-->
+        <!--display_layout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/display_layout"
+            android:layout_below="@id/label_layout"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/red"
+                android:id="@+id/costTF"
+                android:text="@string/zeros"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:visibility="invisible"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/costLabel"
+                android:text="@string/cost"
+                android:textSize="20sp"
+                android:background="@drawable/border"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <!--net_cost_layout-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/net_cost_layout"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_below="@id/display_layout"
             android:layout_marginTop="5dp"
-        >
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/toggle_net_et"
-                android:background="@drawable/border"
-                android:text="@string/hide_net"
-            />
+            >
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +138,16 @@
                 android:inputType="numberDecimal"
                 android:hint="@string/hint_price"
                 android:autofillHints="@string/hint_price"
-            />
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/toggle_net_et"
+                android:background="@drawable/border"
+                android:text="@string/hide_net"
+                android:textSize="20sp"
+                android:layout_marginTop="5dp"
+                />
         </LinearLayout>
 
         <!--profit_text_view_layout-->
@@ -141,7 +155,9 @@
             android:id="@+id/profit_text_view_layout"
             android:layout_below="@id/net_cost_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
             <CheckBox
                 android:id="@+id/profit_percent_chkbox"
                 android:layout_width="wrap_content"
@@ -150,7 +166,7 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-            />
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -161,8 +177,7 @@
                 android:textSize="20sp"
                 android:text=""
                 android:layout_weight="1"
-            />
-
+                />
         </LinearLayout>
 
         <!--profit_seek_bar_layout-->
@@ -173,14 +188,17 @@
             android:layout_below="@id/profit_text_view_layout"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:orientation="vertical"
             >
             <SeekBar
                 android:id="@+id/vat_seek_bar"
-                android:layout_width="fill_parent"
+                style="@style/Base.Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="200"
                 android:progress="30"
-                android:background="@drawable/border"
+                android:background="@color/green"
+
                 />
         </LinearLayout>
 
@@ -197,30 +215,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/chk_vat"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
+                android:textSize="20sp"
                 />
             <CheckBox
                 android:id="@+id/chkvemc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/chk_vemc"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
+                android:textSize="20sp"
                 />
             <CheckBox
                 android:id="@+id/chktransport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/chk_transport"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
+                android:textSize="20sp"
                 />
         </LinearLayout>
 
@@ -229,11 +241,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/l_grey"
-            android:layout_below="@id/checkboxes_layout"
             android:id="@+id/transport_layout"
             android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_below="@id/checkboxes_layout"
             >
 
             <TextView
@@ -243,19 +253,16 @@
                 android:text="@string/transport"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="center"
                 />
         </LinearLayout>
 
         <!--transport_edit_layout-->
-         <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/transport_edit_layout"
-            android:layout_below="@id/transport_layout"
             android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_below="@id/transport_layout"
             android:layout_marginTop="5dp"
             >
             <EditText
@@ -269,13 +276,13 @@
                 android:hint="@string/hint_transport"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-            />
+                />
         </LinearLayout>
 
         <!--google add layout-->
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
+            android:id="@+id/adViewB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
