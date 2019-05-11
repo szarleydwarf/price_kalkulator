@@ -41,12 +41,13 @@ public class TheApp  extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-		boolean horizont = pref.getBoolean(getResources().getString(R.string.orien),true);
+		boolean vert = pref.getBoolean(getResources().getString(R.string.orien),false);
+		Log.d("WWW", "orientation "+ vert);
 
-		if(horizont)
-			setContentView(R.layout.app_layout_h);
-		else
+		if(vert)
 			setContentView(R.layout.app_layout_v);
+		else
+			setContentView(R.layout.app_layout_h);
 
 		init();
 	}

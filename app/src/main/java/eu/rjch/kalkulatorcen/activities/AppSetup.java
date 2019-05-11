@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,13 +29,10 @@ public class AppSetup extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			setContentView(R.layout.app_setup_layout);
-		}else {
-			setContentView(R.layout.app_setup_layout_old);
-			//todo catch crash of the app
-		}
-		
+
+		setContentView(R.layout.app_setup_layout_old);
+		//todo catch crash of the app
+
 		init();
 	}
 	
@@ -53,6 +51,8 @@ public class AppSetup extends Activity {
 
 
 		ImageButton email = findViewById(R.id.email_me);
+		ImageButton vBtn = findViewById(R.id.img_btn_V);
+		ImageButton hBtn = findViewById(R.id.img_btn_H);
 
 		Button saveVAT = findViewById(R.id.save_btn);
 		Button saveRec = findViewById(R.id.save_r_btn);
@@ -64,8 +64,29 @@ public class AppSetup extends Activity {
 		savingVAT(pref, saveVAT);
 		savingRec(pref, saveRec);
 		saveMaxProfit(pref, saveMaxProf, R.string.max_profit);
-		returnToMain(back);
+		setLayout(pref, vBtn, hBtn);
+        returnToMain(back);
 		showEULA(eula);
+	}
+
+	private void setLayout(SharedPreferences pref, ImageButton vBtn, ImageButton hBtn) {
+		final SharedPreferences.Editor e = pref.edit();
+		vBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				e.putBoolean(getResources().getString(R.string.orien), true);
+				e.commit();
+				Log.d("WWW", "V pressed");
+			}
+		});
+		hBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				e.putBoolean(getResources().getString(R.string.orien), false);
+				e.commit();
+				Log.d("WWW", "H pressed");
+			}
+		});
 	}
 
 
@@ -86,7 +107,6 @@ public class AppSetup extends Activity {
             @Override
             public void onClick(View v) {
                 if(!maxProfitET.getText().toString().isEmpty()) {
-                    //todo check if the ontextchanged is necessary
                     String s = maxProfitET.getText().toString();
                     e.putString(getResources().getString(ri), s);
                     e.commit();

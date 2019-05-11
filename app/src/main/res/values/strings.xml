@@ -19,7 +19,7 @@
 	<string name="chk_transport">Transport charges</string>
 	<string name="percent">%</string>
 	<string name="calculate_btn">"CALCULATE"</string>
-	<string name="vat_setting">Please enter below the correct whole number for a VAT and recycling charged in your country. You can set also max profit percentage</string>
+	<string name="vat_setting">Please enter below the correct whole number for a VAT and recycling charged in your country. You can also set max profit percentage</string>
 	<string name="savebtn">SAVE</string>
 	<string name="vat_setting_ev">Enter VAT value</string>
 	<string name="first_use">first_use</string>
