@@ -112,5 +112,6 @@
 	
 	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">af</span>.</p>
 </string>
+	<string name="layout_chooser">Chose one of the layouts of the app</string>
 
 </resources>
