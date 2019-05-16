@@ -28,6 +28,7 @@
 	<string name="back">Go Back</string>
 	<string name="email_msg_1">Please leave the above for developers to find easier whats wrong. Describe your
 		issue bellow.</string>
+    <string name="send_email">Send</string>
 	<string name="recycling_et">Enter recycling charge</string>
 	<string name="recycling">recycling charge</string>
 	<string name="rec_defaoult">3.44</string>
@@ -113,5 +114,7 @@
 	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">af</span>.</p>
 </string>
 	<string name="layout_chooser">Chose one of the layouts of the app</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="vertical">Vertical</string>
 
 </resources>
