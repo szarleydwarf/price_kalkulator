@@ -1,17 +1,13 @@
 package eu.rjch.kalkulatorcen.activities;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import com.google.android.gms.ads.AdView;
 
@@ -30,7 +26,7 @@ public class AppSetup extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.app_setup_layout_old);
+		setContentView(R.layout.app_setup_layout);
 		//todo catch crash of the app
 
 		init();
@@ -49,7 +45,6 @@ public class AppSetup extends Activity {
 		vatET = findViewById(R.id.vat_settings_et);
 		maxProfitET = findViewById(R.id.max_profit_et);
 
-
 		ImageButton email = findViewById(R.id.email_me);
 		ImageButton vBtn = findViewById(R.id.img_btn_V);
 		ImageButton hBtn = findViewById(R.id.img_btn_H);
@@ -60,6 +55,7 @@ public class AppSetup extends Activity {
         Button eula = findViewById(R.id.eula_btn);
         Button back = findViewById(R.id.go_back);
 
+
 		sendEmail(email);
 		savingVAT(pref, saveVAT);
 		savingRec(pref, saveRec);
@@ -68,6 +64,7 @@ public class AppSetup extends Activity {
         returnToMain(back);
 		showEULA(eula);
 	}
+
 
 	private void setLayout(SharedPreferences pref, ImageButton vBtn, ImageButton hBtn) {
 		final SharedPreferences.Editor e = pref.edit();
@@ -101,9 +98,9 @@ public class AppSetup extends Activity {
 		});
 	}
 
-    private void saveMaxProfit(SharedPreferences pref, Button saveMaxProf, final int ri) {
+    private void saveMaxProfit(SharedPreferences pref, Button btn, final int ri) {
         final SharedPreferences.Editor e = pref.edit();
-        saveMaxProf.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!maxProfitET.getText().toString().isEmpty()) {
