@@ -3,6 +3,7 @@ package eu.rjch.kalkulatorcen.utilities;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.View;
 
 public class Utilities {
     public Utilities() {
@@ -25,4 +26,7 @@ public class Utilities {
         alertDialog.show();
     }
 
+    public void showToast(View v, String msg) {
+
+    }
 }
