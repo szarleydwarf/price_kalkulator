@@ -27,8 +27,7 @@ public class AppSetup extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//        Crashlytics.getInstance().crash(); // Force a crash
-
+        Crashlytics.log(1, "AppSetup", "Something went wrong on start AppSetup");
 		setContentView(R.layout.app_setup_layout);
 		//todo catch crash of the app
 

@@ -9,6 +9,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdView;
 import eu.rjch.kalkulatorcen.R;
 import eu.rjch.kalkulatorcen.utilities.AdsHandler;
@@ -42,6 +44,7 @@ public class TheApp  extends Activity {
 		super.onCreate(savedInstanceState);
 		pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		boolean vert = pref.getBoolean(getResources().getString(R.string.orien),false);
+		Crashlytics.log(1, "TheApp", "Something went wrong on start TheApp");
 
 		if(vert)
 			setContentView(R.layout.app_layout_v);

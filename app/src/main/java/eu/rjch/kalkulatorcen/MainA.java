@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.widget.VideoView;
 import eu.rjch.kalkulatorcen.activities.AppSetup;
 import eu.rjch.kalkulatorcen.activities.TheApp;
+
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.MobileAds;
 
 public class MainA extends Activity {
@@ -17,7 +19,8 @@ public class MainA extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_main);
-		
+		Crashlytics.log(1, "MainApp", "Something went wrong on start MainApp");
+
 		VideoView vv = findViewById(R.id.VideoView);
 
 		try{
