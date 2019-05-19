@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdView;
 
 import eu.rjch.kalkulatorcen.R;
@@ -25,6 +27,7 @@ public class AppSetup extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//        Crashlytics.getInstance().crash(); // Force a crash
 
 		setContentView(R.layout.app_setup_layout);
 		//todo catch crash of the app
@@ -73,7 +76,7 @@ public class AppSetup extends Activity {
 			public void onClick(View v) {
 				e.putBoolean(getResources().getString(R.string.orien), true);
 				e.commit();
-				Log.d("WWW", "V pressed");
+				u.showToast(v, "Screen layout saved");
 			}
 		});
 		hBtn.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +84,9 @@ public class AppSetup extends Activity {
 			public void onClick(View v) {
 				e.putBoolean(getResources().getString(R.string.orien), false);
 				e.commit();
-				Log.d("WWW", "H pressed");
-			}
+                u.showToast(v, "Screen layout saved");
+
+            }
 		});
 	}
 
@@ -107,8 +111,8 @@ public class AppSetup extends Activity {
                     String s = maxProfitET.getText().toString();
                     e.putString(getResources().getString(ri), s);
                     e.commit();
-
-                    u.showDialog(v.getContext(), "Max profit saved at " + s);
+                    u.showToast(v, "Max profit saved at " + s + "%");
+//                    u.showDialog(v.getContext(), "Max profit saved at " + s);
                 }
             }
         });
@@ -125,7 +129,7 @@ public class AppSetup extends Activity {
 					editor.putString(getResources().getString(R.string.recycling), recStr);
 					editor.commit();
 
-					u.showDialog(v.getContext(),"Saving Recycling charge "+recStr);
+					u.showToast(v,"Saving Recycling charge €"+recStr);
 				}
 
 			}
@@ -139,7 +143,7 @@ public class AppSetup extends Activity {
 			@Override
 			public void onClick(View view) {
 				String s;
-				s = isThereStringTosave();
+				s = isThereStringTosave(view);
 				if(s != null) {
 					editor.putString(getResources().getString(R.string.chk_vat), s);
 					editor.commit();
@@ -180,21 +184,24 @@ public class AppSetup extends Activity {
 		finish();
 	}
 	
-	private String isThereStringTosave() {
+	private String isThereStringTosave(View view) {
 		String s  = vatET.getText().toString();
 		if(s.isEmpty() && vatSETSaved.isEmpty()) {
 			//if both empty display messgage prompt
-			u.showDialog(this,"No vat value saved and typed in. By default VAT will be set to "
+			u.showToast(view, "No vat value saved and typed in. By default VAT will be set to "
 					+getResources().getString(R.string.vat_default)
 					+getResources().getString(R.string.percent));
+//			u.showDialog(this,"No vat value saved and typed in. By default VAT will be set to "
+//					+getResources().getString(R.string.vat_default)
+//					+getResources().getString(R.string.percent));
 			return null;
 		} else if(s.isEmpty()) {
 			//if et empty and saved has some value save it
-            u.showDialog(this,"Vat value set at "+vatSETSaved+"%");
+            u.showToast(view,"Vat value set at "+vatSETSaved+"%");
 			return vatSETSaved;
 		} else if(!s.isEmpty()) {
 			//if et not empty save it
-            u.showDialog(this,"Vat saved at "+s + "%");
+            u.showToast(view,"Vat saved at "+s + "%");
 			return s;
 		}
 		return null;

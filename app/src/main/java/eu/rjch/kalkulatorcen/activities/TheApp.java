@@ -42,7 +42,6 @@ public class TheApp  extends Activity {
 		super.onCreate(savedInstanceState);
 		pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 		boolean vert = pref.getBoolean(getResources().getString(R.string.orien),false);
-		Log.d("WWW", "orientation "+ vert);
 
 		if(vert)
 			setContentView(R.layout.app_layout_v);

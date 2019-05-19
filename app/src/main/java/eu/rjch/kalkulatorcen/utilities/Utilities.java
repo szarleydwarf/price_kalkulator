@@ -3,7 +3,13 @@ package eu.rjch.kalkulatorcen.utilities;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import eu.rjch.kalkulatorcen.R;
 
 public class Utilities {
     public Utilities() {
@@ -27,6 +33,12 @@ public class Utilities {
     }
 
     public void showToast(View v, String msg) {
-
+        LayoutInflater lf = (LayoutInflater)v.getContext().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+        View ctv = lf.inflate(R.layout.toaster, null);
+        ((TextView) ctv.findViewById(R.id.msg)).setText(msg);
+        Toast t = Toast.makeText(ctv.getContext(), "", Toast.LENGTH_LONG);
+        t.setGravity(Gravity.CENTER_VERTICAL,0 ,0);
+        t.setView(ctv);
+        t.show();
     }
 }
