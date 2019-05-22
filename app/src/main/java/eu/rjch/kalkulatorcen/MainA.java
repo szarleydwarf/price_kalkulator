@@ -12,12 +12,14 @@ import eu.rjch.kalkulatorcen.activities.TheApp;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.MobileAds;
+import io.fabric.sdk.android.Fabric;
 
 public class MainA extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Fabric.with(this, new Crashlytics());
 		setContentView(R.layout.act_main);
 		Crashlytics.log(1, "MainApp", "Something went wrong on start MainApp");
 

@@ -40,6 +40,9 @@
 			android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
 			/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="647eeeef4b6a72bb3977a882c4d26d74a9fd93fa" />
     </application>
 
 </manifest>
