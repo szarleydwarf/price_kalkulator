@@ -1,0 +1,119 @@
+<resources>
+	<string name="app_name">Kalkulator cen v.1.5</string>
+	<string name="ad_mob_id">ca-app-pub-1421069741839692~9245051310</string>
+<!--	<string name="ad_mob_test">ca-app-pub-3940256099942544/6300978111</string>-->
+	<string name="ad_mob_banner">ca-app-pub-1421069741839692/5923919254</string>
+	
+	<string name="todo">TODO</string>
+	<string name="cost">Pokaz Koszt</string>
+	<string name="price">Pokaz Cene</string>
+	<string name="price_prev">Cena Koncowa</string>
+	<string name="zeros">€ 0.00</string>
+	<string name="chk_vat">VAT</string>
+	<string name="chk_vemc">Recykling € </string>
+	<string name="profit_spinner_title">Zysk</string>
+	<string name="transport">Domyslnay koszt transportu wynosi € 0.50 # lub wprowadz swoja wartosc ponizej.</string>
+	<string name="vat_default">23</string>
+	<string name="hint_price">Wpisz cene</string>
+	<string name="hint_transport">Wpisz koszt transportu</string>
+	<string name="chk_transport">Koszt transportu</string>
+	<string name="percent">%</string>
+	<string name="calculate_btn">"OBLICZ"</string>
+	<string name="vat_setting">Wprowadz ponizej wartosci dla Vatu, kosztu recyklingu odpowiednie dla twojego kraju. Mozesz takze ustawic maksymalny procent zysku.</string>
+	<string name="savebtn">ZAPISZ</string>
+	<string name="vat_setting_ev">Wprowadz wartosc VAT</string>
+	<string name="first_use">first_use</string>
+	<string name="setting">Ustawienia</string>
+	<string name="contact_team">Napis do nas</string>
+	<string name="back">POWROT</string>
+	<string name="email_msg_1">Prosze pozostaw ponizsze informacje aby nasi technicy mogli latwiej znalezc przyczyne bledu i ja poprawic. Opisz swoj problem ponizej.</string>
+    <string name="send_email">Wyslij</string>
+	<string name="recycling_et">Wprowadz koszt recyklingu</string>
+	<string name="recycling">koszt recyklingu</string>
+	<string name="rec_defaoult">3.44</string>
+	<string name="eula_title">End-User License Agreement (EULA)</string>
+	<string name="ok_btn">OK</string>
+	<string name="seek_bar_hint">Uzyj suwaka ponizej dla dokladniejszego ustawienia procent zysku.</string>
+	<string name="max_profit_et">Wprowadz maksymalny zysk</string>
+	<string name="max_profit">max profit</string>
+	<string name="profit_at">Zysk @</string>
+	<string name="hide_net">Przelacz widocznosc ceny</string>
+	<string name="orien">orientation</string>
+	<string name="layout_chooser">Wybierz wyglad z dostepnych ponizej</string>
+    <string name="horizontal">Poziomy</string>
+    <string name="vertical">Pionowy</string>
+
+
+	<string-array name="profit_list">
+		<item>5</item>
+		<item>10</item>
+		<item>15</item>
+		<item>20</item>
+		<item>25</item>
+		<item>30</item>
+		<item>35</item>
+		<item>40</item>
+		<item>45</item>
+		<item>50</item>
+		<item>55</item>
+		<item>60</item>
+		<item>65</item>
+		<item>70</item>
+		<item>75</item>
+		<item>80</item>
+		<item>90</item>
+		<item>100</item>
+		<item>125</item>
+		<item>150</item>
+		<item>175</item>
+		<item>200</item>
+	</string-array>
+	
+<string name="eula"><h2>End-User License Agreement (EULA) of <span class="app_name">Price calculator</span></h2>
+	
+	<p>Ten document End-User License Agreement ("EULA") jest legalna umowa pomiedzy uzytkownikiem a  <span class="company_name">Non Profit</span></p>
+	
+	<p>Ta EULA umowa zarzadza nabyciem oraz uzywaniem naszej aplikacji <span class="app_name">Price calculator</span> ("Applikacja") bezposrednio od <span class="company_name">Non Profit</span> lub posrednio od <span class="company_name">Non Profit</span> bezposredniego sprzedawcy lub dystrybutora ( "Dystrybutor").</p>
+	
+	<p>Przeczytaj, prosze, uwaznie ponizsza umowe zanim zainstalujesz aplikacje <span class="app_name">Price calculator</span>. Zawiera ona licencje pozwalajaca na uzywanie aplikacji <span class="app_name">Price calculator</span> oraz informacje gwarancyjne i wylaczenia odpowiedzialnosci cywilnej.</p>
+	
+	<p>Jezeli zarejestrowales sie na darmowy test aplikacji <span class="app_name">Price calculator</span>, ta umowa EULA reguluje takze ten test. Poprzez klikniecie na przycisk "Akceptuje" lub/oraz poprzez uzywanie aplikacji  <span class="app_name">Price calculator</span>, potwierdzasz akceptację Aplikacji i zgadzasz się na warunki niniejszej umowy EULA .</p>
+	
+	<p>Jeśli przystępujesz do niniejszej umowy EULA w imieniu firmy lub innej osoby prawnej, oświadczasz, że masz prawo do powiązania takiego podmiotu i jego podmiotów stowarzyszonych z tymi warunkami. Jeśli nie masz takich uprawnień lub nie zgadzasz się z warunkami niniejszej umowy EULA, nie instaluj ani nie korzystaj z Aplikacji. Nie możesz tez zaakceptować tej umowy EULA.</p>
+	
+	<p>Niniejsza umowa EULA ma zastosowanie tylko do Aplikacji dostarczonego przez <span class="company_name">Non Profit</span> niniejszym, niezależnie od tego, czy inne oprogramowanie jest tutaj wspominane lub opisane. Warunki umowy dotycza rowniez <span class="company_name">Non Profit</span> aktualizacje, uzupełnienia, usługi internetowe i usługi pomocy technicznej do Aplikacji, chyba że te elementy towarzyszą innym dostawom. W takim przypadku obowiazuja warunki tej umowy. Ten dokument EULA zostal stworzony za pomoca <a href="https://eulatemplate.com">EULA Template</a> na potrzeby aplikacji <span class="app_name">Price calculator</span>.</p>
+	
+	<h3>Licencja</h3>
+	
+	<p><span class="company_name">Non Profit</span>niniejszym udziela osobistej, nieprzenoszalnej, niewyłącznej licencji na korzystanie z aplikacji <span class="app_name">Price calculator</span> na twoich urządzeniach zgodnie z warunkami niniejszej umowy EULA.</p>
+	
+	<p>Mozesz sciagnac i zainstalowac aplikacje <span class="app_name">Price calculator</span> na uzadzenia znajdujace sie w twoim posiadaniu (takie jak PC, laptop, smartfon lub tablet). Jestes odpowiedzialny aby  twoje uzadzenie, na ktorym chcesz ainstalowac aplikacje <span class="app_name">Price calculator</span> spelnialo minimalne wymagania aplikacji.</p>
+	
+	<p>Nie zezwala sie natomiast na:</p>
+	
+	<ul>
+		<li>Edytować, zmieniac, modyfikować, dostosowywać, tłumaczyć lub w inny sposób zmieniać całość lub część Aplikacji, ani też zezwalać na łączenie całości lub jakiejkolwiek części Aplikacji z innym oprogramowaniem, integrację z nim lub dekompilację, dezasemblację lub inżynierię wsteczną Aplikacji lub prób zrobienia ktorejkolwiek z powyzej wymienionych czynnosci</li>
+		<li>Reprodukcje, kopiowanie, rozpowszechnianie, odsprzedawanie lub wykorzytywanie w inny sposób z Aplikacji do jakichkolwiek celów komercyjnych</li>
+		<li>Zezwalania osobom trzecim na korzystanie z Aplikacji, w imieniu lub na rzecz osób trzecich</li>
+		<li>Korzystania z Aplikacji w jakikolwiek sposób naruszający obowiązujące prawo lokalne, krajowe lub międzynarodowe</li>
+		<li>Korzystania z Aplikacji w jakikolwiek sposób naruszający warunki tej umowy EULA z <span class="company_name">Non Profit</span></li>
+	</ul>
+	
+	<h3>Własność intelektualna i prawo własności</h3>
+	
+	<p><span class="company_name">Non Profit</span> przez cały czas zachowuje prawo własności do Aplikacji pobranej pierwotnie przez Ciebie oraz wszystkich kolejnych pobrań Aplikacji przez Ciebie. Aplikacja (i prawa autorskie oraz inne prawa własności intelektualnej o dowolnym charakterze w Aplikacji, w tym wszelkie dokonane w nim modyfikacje) są i pozostaną własnością <span class="company_name">Non Profit</span>.</p>
+	
+	<p><span class="company_name">Non Profit</span> zastrzega sobie prawo do udzielania licencji na używanie Aplikacji osobom trzecim.</p>
+	
+	<h3>Wypowiedzenie warunkow EULA</h3>
+	
+	<p>Niniejsza umowa EULA obowiązuje od dnia, w którym po raz pierwszy korzystasz z Aplikacji, i będzie obowiązywać do momentu rozwiązania. Użytkownik może rozwiązać umowę w dowolnym momencie za pisemnym powiadomieniem <span class="company_name">Non Profit</span>.</p>
+	
+	<p>Umowa wygasa również natychmiast, jeśli nie spełnisz któregokolwiek z warunków niniejszej umowy EULA. Po takim wygaśnięciu licencje udzielone na mocy niniejszej umowy EULA wygasają natychmiast, a użytkownik zgadza się zaprzestać dostępu do oprogramowania i korzystania z niego. Postanowienia, które ze swej natury są kontynuowane i przetrwają, przetrwają każde wypowiedzenie niniejszej umowy EULA.</p>
+	
+	<h3>Prawo rządowe</h3>
+	
+	<p>Niniejsza umowa EULA oraz wszelkie spory wynikające z niniejszej umowy EULA lub w związku z nią będą regulowane i interpretowane zgodnie z przepisami prawa <span class="country">Irlandii</span>.</p>
+</string>
+
+</resources>

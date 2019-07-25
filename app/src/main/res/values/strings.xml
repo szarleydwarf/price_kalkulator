@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Kalkulator cen v.1.5</string>
+	<string name="app_name">Price Calculator v.1.5</string>
 	<string name="ad_mob_id">ca-app-pub-1421069741839692~9245051310</string>
 <!--	<string name="ad_mob_test">ca-app-pub-3940256099942544/6300978111</string>-->
 	<string name="ad_mob_banner">ca-app-pub-1421069741839692/5923919254</string>
@@ -40,6 +40,9 @@
 	<string name="profit_at">Profit @</string>
 	<string name="hide_net">Toggle Price</string>
 	<string name="orien">orientation</string>
+	<string name="layout_chooser">Chose one of the layouts of the app</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="vertical">Vertical</string>
 
 
 	<string-array name="profit_list">
@@ -111,10 +114,7 @@
 	
 	<h3>Governing Law</h3>
 	
-	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">af</span>.</p>
+	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">Ireland</span>.</p>
 </string>
-	<string name="layout_chooser">Chose one of the layouts of the app</string>
-    <string name="horizontal">Horizontal</string>
-    <string name="vertical">Vertical</string>
 
 </resources>
