@@ -23,8 +23,9 @@ class PriceCalculatorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        var v = inflater.inflate(R.layout.price_calculator_fragment, container, false)
         runApp()
-        return inflater.inflate(R.layout.price_calculator_fragment, container, false)
+        return v
     }
 
     private fun runApp() {
@@ -32,15 +33,18 @@ class PriceCalculatorFragment : Fragment() {
         var editor = pref?.edit() as SharedPreferences.Editor
         var firstUseS = resources.getString(R.string.first_use)
         var firstUseB = pref.getBoolean(firstUseS, true)
+        editor.putBoolean(firstUseS, true)
+        editor.commit()
         Log.d(TAG, "Running Price Fragment $firstUseS / $firstUseB")
         if(firstUseB) {
             editor.putBoolean(firstUseS, false)
-            editor.commit()
 
-            var i = Intent(context, PriceCalculatorSetup::class.java)
-            startActivity(i)
+            var fragTrans = activity?.supportFragmentManager?.beginTransaction()
+            fragTrans?.replace(R.id.container_price_calculator, PriceCalculatorSetupFragment())
+            fragTrans?.addToBackStack(null)?.commit()
+
         } else {
-//            TODO the app activity intent
+//            TODO the app activity fragment
         }
 
     }

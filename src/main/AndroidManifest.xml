@@ -21,7 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".PriceCalculatorActivity"></activity>
-        <activity android:name=".price_calculator.PriceCalculatorSetup"></activity>
     </application>
 
 </manifest>
