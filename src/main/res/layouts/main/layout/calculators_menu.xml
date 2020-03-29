@@ -1,33 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    >
 
-    <Button
-        android:id="@+id/price_calculator_btn"
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_15"
-        android:background="@android:color/transparent"
-        android:text="@string/price_calculator"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_gravity="top"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:layout_marginRight="@dimen/margin_15"
+        >
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
 
-    <Button
-        android:id="@+id/other_calculator_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_15"
-        android:background="@android:color/transparent"
-        android:text="@string/other_calculator"
+    <!-- price_calc_btn_layout -->
+        <LinearLayout
+            android:id="@+id/price_calc_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:id="@+id/price_calculator_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/max_btn_height"
+                android:layout_margin="@dimen/margin_15"
+                android:background="@drawable/skew_btn"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/white"
+                android:text="@string/price_calculator"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price_calculator_btn"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                />
+        </LinearLayout>
+
+<!-- other_calc_layout -->
+        <LinearLayout
+            android:id="@+id/other_calc_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/price_calc_btn_layout"
+            >
+            <Button
+                android:id="@+id/other_calculator_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/max_btn_height"
+                android:layout_margin="@dimen/margin_15"
+                android:background="@drawable/skew_btn"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/white"
+                android:text="@string/other_calculator"
+
+                />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

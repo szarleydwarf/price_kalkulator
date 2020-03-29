@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Kalkulatory</string>
-    <string name="skip"><![CDATA[Skip >>]]></string>
+    <string name="app_name">Kalkulatory V.2.0</string>
+    <string name="skip">Skip >></string>
     <string name="price_calculator">Price Calculator</string>
     <string name="other_calculator">Other</string>
     <string name="price_calc_pref">PriceCalcPref</string>
