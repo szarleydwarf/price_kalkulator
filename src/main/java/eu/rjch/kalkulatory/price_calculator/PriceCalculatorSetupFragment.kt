@@ -27,7 +27,12 @@ class PriceCalculatorSetupFragment : Fragment(){
     }
 
     private fun runApp(v: View) {
-        v.btn_price_calculator_values.setOnClickListener { AnimationManager().didTapButon(v.btn_price_calculator_values, context, R.anim.bounce) }
-        v.btn_price_calculator_appearance.setOnClickListener { AnimationManager().didTapButon(v.btn_price_calculator_appearance, context, R.anim.bounce) }
+        val amp = 0.2
+        val freq = 20.0
+        v.btn_price_calculator_values.setOnClickListener { AnimationManager().didTapButonInterpolate(
+                v.btn_price_calculator_values, context, R.anim.bounce,
+                amp, freq) }
+        v.btn_price_calculator_appearance.setOnClickListener { AnimationManager().didTapButonInterpolate(
+                v.btn_price_calculator_appearance, context, R.anim.bounce, amp, freq) }
     }
 }

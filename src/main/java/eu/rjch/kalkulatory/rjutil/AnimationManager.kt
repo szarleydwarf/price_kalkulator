@@ -2,6 +2,7 @@ package eu.rjch.kalkulatory.rjutil
 
 import android.content.Context
 import android.view.animation.AnimationUtils
+import android.view.animation.Interpolator
 import android.widget.Button
 
 class AnimationManager {
@@ -11,14 +12,23 @@ class AnimationManager {
         btn.startAnimation(anim)
     }
 
-    fun didTapButonInterpolate(btn: Button, ctx: Context?, animationId: Int) {
+    fun didTapButonInterpolate(btn: Button, ctx: Context?, animationId: Int,
+                              amplitude:Double, frequency:Double) {
         val anim = AnimationUtils.loadAnimation(ctx, animationId)
-        anim.setInterpolator { interpolate(2500f, 0.2f, 20f) }
+        val interpolator = MyInterpolator(amplitude, frequency)
+        anim.interpolator = interpolator
         btn.startAnimation(anim)
     }
 
 
-    fun interpolate(time: Float, amplitude: Float, frequency : Float) : Float{
-        return ((-1 * Math.pow(Math.E, (-time / amplitude).toDouble()) * Math.cos((frequency * time).toDouble()) + 1).toFloat())
+}
+
+class MyInterpolator(amplitude: Double, frequency:Double) : Interpolator {
+    val amp : Double = amplitude
+    val freq : Double = frequency
+
+    override fun getInterpolation(time: Float) : Float{
+        return ((-1 * Math.pow(Math.E, (-time / amp).toDouble()) * Math.cos((freq * time).toDouble()) + 1).toFloat())
     }
+
 }
