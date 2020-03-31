@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">Kalkulatory V.2.0</string>
+    <string name="ad_mob_id">ca-app-pub-1421069741839692~9245051310</string>
+    <string name="ad_mob_test">ca-app-pub-3940256099942544~6300978111</string>
+    <string name="ad_mob_banner">ca-app-pub-1421069741839692/5923919254</string>
+
     <string name="skip">Skip >></string>
     <string name="price_calculator">Price Calculator</string>
     <string name="other_calculator">Other</string>
     <string name="price_calc_pref">PriceCalcPref</string>
     <string name="first_use">first_use</string>
+    <string name="values_btn_text">Values</string>
+    <string name="appearance_btn_text">Appearance</string>
+    <string name="eula_btn_text">EULA</string>
+    <string name="contact_btn_text">Contact developers</string>
+    <string name="go_back_btn_text">Back</string>
+    <string name="home_btn_text">Home</string>
 </resources>

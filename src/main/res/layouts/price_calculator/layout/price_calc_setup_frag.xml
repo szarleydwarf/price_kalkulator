@@ -13,8 +13,8 @@
     android:background="@color/white"
     android:orientation="horizontal"
     android:layout_gravity="top"
-    android:layout_marginLeft="@dimen/margin_15"
-    android:layout_marginRight="@dimen/margin_15"
+    android:layout_marginLeft="@dimen/margin_10"
+    android:layout_marginRight="@dimen/margin_10"
     >
 
         <!--todo values_btn_layout-->
@@ -23,19 +23,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
             >
-<!--            android:layout_below="@+id/app_name_layout"
--->
+
             <Button
                 android:id="@+id/btn_price_calculator_values"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/max_btn_height"
                 android:background="@drawable/skew_btn"
-                android:layout_margin="@dimen/margin_15"
                 android:textSize="@dimen/medium_text"
                 android:textColor="@color/white"
-                android:text="@string/other_calculator"
+                android:text="@string/values_btn_text"
                 />
 
         </LinearLayout>
@@ -46,8 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margin_15"
-            android:background="@drawable/blue_bcg_border"
+            android:layout_marginTop="@dimen/margin_10"
             android:layout_below="@+id/values_btn_layout"
             >
             <Button
@@ -55,23 +52,116 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/max_btn_height"
                 android:background="@drawable/skew_btn"
-                android:layout_margin="@dimen/margin_15"
                 android:textSize="@dimen/medium_text"
                 android:textColor="@color/white"
-                android:text="@string/other_calculator"
+                android:text="@string/appearance_btn_text"
                 />
 
         </LinearLayout>
 
         <!--todo eula_btn_layout-->
+        <LinearLayout
+            android:id="@+id/eula_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_below="@+id/appearance_btn_layout"
+            >
+
+            <Button
+                android:id="@+id/btn_eula"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/max_btn_height"
+                android:background="@drawable/skew_btn"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/white"
+                android:text="@string/eula_btn_text"
+                />
+
+        </LinearLayout>
+
 
         <!--todo contact_layout-->
+        <LinearLayout
+            android:id="@+id/contact_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_below="@+id/eula_btn_layout"
+            >
+
+            <Button
+                android:id="@+id/btn_contact"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/max_btn_height"
+                android:background="@drawable/skew_btn"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/white"
+                android:text="@string/contact_btn_text"
+                />
+
+        </LinearLayout>
 
         <!--todo other apps-->
 
         <!--todo go_back_layout-->
+        <LinearLayout
+            android:id="@+id/go_back_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_below="@+id/contact_btn_layout"
+            >
 
-        <!--todo google add layout-->
+            <Button
+                android:id="@+id/btn_go_back"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/max_btn_height"
+                android:background="@drawable/skew_btn"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/white"
+                android:text="@string/go_back_btn_text"
+                />
 
+        </LinearLayout>
+
+        <!-- todo home_layout -->
+        <LinearLayout
+            android:id="@+id/home_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_below="@+id/go_back_btn_layout"
+            >
+
+            <Button
+                android:id="@+id/btn_home"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/max_btn_height"
+                android:background="@drawable/skew_btn"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/white"
+                android:text="@string/home_btn_text"
+                />
+
+        </LinearLayout>
+
+        <!--google add layout-->
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adViewB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/home_btn_layout"
+            android:layout_marginTop="5dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ad_mob_banner">
+        </com.google.android.gms.ads.AdView>
     </RelativeLayout>
 </ScrollView>

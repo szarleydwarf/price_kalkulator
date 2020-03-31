@@ -9,7 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.MobileAds
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.rjutil.AdsHandler
 
 
 class PriceCalculatorFragment : Fragment() {
@@ -24,8 +26,15 @@ class PriceCalculatorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         var v = inflater.inflate(R.layout.price_calculator_fragment, container, false)
+        loadAds(v)
         runApp()
         return v
+    }
+
+    private fun loadAds(v: View?) {
+        MobileAds.initialize(context){}
+        val ah = AdsHandler()
+        ah.getAds(v?.findViewById(R.id.adViewB)!!)
     }
 
     private fun runApp() {

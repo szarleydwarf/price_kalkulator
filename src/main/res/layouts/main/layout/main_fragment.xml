@@ -30,6 +30,6 @@
         android:layout_alignParentEnd="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/margin_15"
+        android:layout_margin="@dimen/margin_10"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

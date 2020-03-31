@@ -13,8 +13,8 @@
         android:background="@color/white"
         android:orientation="horizontal"
         android:layout_gravity="top"
-        android:layout_marginLeft="@dimen/margin_15"
-        android:layout_marginRight="@dimen/margin_15"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
         >
 
 
@@ -29,7 +29,7 @@
                 android:id="@+id/price_calculator_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/max_btn_height"
-                android:layout_margin="@dimen/margin_15"
+                android:layout_margin="@dimen/margin_10"
                 android:background="@drawable/skew_btn"
                 android:textSize="@dimen/medium_text"
                 android:textColor="@color/white"
@@ -50,7 +50,7 @@
                 android:id="@+id/other_calculator_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/max_btn_height"
-                android:layout_margin="@dimen/margin_15"
+                android:layout_margin="@dimen/margin_10"
                 android:background="@drawable/skew_btn"
                 android:textSize="@dimen/medium_text"
                 android:textColor="@color/white"
@@ -58,5 +58,20 @@
 
                 />
         </LinearLayout>
+
+
+        <!--google add layout-->
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adViewB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/home_btn_layout"
+            android:layout_marginTop="5dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ad_mob_banner">
+        </com.google.android.gms.ads.AdView>
     </RelativeLayout>
 </ScrollView>

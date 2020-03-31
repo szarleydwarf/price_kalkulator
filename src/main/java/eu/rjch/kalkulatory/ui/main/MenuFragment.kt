@@ -8,11 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.MobileAds
 import eu.rjch.kalkulatory.PriceCalculatorActivity
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import kotlinx.android.synthetic.main.calculators_menu.view.*
-import kotlinx.android.synthetic.main.price_calc_setup_frag.view.*
 import java.lang.ClassCastException
 
 class MenuFragment : Fragment() {
@@ -33,12 +34,14 @@ class MenuFragment : Fragment() {
 
         v.price_calculator_btn.setOnClickListener{btnClicked(v, R.id.price_calculator_btn)}
         v.other_calculator_btn.setOnClickListener { btnClicked(v, R.id.other_calculator_btn) }
-
+        MobileAds.initialize(context){}
+        val ah = AdsHandler()
+        ah.getAds(v.adViewB)
         return v
     }
 
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
             actCallback = context as MenuFragment.btnListener
