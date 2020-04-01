@@ -20,10 +20,6 @@ class MainFragment : Fragment() {
     companion object {
         fun newInstance() = MainFragment()
     }
-//    var actCallback : MainFragment.videoListener? = null
-//    interface videoListener {
-//        fun onVideoEnd()
-//    }
 
     private val TAG = "MAINFRAGMENT"
 
@@ -35,7 +31,6 @@ class MainFragment : Fragment() {
 
         val path = "android.resource://"+context?.packageName+"/"+R.raw.intro
         rv.vv_intro.setVideoURI(Uri.parse(path))
-        Log.d(TAG, "1 Running Main Fragment")
         if(!rv.vv_intro.isPlaying)
             rv.vv_intro.start()
 
@@ -50,7 +45,7 @@ class MainFragment : Fragment() {
     private fun switchFragment() {
         var menuFragment = MenuFragment()
         var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.container, menuFragment)
+        fragTransaction?.replace(R.id.main_act_container, menuFragment)
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }

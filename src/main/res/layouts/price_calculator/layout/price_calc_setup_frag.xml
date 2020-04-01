@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+
+    >
+<ScrollView
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="horizontal"
+    android:layout_marginBottom="@dimen/max_btn_height"
     >
 
     <RelativeLayout
@@ -150,18 +159,23 @@
 
         </LinearLayout>
 
-        <!--google add layout-->
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adViewB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/home_btn_layout"
-            android:layout_marginTop="5dp"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/ad_mob_banner">
-        </com.google.android.gms.ads.AdView>
     </RelativeLayout>
 </ScrollView>
+
+    <!--google add layout-->
+<com.google.android.gms.ads.AdView
+    android:id="@+id/adViewB"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/blue_bcg_border"
+    android:layout_marginTop="5dp"
+    ads:layout_constraintBottom_toBottomOf="parent"
+    ads:layout_constraintStart_toStartOf="parent"
+    ads:layout_constraintEnd_toEndOf="parent"
+    ads:layout_constraintTop_toBottomOf="@+id/scroll_view"
+    ads:adSize="BANNER"
+    ads:adUnitId="@string/ad_mob_test"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>

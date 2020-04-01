@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import kotlinx.android.synthetic.main.price_calc_setup_frag.*
 import kotlinx.android.synthetic.main.price_calc_setup_frag.view.*
@@ -22,8 +23,15 @@ class PriceCalculatorSetupFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.price_calc_setup_frag, container, false)
+
+        loadAds(v)
         runApp(v)
         return v
+    }
+
+
+    private fun loadAds(v: View?) {
+        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
     }
 
     private fun runApp(v: View) {

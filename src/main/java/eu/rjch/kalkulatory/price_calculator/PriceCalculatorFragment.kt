@@ -1,7 +1,6 @@
 package eu.rjch.kalkulatory.price_calculator
 
 import android.content.Context.MODE_PRIVATE
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -32,9 +31,7 @@ class PriceCalculatorFragment : Fragment() {
     }
 
     private fun loadAds(v: View?) {
-        MobileAds.initialize(context){}
-        val ah = AdsHandler()
-        ah.getAds(v?.findViewById(R.id.adViewB)!!)
+        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
     }
 
     private fun runApp() {
