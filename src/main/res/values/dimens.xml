@@ -7,4 +7,5 @@
     <dimen name="radius_small">5dp</dimen>
     <dimen name="border_width" format="float">1.5dp</dimen>
     <dimen name="max_btn_height">56dp</dimen>
+    <dimen name="max_btn_height_2">112dp</dimen>
 </resources>

@@ -15,4 +15,5 @@
     <string name="contact_btn_text">Contact developers</string>
     <string name="go_back_btn_text">Back</string>
     <string name="home_btn_text">Home</string>
+    <string name="eula">todo copy eula text here</string>
 </resources>

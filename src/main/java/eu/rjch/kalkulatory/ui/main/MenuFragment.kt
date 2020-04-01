@@ -73,4 +73,3 @@ class MenuFragment : Fragment() {
     }
 
 }
-//PriceCalculatorActivity::class.java
