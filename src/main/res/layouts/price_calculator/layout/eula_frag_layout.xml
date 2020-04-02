@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    >
+    android:layout_height="match_parent">
 
     <ScrollView
         android:id="@+id/scroll_view"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/max_btn_height_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_10"
         android:background="@color/white"
         android:orientation="horizontal"
+        ads:layout_constraintBottom_toTopOf="@+id/linear_layout"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toTopOf="parent"
-        ads:layout_constraintBottom_toTopOf="@id/relativeLayout">
+        ads:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/medium_text"
-            android:textColor="@color/black"
+            android:padding="@dimen/margin_10"
             android:text="@string/eula"
-            />
+            android:textColor="@color/black"
+            android:textSize="@dimen/medium_text" />
     </ScrollView>
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        ads:layout_constraintBottom_toTopOf="@+id/adViewB"
         ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toBottomOf="@+id/scroll_view"
-        ads:layout_constraintBottom_toTopOf="@id/adViewB"
-        >
+        ads:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btn_go_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/back_btn_width"
+            android:layout_height="@dimen/max_btn_height"
+            android:background="@drawable/skew_btn"
+            android:alpha="0.5"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text"
             android:text="@string/go_back_btn_text" />
-    </RelativeLayout>
+    </LinearLayout>
     <!--google add layout-->
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewB"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/blue_bcg_border"
         ads:adSize="BANNER"
         ads:adUnitId="@string/ad_mob_test"
-        ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        ads:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,11 @@ import eu.rjch.kalkulatory.ui.main.MenuFragment
 class MainActivity : AppCompatActivity(), MenuFragment.btnListener {
     private val TAG = "MAIN"
 
+    companion object{
+        val amp = 0.2
+        val freq = 20.0
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
