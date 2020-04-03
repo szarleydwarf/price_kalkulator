@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import kotlinx.android.synthetic.main.eula_frag_layout.view.*
 import kotlinx.android.synthetic.main.eula_frag_layout.view.btn_go_back
@@ -22,6 +23,7 @@ class EulaFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.eula_frag_layout, container, false)
 
+        AdsHandler().getAds(v.findViewById(R.id.adViewB)!!)
 
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)

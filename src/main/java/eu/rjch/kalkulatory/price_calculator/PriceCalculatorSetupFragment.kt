@@ -1,7 +1,7 @@
 package eu.rjch.kalkulatory.price_calculator
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
-import kotlinx.android.synthetic.main.price_calc_setup_frag.*
+import eu.rjch.kalkulatory.rjutil.EmailHandler
 import kotlinx.android.synthetic.main.price_calc_setup_frag.view.*
 
 class PriceCalculatorSetupFragment : Fragment(){
@@ -24,35 +24,46 @@ class PriceCalculatorSetupFragment : Fragment(){
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.price_calc_setup_frag, container, false)
 
-        loadAds(v)
+        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
+
         runApp(v)
         return v
     }
 
-
-    private fun loadAds(v: View?) {
-        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
-    }
 
     private fun runApp(v: View) {
         val amp = 0.2
         val freq = 20.0
         v.btn_price_calculator_values.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_price_calculator_values, context, R.anim.bounce, amp, freq) }
+
         v.btn_price_calculator_appearance.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_price_calculator_appearance, context, R.anim.bounce, amp, freq) }
+
         v.btn_eula.setOnClickListener {
             AnimationManager().didTapButonInterpolate(
                 v.btn_eula, context, R.anim.bounce, amp, freq )
             switchFragment(EulaFragment())
         }
+
         v.btn_contact.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_contact, context, R.anim.bounce, amp, freq) }
+                v.btn_contact, context, R.anim.bounce, amp, freq)
+            sendEmail()
+        }
+
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, amp, freq) }
+
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_home, context, R.anim.bounce, amp, freq) }
 
+    }
+
+    private fun sendEmail() {
+        val subject = resources.getString(R.string.email_subject)
+        val eh = EmailHandler()
+        startActivity(Intent.createChooser(eh.sendEmail(subject, resources),
+                R.string.choose_email_option.toString()))
     }
 
     private fun switchFragment(frag : Fragment) {

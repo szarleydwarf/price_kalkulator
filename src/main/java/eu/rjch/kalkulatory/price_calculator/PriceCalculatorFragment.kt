@@ -25,13 +25,11 @@ class PriceCalculatorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         var v = inflater.inflate(R.layout.price_calculator_fragment, container, false)
-        loadAds(v)
+
+        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
+
         runApp()
         return v
-    }
-
-    private fun loadAds(v: View?) {
-        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
     }
 
     private fun runApp() {
