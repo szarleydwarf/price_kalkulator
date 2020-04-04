@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
@@ -26,7 +27,13 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private fun runApp(v: View) {
-        TODO("Not yet implemented")
+        Toast.makeText(context, "Ole !!!", Toast.LENGTH_LONG).show()
+        /*
+        PCAppearanceFragment
+- implementing layout
+
+added icons for
+        * */
     }
 
 }

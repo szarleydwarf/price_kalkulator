@@ -20,16 +20,49 @@
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
         >
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/margin_10"
-            android:text="@string/eula"
-            android:textColor="@color/black"
-            android:textSize="@dimen/medium_text"
-            />
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_gravity="top"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            >
+            <!-- settings_icon_layout-->
+            <LinearLayout
+                android:id="@+id/eula_icon_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/eula"
+                    android:contentDescription="@string/menu_icon"
+                    />
 
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/eula_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_below="@+id/eula_icon_layout"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_10"
+                    android:text="@string/eula"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
     <LinearLayout

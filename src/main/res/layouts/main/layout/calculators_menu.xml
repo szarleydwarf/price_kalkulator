@@ -26,6 +26,22 @@
         android:layout_marginLeft="@dimen/margin_10"
         android:layout_marginRight="@dimen/margin_10"
         >
+        <!-- app_icon_layout-->
+        <LinearLayout
+            android:id="@+id/app_icon_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic_launcher"
+                android:contentDescription="@string/menu_icon"
+                />
+
+        </LinearLayout>
 
 
     <!-- price_calc_btn_layout -->
@@ -34,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_below="@id/app_icon_layout"
             >
             <Button
                 android:id="@+id/price_calculator_btn"

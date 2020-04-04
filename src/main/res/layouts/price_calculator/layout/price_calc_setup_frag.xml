@@ -25,14 +25,31 @@
     android:layout_marginLeft="@dimen/margin_10"
     android:layout_marginRight="@dimen/margin_10"
     >
+        <!-- settings_icon_layout-->
+        <LinearLayout
+            android:id="@+id/settings_icon_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/settings_64"
+                android:contentDescription="@string/menu_icon"
+                />
 
-        <!--todo values_btn_layout-->
+        </LinearLayout>
+
+        <!--values_btn_layout-->
         <LinearLayout
             android:id="@+id/values_btn_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/margin_10"
+            android:layout_below="@+id/settings_icon_layout"
             >
 
             <Button
@@ -47,7 +64,7 @@
 
         </LinearLayout>
 
-        <!--todo appearance_btn_layout-->
+        <!--appearance_btn_layout-->
         <LinearLayout
             android:id="@+id/appearance_btn_layout"
             android:layout_width="match_parent"
@@ -68,7 +85,7 @@
 
         </LinearLayout>
 
-        <!--todo eula_btn_layout-->
+        <!--eula_btn_layout-->
         <LinearLayout
             android:id="@+id/eula_btn_layout"
             android:layout_width="match_parent"
@@ -91,7 +108,7 @@
         </LinearLayout>
 
 
-        <!--todo contact_layout-->
+        <!--contact_layout-->
         <LinearLayout
             android:id="@+id/contact_btn_layout"
             android:layout_width="match_parent"
@@ -113,9 +130,9 @@
 
         </LinearLayout>
 
-        <!--todo other apps-->
+        <!-- todo other apps-->
 
-        <!--todo go_back_layout-->
+        <!--go_back_layout-->
         <LinearLayout
             android:id="@+id/go_back_btn_layout"
             android:layout_width="match_parent"
@@ -137,7 +154,7 @@
 
         </LinearLayout>
 
-        <!-- todo home_layout -->
+        <!-- home_layout -->
         <LinearLayout
             android:id="@+id/home_btn_layout"
             android:layout_width="match_parent"

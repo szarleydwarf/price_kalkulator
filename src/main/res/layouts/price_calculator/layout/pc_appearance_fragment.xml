@@ -22,7 +22,7 @@
             android:layout_marginLeft="@dimen/margin_10"
             android:layout_marginRight="@dimen/margin_10"
             >
-            <!-- todo appearance_icon-->
+            <!-- appearance_icon-->
             <LinearLayout
                 android:id="@+id/appearance_icon"
                 android:layout_width="match_parent"
@@ -47,7 +47,16 @@
                 android:orientation="horizontal"
                 android:layout_below="@id/appearance_icon"
                 >
-
+                <CheckBox
+                    android:id="@+id/chkb_profit_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/profit"
+                    android:gravity="center"
+                    android:background="@drawable/blue_bcg_border"
+                    />
             </LinearLayout>
 
             <!-- todo no_of_extra_costs_layout-->
