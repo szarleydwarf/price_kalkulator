@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.price_calc_setup_frag.view.*
 class PriceCalculatorSetupFragment : Fragment(){
 
     companion object {
-        fun newInstance() = PriceCalculatorSetupFragment
+        fun newInstance() = PriceCalculatorSetupFragment()
     }
 
     private val TAG = "PRICE_C_SETUP_FR"
@@ -37,8 +37,11 @@ class PriceCalculatorSetupFragment : Fragment(){
         v.btn_price_calculator_values.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_price_calculator_values, context, R.anim.bounce, amp, freq) }
 
-        v.btn_price_calculator_appearance.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_price_calculator_appearance, context, R.anim.bounce, amp, freq) }
+        v.btn_price_calculator_appearance.setOnClickListener {
+            AnimationManager().didTapButonInterpolate(
+                v.btn_price_calculator_appearance, context, R.anim.bounce, amp, freq)
+            switchFragment(PCAppearanceFragment())
+        }
 
         v.btn_eula.setOnClickListener {
             AnimationManager().didTapButonInterpolate(

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scroll_view_pc_appearance"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_border"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/max_btn_height"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="top"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            >
+            <!-- todo appearance_icon-->
+            <LinearLayout
+                android:id="@+id/appearance_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/appearance"
+                    android:contentDescription="@string/menu_icon"
+                    />
+
+            </LinearLayout>
+
+            <!-- todo fields_to_display_layout-->
+            <LinearLayout
+                android:id="@+id/fields_to_display_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/appearance_icon"
+                >
+
+            </LinearLayout>
+
+            <!-- todo no_of_extra_costs_layout-->
+            <LinearLayout
+                android:id="@+id/no_of_extra_costs_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/fields_to_display_layout"
+                >
+
+            </LinearLayout>
+
+
+            <!-- todo orientation_layout-->
+            <LinearLayout
+                android:id="@+id/orientation_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/no_of_extra_costs_layout"
+                >
+
+            </LinearLayout>
+
+
+            <!-- todo color_scheme_layout-->
+            <LinearLayout
+                android:id="@+id/color_scheme_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/orientation_layout"
+                >
+
+            </LinearLayout>
+
+
+            <!-- todo language_layout-->
+            <LinearLayout
+                android:id="@+id/language_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/color_scheme_layout"
+                >
+
+            </LinearLayout>
+
+
+            <!-- todo ??? sounds_layout-->
+            <LinearLayout
+                android:id="@+id/sounds_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/language_layout"
+                >
+
+            </LinearLayout>
+
+
+            <!--todo go_back_layout-->
+            <LinearLayout
+                android:id="@+id/go_back_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/sounds_layout"
+                >
+
+                <Button
+                    android:id="@+id/btn_go_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/max_btn_height"
+                    android:background="@drawable/skew_btn"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/white"
+                    android:text="@string/go_back_btn_text"
+                    />
+
+            </LinearLayout>
+
+            <!-- todo home_layout -->
+            <LinearLayout
+                android:id="@+id/home_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/go_back_btn_layout"
+                >
+
+                <Button
+                    android:id="@+id/btn_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/max_btn_height"
+                    android:background="@drawable/skew_btn"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/white"
+                    android:text="@string/home_btn_text"
+                    />
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <!--google add layout-->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/blue_bcg_border"
+        android:layout_marginTop="5dp"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/scroll_view_pc_appearance"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ad_mob_test"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
