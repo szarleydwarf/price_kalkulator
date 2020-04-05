@@ -5,6 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_gravity="top"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        >
+
+
+    <!-- settings_icon_layout-->
+    <LinearLayout
+        android:id="@+id/eula_icon_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/eula"
+            android:contentDescription="@string/menu_icon"
+            />
+
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scroll_view"
@@ -16,42 +47,18 @@
         android:layout_marginBottom="@dimen/max_btn_height_2"
         android:background="@drawable/rounded_border"
         android:orientation="horizontal"
-        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintTop_toBottomOf="@id/eula_icon_layout"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/eula_icon_layout"
         >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:layout_gravity="top"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_10"
-            >
-            <!-- settings_icon_layout-->
-            <LinearLayout
-                android:id="@+id/eula_icon_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/eula"
-                    android:contentDescription="@string/menu_icon"
-                    />
 
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/eula_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_below="@+id/eula_icon_layout"
                 >
                 <TextView
                     android:layout_width="match_parent"
@@ -62,25 +69,25 @@
                     android:textSize="@dimen/medium_text"
                     />
             </LinearLayout>
-        </RelativeLayout>
     </ScrollView>
 
     <LinearLayout
         android:id="@+id/linear_layout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        ads:layout_constraintTop_toBottomOf="@+id/scroll_view"
+        ads:layout_constraintTop_toBottomOf="@id/scroll_view"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/scroll_view"
+        android:layout_marginTop="@dimen/minus_max_btn_height_2"
         >
 
         <Button
             android:id="@+id/btn_go_back"
-            android:layout_width="@dimen/back_btn_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/max_btn_height"
             android:background="@drawable/skew_btn"
-            android:alpha="0.5"
+            android:alpha="0.75"
             android:textColor="@color/white"
             android:textSize="@dimen/large_text"
             android:text="@string/go_back_btn_text"
@@ -97,10 +104,11 @@
         android:background="@drawable/blue_bcg_border"
         ads:adSize="BANNER"
         ads:adUnitId="@string/ad_mob_test"
-        ads:layout_constraintTop_toBottomOf="@+id/linear_layout"
+        ads:layout_constraintTop_toBottomOf="@id/linear_layout"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintBottom_toBottomOf="parent"
         />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout >

@@ -39,13 +39,16 @@
 
             </LinearLayout>
 
-            <!-- todo fields_to_display_layout-->
+            <!-- fields_to_display_layout-->
             <LinearLayout
                 android:id="@+id/fields_to_display_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_below="@id/appearance_icon"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginLeft="@dimen/margin_25"
+                android:layout_marginRight="@dimen/margin_25"
                 >
                 <CheckBox
                     android:id="@+id/chkb_profit_field"
@@ -56,19 +59,100 @@
                     android:text="@string/profit"
                     android:gravity="center"
                     android:background="@drawable/blue_bcg_border"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    />
+                <CheckBox
+                    android:id="@+id/chkb_tax_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/tax"
+                    android:gravity="center"
+                    android:background="@drawable/blue_bcg_border"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    />
+                <CheckBox
+                    android:id="@+id/chkb_extra_costs_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/extra_costs"
+                    android:gravity="center"
+                    android:background="@drawable/blue_bcg_border"
+                    android:layout_marginBottom="@dimen/margin_10"
                     />
             </LinearLayout>
 
             <!-- todo no_of_extra_costs_layout-->
-            <LinearLayout
-                android:id="@+id/no_of_extra_costs_layout"
+            <RadioGroup
+                android:id="@+id/rd_gr_no_of_extra_costs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/margin_25"
+                android:layout_marginRight="@dimen/margin_25"
                 android:layout_below="@id/fields_to_display_layout"
                 >
+                <RadioButton
+                    android:id="@+id/rbtn_one_extra_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/one"
+                    android:gravity="center"
+                    android:checked="true"
+                    android:background="@drawable/blue_bcg_border"
+                    />
+                <RadioButton
+                    android:id="@+id/rbtn_two_extra_costs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/two"
+                    android:gravity="center"
+                    android:background="@drawable/blue_bcg_border"
+                    />
+                <RadioButton
+                    android:id="@+id/rbtn_three_extra_costs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/three"
+                    android:gravity="center"
+                    android:background="@drawable/blue_bcg_border"
+                    />
+                <RadioButton
+                    android:id="@+id/rbtn_four_extra_costs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/four"
+                    android:gravity="center"
+                    android:background="@drawable/blue_bcg_border"
+                    />
+                <RadioButton
+                    android:id="@+id/rbtn_five_extra_costs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/yellow"
+                    android:text="@string/five"
+                    android:gravity="center"
+                    android:background="@drawable/blue_bcg_border"
+                    />
+            </RadioGroup>
 
-            </LinearLayout>
 
 
             <!-- todo orientation_layout-->
@@ -77,7 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_below="@id/no_of_extra_costs_layout"
+                android:layout_below="@id/rd_gr_no_of_extra_costs"
                 >
 
             </LinearLayout>

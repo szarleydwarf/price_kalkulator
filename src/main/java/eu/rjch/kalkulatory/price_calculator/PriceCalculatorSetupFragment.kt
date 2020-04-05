@@ -10,6 +10,7 @@ import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import eu.rjch.kalkulatory.rjutil.EmailHandler
+import eu.rjch.kalkulatory.ui.main.MenuFragment
 import kotlinx.android.synthetic.main.price_calc_setup_frag.view.*
 
 class PriceCalculatorSetupFragment : Fragment(){
@@ -55,10 +56,14 @@ class PriceCalculatorSetupFragment : Fragment(){
         }
 
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_go_back, context, R.anim.bounce, amp, freq) }
+                v.btn_go_back, context, R.anim.bounce, amp, freq)
+            switchFragment(PriceCalculatorFragment())
+        }
 
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_home, context, R.anim.bounce, amp, freq) }
+                v.btn_home, context, R.anim.bounce, amp, freq)
+            switchFragment(MenuFragment())
+        }
 
     }
 

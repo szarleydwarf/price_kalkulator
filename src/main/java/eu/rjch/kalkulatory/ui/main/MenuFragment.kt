@@ -33,14 +33,11 @@ class MenuFragment : Fragment() {
 
         v.price_calculator_btn.setOnClickListener{btnClicked(v, R.id.price_calculator_btn)}
         v.other_calculator_btn.setOnClickListener { btnClicked(v, R.id.other_calculator_btn) }
-        loadAdds(v)
+
+        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
+
         return v
     }
-
-    private fun loadAdds(v: View?) {
-        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
-    }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

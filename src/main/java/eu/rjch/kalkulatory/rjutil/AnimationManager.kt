@@ -13,7 +13,7 @@ class AnimationManager {
     }
 
     fun didTapButonInterpolate(btn: Button, ctx: Context?, animationId: Int,
-                              amplitude:Double, frequency:Double) {
+                               amplitude:Double, frequency:Double) {
         val anim = AnimationUtils.loadAnimation(ctx, animationId)
         val interpolator = MyInterpolator(amplitude, frequency)
         anim.interpolator = interpolator
