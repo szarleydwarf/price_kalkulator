@@ -21,8 +21,8 @@ class MenuFragment : Fragment() {
     companion object {
         fun newInstance() = MenuFragment()
     }
-    var actCallback : btnListener? = null
-    interface btnListener {
+    var actCallback : BtnListener? = null
+    interface BtnListener {
         fun onBtnClicked(act: Class<*>)
     }
 
@@ -43,7 +43,7 @@ class MenuFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            actCallback = context as btnListener
+            actCallback = context as BtnListener
         } catch (e: ClassCastException){
             Log.d(TAG, "Error with class cast - ${e.message}")
         }

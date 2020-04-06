@@ -1,15 +1,17 @@
 package eu.rjch.kalkulatory
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.android.gms.ads.MobileAds
+import eu.rjch.kalkulatory.rjutil.DateHandler
 import eu.rjch.kalkulatory.ui.main.MainFragment
 import eu.rjch.kalkulatory.ui.main.MenuFragment
+import java.text.SimpleDateFormat
+import java.util.*
 
-class MainActivity : AppCompatActivity(), MenuFragment.btnListener {
+class MainActivity : AppCompatActivity(), MenuFragment.BtnListener {
     private val TAG = "MAIN"
 
     companion object{
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity(), MenuFragment.btnListener {
                 .commitNow()
         }
     }
+
 
     override fun onBtnClicked(act : Class<*>) {
         var i = Intent(this, act)

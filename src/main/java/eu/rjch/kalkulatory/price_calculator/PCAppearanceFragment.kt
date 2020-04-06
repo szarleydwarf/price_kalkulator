@@ -10,6 +10,7 @@ import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
+import eu.rjch.kalkulatory.ui.main.MainFragment
 import eu.rjch.kalkulatory.ui.main.MenuFragment
 import kotlinx.android.synthetic.main.pc_appearance_fragment.view.*
 
@@ -40,7 +41,7 @@ class PCAppearanceFragment : Fragment() {
 
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment(MenuFragment())
+            switchFragment(MainFragment())
         }
     }
 
