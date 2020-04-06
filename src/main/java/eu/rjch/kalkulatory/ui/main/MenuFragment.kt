@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.PriceCalculatorActivity
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
@@ -20,7 +21,7 @@ class MenuFragment : Fragment() {
     companion object {
         fun newInstance() = MenuFragment()
     }
-    var actCallback : MenuFragment.btnListener? = null
+    var actCallback : btnListener? = null
     interface btnListener {
         fun onBtnClicked(act: Class<*>)
     }
@@ -42,27 +43,25 @@ class MenuFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            actCallback = context as MenuFragment.btnListener
+            actCallback = context as btnListener
         } catch (e: ClassCastException){
             Log.d(TAG, "Error with class cast - ${e.message}")
         }
     }
 
     private fun btnClicked(v: View, id: Int) {
-        val amp = 0.2
-        val freq = 20.0
         when(id) {
             R.id.price_calculator_btn -> {
                 AnimationManager().didTapButonInterpolate(
                         v.price_calculator_btn, context, R.anim.bounce,
-                        amp, freq)
+                        MainActivity.amp, MainActivity.freq)
 
                 actCallback?.onBtnClicked(PriceCalculatorActivity::class.java)
             }
             R.id.other_calculator_btn -> {
                 AnimationManager().didTapButonInterpolate(
                         v.other_calculator_btn, context, R.anim.bounce,
-                        amp, freq)
+                        MainActivity.amp, MainActivity.freq)
                 Toast.makeText(context, "On going :)", Toast.LENGTH_SHORT).show()
 
             }

@@ -11,4 +11,5 @@
     <dimen name="back_btn_width" >120dp</dimen>
     <dimen name="minus_max_btn_height_2">-112dp</dimen>
     <dimen name="margin_25">25dp</dimen>
+    <dimen name="max_extra_cost_length">25</dimen>
 </resources>

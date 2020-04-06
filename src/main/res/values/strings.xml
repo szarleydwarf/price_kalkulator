@@ -29,8 +29,14 @@
 	<string name="three">3</string>
 	<string name="four">4</string>
 	<string name="five">5</string>
+	<string name="fields_to_display_text">Choose fields you want to use in calculations</string>
+	<string name="no_of_extras_text">Select how many extra costs you want to add up</string>
+	<string name="enter_extra_cost_name">Enter extra cost name and value</string>
+	<string name="et_extra_cost_name">Name</string>
+	<string name="et_extra_cost_value">0,0</string>
 
-    <string name="eula"><h2>End-User License Agreement (EULA) of <span class="app_name">Price calculator</span></h2>
+    <string name="eula">
+		<h2>End-User License Agreement (EULA) of <span class="app_name">Price calculator</span></h2>
 	<p>This End-User License Agreement ("EULA") is a legal agreement between you and <span class="company_name">Non Profit</span></p>
 	<p>This EULA agreement governs your acquisition and use of our <span class="app_name">Price calculator</span> software ("Software") directly from <span class="company_name">Non Profit</span> or indirectly through a <span class="company_name">Non Profit</span> authorized reseller or distributor (a "Reseller").</p>
 	<p>Please read this EULA agreement carefully before completing the installation process and using the <span class="app_name">Price calculator</span> software. It provides a license to use the <span class="app_name">Price calculator</span> software and contains warranty information and liability disclaimers.</p>

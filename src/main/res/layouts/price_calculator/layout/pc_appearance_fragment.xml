@@ -50,6 +50,17 @@
                 android:layout_marginLeft="@dimen/margin_25"
                 android:layout_marginRight="@dimen/margin_25"
                 >
+                <TextView
+                    android:id="@+id/tv_fields_to_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/fields_to_display_text"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:textAlignment="center"
+                    android:background="@drawable/rounded_border"
+                    />
                 <CheckBox
                     android:id="@+id/chkb_profit_field"
                     android:layout_width="match_parent"
@@ -85,7 +96,31 @@
                     />
             </LinearLayout>
 
-            <!-- todo no_of_extra_costs_layout-->
+            <!-- no_of_extra_costs_layout-->
+            <LinearLayout
+                android:id="@+id/no_of_extra_costs_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginLeft="@dimen/margin_25"
+                android:layout_marginRight="@dimen/margin_25"
+                android:layout_below="@id/fields_to_display_layout"
+                >
+                <TextView
+                    android:id="@+id/tv_no_of_extras"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/no_of_extras_text"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:textAlignment="center"
+                    android:background="@drawable/rounded_border"
+                    />
+
+            </LinearLayout>
+
             <RadioGroup
                 android:id="@+id/rd_gr_no_of_extra_costs"
                 android:layout_width="match_parent"
@@ -93,7 +128,7 @@
                 android:orientation="horizontal"
                 android:layout_marginLeft="@dimen/margin_25"
                 android:layout_marginRight="@dimen/margin_25"
-                android:layout_below="@id/fields_to_display_layout"
+                android:layout_below="@id/no_of_extra_costs_layout"
                 >
                 <RadioButton
                     android:id="@+id/rbtn_one_extra_cost"
