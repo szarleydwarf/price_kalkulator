@@ -33,7 +33,10 @@
 	<string name="no_of_extras_text">Select how many extra costs you want to add up</string>
 	<string name="enter_extra_cost_name">Enter extra cost name and value</string>
 	<string name="et_extra_cost_name">Name</string>
-	<string name="et_extra_cost_value">0,0</string>
+	<string name="et_extra_cost_value">0.0</string>
+	<string name="todaysDate">TODAY</string>
+	<string name="max_intro_skips">10</string>
+	<string name="skiped_num">TIMES_SKIPPED</string>
 
     <string name="eula">
 		<h2>End-User License Agreement (EULA) of <span class="app_name">Price calculator</span></h2>
@@ -67,6 +70,5 @@
 	<h3>Governing Law</h3>
 	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">Ireland</span>.</p>
 	</string>
-    <string name="todaysDate">TODAY</string>
 
 </resources>

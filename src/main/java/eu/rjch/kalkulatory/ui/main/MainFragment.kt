@@ -1,9 +1,7 @@
 package eu.rjch.kalkulatory.ui.main
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,16 +10,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import eu.rjch.kalkulatory.R
-import eu.rjch.kalkulatory.PriceCalculatorActivity
 import eu.rjch.kalkulatory.rjutil.DateHandler
 import kotlinx.android.synthetic.main.main_fragment.view.*
-import java.lang.ClassCastException
 
 class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
+
+    lateinit var pref : SharedPreferences
 
     private val TAG = "MAINFRAGMENT"
 
@@ -30,28 +28,44 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val rv = inflater.inflate(R.layout.main_fragment, container, false)
-
-        Log.d(TAG, ("introplayed " + introPlayedToday()))
-        if(introPlayedToday())
+        pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
+        var editor = pref?.edit() as SharedPreferences.Editor
+        Log.d(TAG, ("introplayed " + introPlayedToday()) + " / " + skippIntro(editor))
+        if(!skippIntro(editor) || !introPlayedToday()) {
             playIntro(rv)
-        else
+            editor.putString(resources.getString(R.string.todaysDate), DateHandler().getToday())
+            editor.commit()
+        } else {
             switchFragment()
-
+        }
         return rv
+    }
+
+    private fun skippIntro(editor: SharedPreferences.Editor): Boolean {
+        var skipped = pref.getInt(R.string.skiped_num.toString(), 0)
+        Log.d(TAG, "0, skipped $skipped / " + resources.getString(R.string.max_intro_skips).toInt())
+        if(skipped <= resources.getString(R.string.max_intro_skips).toInt()) {
+            Log.d(TAG, "1, skipped $skipped")
+            editor.putInt(R.string.skiped_num.toString(), ++skipped)
+            editor.commit()
+            Log.d(TAG, "2, skipped $skipped")
+            return true
+        }
+        editor.putInt(R.string.skiped_num.toString(), 0)
+        editor.commit()
+        return false
     }
 
     private fun introPlayedToday(): Boolean {
         val ot = getSavedDate()//"06_5_2020"
         var today = DateHandler().getToday()
-        Log.d(TAG, "Today - $ot - $today => ")
+        Log.d(TAG, "Today - $ot - $today ")
         return (DateHandler().compareTodays(today, ot))
     }
 
     private fun getSavedDate(): String {
-        var pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE)
-        var editor = pref?.edit() as SharedPreferences.Editor
         var todayTag = resources.getString(R.string.todaysDate)
-        var ot : String = pref.getString(todayTag, "06_4_2020").toString()
+        var ot : String = pref?.getString(todayTag, "06_4_2020").toString()
 
         return ot
     }
@@ -63,7 +77,6 @@ class MainFragment : Fragment() {
         rv.vv_intro.setVideoURI(Uri.parse(path))
         if(!rv.vv_intro.isPlaying) {
             Log.d(TAG, "isPlaying")
-
             rv.vv_intro.start()
         }
         Log.d(TAG, "after playing")
