@@ -188,17 +188,51 @@
                     />
             </RadioGroup>
 
-
-
             <!-- todo orientation_layout-->
             <LinearLayout
                 android:id="@+id/orientation_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/margin_25"
+                android:layout_marginRight="@dimen/margin_25"
                 android:layout_below="@id/rd_gr_no_of_extra_costs"
                 >
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/orientation"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:textAlignment="center"
+                    android:background="@drawable/rounded_border"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/img_btn_v"
+                        android:background="@drawable/vertical"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        android:contentDescription="@string/vertical"
+                        />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/img_btn_h"
+                        android:background="@drawable/horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/margin_10"
+                        android:contentDescription="@string/horizontal"
+                        />
+                </LinearLayout>
             </LinearLayout>
 
 

@@ -37,6 +37,11 @@
 	<string name="todaysDate">TODAY</string>
 	<string name="max_intro_skips">10</string>
 	<string name="skiped_num">TIMES_SKIPPED</string>
+	<string name="orientation">Choose how you want app to be displayed</string>
+	<string name="vertical">vertical</string>
+	<string name="horizontal">horizontal</string>
+
+
 
     <string name="eula">
 		<h2>End-User License Agreement (EULA) of <span class="app_name">Price calculator</span></h2>

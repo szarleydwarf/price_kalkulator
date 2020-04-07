@@ -43,12 +43,9 @@ class MainFragment : Fragment() {
 
     private fun skippIntro(editor: SharedPreferences.Editor): Boolean {
         var skipped = pref.getInt(R.string.skiped_num.toString(), 0)
-        Log.d(TAG, "0, skipped $skipped / " + resources.getString(R.string.max_intro_skips).toInt())
         if(skipped <= resources.getString(R.string.max_intro_skips).toInt()) {
-            Log.d(TAG, "1, skipped $skipped")
             editor.putInt(R.string.skiped_num.toString(), ++skipped)
             editor.commit()
-            Log.d(TAG, "2, skipped $skipped")
             return true
         }
         editor.putInt(R.string.skiped_num.toString(), 0)
@@ -59,7 +56,6 @@ class MainFragment : Fragment() {
     private fun introPlayedToday(): Boolean {
         val ot = getSavedDate()//"06_5_2020"
         var today = DateHandler().getToday()
-        Log.d(TAG, "Today - $ot - $today ")
         return (DateHandler().compareTodays(today, ot))
     }
 
@@ -71,15 +67,12 @@ class MainFragment : Fragment() {
     }
 
     private fun playIntro(rv : View) {
-        Log.d(TAG, "playIntro 1")
         val path = "android.resource://"+context?.packageName+"/"+R.raw.intro
-        Log.d(TAG, "path $path")
         rv.vv_intro.setVideoURI(Uri.parse(path))
         if(!rv.vv_intro.isPlaying) {
             Log.d(TAG, "isPlaying")
             rv.vv_intro.start()
         }
-        Log.d(TAG, "after playing")
         rv.vv_intro.setOnCompletionListener { switchFragment()        }
 
         rv.skip_btn.setOnClickListener { switchFragment() }
