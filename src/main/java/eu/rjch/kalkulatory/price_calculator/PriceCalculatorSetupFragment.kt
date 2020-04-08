@@ -10,6 +10,7 @@ import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import eu.rjch.kalkulatory.rjutil.EmailHandler
+import eu.rjch.kalkulatory.ui.main.MainFragment
 import eu.rjch.kalkulatory.ui.main.MenuFragment
 import kotlinx.android.synthetic.main.price_calc_setup_frag.view.*
 
@@ -36,7 +37,9 @@ class PriceCalculatorSetupFragment : Fragment(){
         val amp = 0.2
         val freq = 20.0
         v.btn_price_calculator_values.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_price_calculator_values, context, R.anim.bounce, amp, freq) }
+                v.btn_price_calculator_values, context, R.anim.bounce, amp, freq)
+            switchFragment(PCValuesFragment())
+        }
 
         v.btn_price_calculator_appearance.setOnClickListener {
             AnimationManager().didTapButonInterpolate(
@@ -62,7 +65,7 @@ class PriceCalculatorSetupFragment : Fragment(){
 
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_home, context, R.anim.bounce, amp, freq)
-            switchFragment(MenuFragment())
+            switchFragment(MainFragment())
         }
 
     }
