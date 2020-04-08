@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/value_icon"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/price_tag_64"
+            android:contentDescription="@string/values_btn_text"
+            />
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/scroll_view_pc_values"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/max_btn_height"
+        app:layout_constraintTop_toBottomOf="@+id/value_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="top"
+            >
+        <fragment
+            android:id="@+id/pc_values_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="eu.rjch.kalkulatory.price_calculator.PCValueDefText"
+            tools:layout="@layout/pc_value_def_text"
+            >
+
+        </fragment>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <!--google add layout-->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/blue_bcg_border"
+        android:layout_marginTop="5dp"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/scroll_view_pc_values"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ad_mob_test"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

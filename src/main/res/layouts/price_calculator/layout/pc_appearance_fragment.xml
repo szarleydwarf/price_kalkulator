@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rounded_border"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginBottom="@dimen/max_btn_height"
         >
 
@@ -188,12 +188,13 @@
                     />
             </RadioGroup>
 
-            <!-- todo orientation_layout-->
+            <!-- orientation_layout-->
             <LinearLayout
                 android:id="@+id/orientation_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_10"
                 android:layout_marginLeft="@dimen/margin_25"
                 android:layout_marginRight="@dimen/margin_25"
                 android:layout_below="@id/rd_gr_no_of_extra_costs"
@@ -272,7 +273,7 @@
             </LinearLayout>
 
 
-            <!--todo go_back_layout-->
+            <!-- go_back_layout-->
             <LinearLayout
                 android:id="@+id/go_back_btn_layout"
                 android:layout_width="match_parent"
@@ -293,7 +294,7 @@
 
             </LinearLayout>
 
-            <!-- todo home_layout -->
+            <!--  home_layout -->
             <LinearLayout
                 android:id="@+id/home_btn_layout"
                 android:layout_width="match_parent"
