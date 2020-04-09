@@ -1,4 +1,4 @@
-package eu.rjch.kalkulatory.price_calculator
+package eu.rjch.kalkulatory.price_calculator.small_fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

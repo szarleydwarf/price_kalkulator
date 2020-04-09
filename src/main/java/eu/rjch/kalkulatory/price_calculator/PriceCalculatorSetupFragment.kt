@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
@@ -34,37 +35,36 @@ class PriceCalculatorSetupFragment : Fragment(){
 
 
     private fun runApp(v: View) {
-        val amp = 0.2
-        val freq = 20.0
+
         v.btn_price_calculator_values.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_price_calculator_values, context, R.anim.bounce, amp, freq)
+                v.btn_price_calculator_values, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             switchFragment(PCValuesFragment())
         }
 
         v.btn_price_calculator_appearance.setOnClickListener {
             AnimationManager().didTapButonInterpolate(
-                v.btn_price_calculator_appearance, context, R.anim.bounce, amp, freq)
+                v.btn_price_calculator_appearance, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             switchFragment(PCAppearanceFragment())
         }
 
         v.btn_eula.setOnClickListener {
             AnimationManager().didTapButonInterpolate(
-                v.btn_eula, context, R.anim.bounce, amp, freq )
+                v.btn_eula, context, R.anim.bounce, MainActivity.amp, MainActivity.freq )
             switchFragment(EulaFragment())
         }
 
         v.btn_contact.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_contact, context, R.anim.bounce, amp, freq)
+                v.btn_contact, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             sendEmail()
         }
 
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_go_back, context, R.anim.bounce, amp, freq)
+                v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             switchFragment(PriceCalculatorFragment())
         }
 
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_home, context, R.anim.bounce, amp, freq)
+                v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             switchFragment(MainFragment())
         }
 

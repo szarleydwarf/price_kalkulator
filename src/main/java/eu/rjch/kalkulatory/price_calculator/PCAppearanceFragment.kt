@@ -1,5 +1,7 @@
 package eu.rjch.kalkulatory.price_calculator
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +22,7 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private val TAG = "PRICE_C_SETUP_FR"
+    lateinit var pref : SharedPreferences
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -27,12 +30,24 @@ class PCAppearanceFragment : Fragment() {
 
         AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
+        initButtons(v)
+
         runApp(v)
+
         return v
     }
 
     private fun runApp(v: View) {
-        Toast.makeText(context, "Ole !!!", Toast.LENGTH_LONG).show()
+        pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
+        var editor = pref?.edit() as SharedPreferences.Editor
+
+        v.chkb_profit_field.setOnClickListener {
+            var profit = v.chkb_profit_field.isChecked
+            Toast.makeText(context, "Ole !!! $profit", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun initButtons(v: View) {
 
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
