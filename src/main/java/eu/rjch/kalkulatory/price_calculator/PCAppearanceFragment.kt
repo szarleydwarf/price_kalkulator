@@ -9,14 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
+import eu.rjch.kalkulatory.rjutil.UserInteractionHandler
 import eu.rjch.kalkulatory.ui.main.MainFragment
-import eu.rjch.kalkulatory.ui.main.MenuFragment
 import kotlinx.android.synthetic.main.pc_appearance_fragment.view.*
 
 class PCAppearanceFragment : Fragment() {
@@ -46,7 +45,6 @@ class PCAppearanceFragment : Fragment() {
 
     private fun runApp(v: View) {
         pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
-        var editor = pref?.edit() as SharedPreferences.Editor
 
         initButtons(v)
         setListeners(v)
@@ -62,16 +60,17 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private fun initButtons(v: View) {
+        var editor = pref?.edit() as SharedPreferences.Editor
 
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             // todo ask for saving the changes, check for changes?
+            Toast.makeText(context, "comparing ${compareSavedVars()}", Toast.LENGTH_SHORT).show()
             if(compareSavedVars()) {
                 if(doSave()) {
                     saveVars()
                 }
             }
-            Toast.makeText(context, "back btn !!! $profitChecked / $taxChecked / $extraCostChecked / $extraCostNumber", Toast.LENGTH_SHORT).show()
             switchFragment(PriceCalculatorSetupFragment())
         }
 
@@ -87,11 +86,21 @@ class PCAppearanceFragment : Fragment() {
 
     private fun doSave(): Boolean {
 //todo ask for saving changes return true if yes
+        UserInteractionHandler().showDialogScreen(this.context!!, "Do you want SAVE changes you've made?")
         return false
     }
 
     private fun compareSavedVars() : Boolean {
 //todo load vars and compare them return true if all the same
+        Toast.makeText(context, "back btn !!! $profitChecked / $taxChecked / $extraCostChecked / $extraCostNumber", Toast.LENGTH_SHORT).show()
+        var tProfit = pref.getBoolean(getString(R.string.show_profit), false)
+        var tTax = pref.getBoolean(getString(R.string.show_tax), false)
+        var tExtras = pref.getBoolean(getString(R.string.show_extra_costs), false)
+        var tNoExtraCosts = pref.getInt(getString(R.string.no_of_extras), 0)
+        if (tProfit != profitChecked) return true
+        if (tTax != taxChecked) return true
+        if(tExtras != extraCostChecked) return true
+
         return false
     }
 
@@ -102,4 +111,5 @@ class PCAppearanceFragment : Fragment() {
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }
+
 }

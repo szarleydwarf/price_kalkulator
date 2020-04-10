@@ -50,6 +50,13 @@ class PCValuesFragment : Fragment() {
 
         }
 //        else display / add proper fragments
+checkSavedVars()
+    }
+
+    private fun checkSavedVars() {
+        var tProfit = pref.getInt(getString(R.string.profit), 20)
+        var tTax = pref.getFloat(getString(R.string.tax), 21f)
+        var tExtras = pref.getInt(getString(R.string.extra_costs), 1)
 
     }
 

@@ -8,4 +8,7 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/red</item>
+    </style>
 </resources>

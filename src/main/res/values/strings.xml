@@ -77,5 +77,10 @@
 	</string>
     <string name="value_placeholder">Value Name</string>
     <string name="nothing_to_show">Nothing to show. Go to appearance settings to select some options to be set.</string>
+	<string name="show_profit">showProfit</string>
+	<string name="show_tax">showTax</string>
+	<string name="show_extra_costs">showExtraCost</string>
+	<string name="no_of_extras">noOfExtras</string>
+	<string name="save">Save</string>
 
 </resources>
