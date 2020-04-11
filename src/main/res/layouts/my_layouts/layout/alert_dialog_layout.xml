@@ -4,6 +4,10 @@
     android1:orientation="vertical"
     android1:layout_width="wrap_content"
     android1:layout_height="wrap_content"
+    android1:layout_marginLeft="@dimen/margin_10"
+    android1:layout_marginRight="@dimen/margin_10"
+    android1:paddingTop="@dimen/margin_10"
+    android1:paddingBottom="@dimen/margin_10"
     android1:background="@drawable/blue_bcg_border"
     >
     <ImageView
@@ -13,6 +17,10 @@
         android1:scaleType="center"
         android1:background="@drawable/blue_bcg_border"
         android1:contentDescription="@string/app_name"
+        android1:layout_marginLeft="@dimen/margin_10"
+        android1:layout_marginRight="@dimen/margin_10"
+        android1:paddingTop="@dimen/margin_10"
+        android1:paddingBottom="@dimen/margin_10"
         />
     <TextView
         android1:layout_width="match_parent"
@@ -22,6 +30,11 @@
         android1:textColor="@color/yellow"
         android1:text="@string/save_request_msg"
         android1:gravity="center"
+        android1:layout_marginTop="@dimen/margin_10"
+        android1:layout_marginLeft="@dimen/margin_10"
+        android1:layout_marginRight="@dimen/margin_10"
+        android1:paddingTop="@dimen/margin_10"
+        android1:paddingBottom="@dimen/margin_10"
         />
 
 </LinearLayout>

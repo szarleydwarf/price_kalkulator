@@ -3,7 +3,6 @@ package eu.rjch.kalkulatory.price_calculator
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
-import eu.rjch.kalkulatory.rjutil.UserInteractionHandler
+import eu.rjch.kalkulatory.rjutil.CustomAlertDialogFragment
 import eu.rjch.kalkulatory.ui.main.MainFragment
 import kotlinx.android.synthetic.main.pc_appearance_fragment.view.*
 
@@ -67,7 +66,7 @@ class PCAppearanceFragment : Fragment() {
             // todo ask for saving the changes, check for changes?
             Toast.makeText(context, "comparing ${compareSavedVars()}", Toast.LENGTH_SHORT).show()
             if(compareSavedVars()) {
-                if(doSave()) {
+                if(doSave(v)) {
                     saveVars()
                 }
             }
@@ -84,15 +83,18 @@ class PCAppearanceFragment : Fragment() {
 //todo save int file or shared prefs
     }
 
-    private fun doSave(): Boolean {
+    private fun doSave(v:View): Boolean {
 //todo ask for saving changes return true if yes
-        UserInteractionHandler().showDialogScreen(this.context!!, getString(R.string.save_request_msg)).show()
+
+        var dialog = CustomAlertDialogFragment()
+        dialog?.show(activity?.supportFragmentManager!!, "dialog")
         return false
     }
 
     private fun compareSavedVars() : Boolean {
 //todo load vars and compare them return true if all the same
-        Toast.makeText(context, "back btn !!! $profitChecked / $taxChecked / $extraCostChecked / $extraCostNumber", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "back btn !!! $profitChecked / $taxChecked / $extraCostChecked " +
+                "/ $extraCostNumber", Toast.LENGTH_SHORT).show()
         var tProfit = pref.getBoolean(getString(R.string.show_profit), false)
         var tTax = pref.getBoolean(getString(R.string.show_tax), false)
         var tExtras = pref.getBoolean(getString(R.string.show_extra_costs), false)
