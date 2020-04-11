@@ -86,7 +86,7 @@ class PCAppearanceFragment : Fragment() {
 
     private fun doSave(): Boolean {
 //todo ask for saving changes return true if yes
-        UserInteractionHandler().showDialogScreen(this.context!!, "Do you want SAVE changes you've made?")
+        UserInteractionHandler().showDialogScreen(this.context!!, getString(R.string.save_request_msg)).show()
         return false
     }
 

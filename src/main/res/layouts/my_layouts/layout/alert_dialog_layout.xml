@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android1:orientation="vertical"
+    android1:layout_width="wrap_content"
+    android1:layout_height="wrap_content"
+    android1:background="@drawable/blue_bcg_border"
+    >
+    <ImageView
+        android1:layout_width="match_parent"
+        android1:layout_height="@dimen/max_btn_height"
+        android1:src="@drawable/kfloppy"
+        android1:scaleType="center"
+        android1:background="@drawable/blue_bcg_border"
+        android1:contentDescription="@string/app_name"
+        />
+    <TextView
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:id="@+id/alert_dialog_tv"
+        android1:textSize="@dimen/large_text"
+        android1:textColor="@color/yellow"
+        android1:text="@string/save_request_msg"
+        android1:gravity="center"
+        />
+
+</LinearLayout>
