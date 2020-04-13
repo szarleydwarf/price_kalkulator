@@ -9,6 +9,10 @@
     </style>
 
     <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorPrimary">@color/red</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textColorPrimary">@color/yellow</item>
+        <item name="android:windowBackground">@color/blue_l</item>
+
+        <item name="buttonBarStyle">@drawable/skew_btn</item>
     </style>
 </resources>

@@ -68,11 +68,12 @@ class PCAppearanceFragment : Fragment() {
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             // todo ask for saving the changes, check for changes?
-            Toast.makeText(context, "comparing ${compareSavedVars()}", Toast.LENGTH_SHORT).show()
-            if(compareSavedVars()) {
-                if(doSave(v)) {
-                    saveVars()
-                }
+            val displayAlert = compareSavedVars()
+            Log.d(TAG, "1 initbtn $displayAlert ")
+            if(displayAlert) {
+                doSave(v)
+                Log.d(TAG, "2 initbtn $displayAlert")
+
             }
             switchFragment(PriceCalculatorSetupFragment())
         }
@@ -84,37 +85,30 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private fun saveVars() {
-//todo save int file or shared prefs
+//todo save into file or shared prefs
+        Log.d(TAG, "SAVING... ")
+
     }
 
-    private fun doSave(v:View): Boolean {
+    private fun doSave(v:View){
 //todo ask for saving changes return true if yes
-        val ald :AlertDialog? = activity?.let {
-            val b = AlertDialog.Builder(it)
-            b.apply {
-                val vad = LayoutInflater.from(context).inflate(R.layout.alert_dialog_layout, null)
-                setView(vad)
-
-                setPositiveButton(getString(R.string.save),
-                DialogInterface.OnClickListener{
-                    dialog, which ->
-                    when(which){
-                        R.id.btn_confirm->
-                            AnimationManager().didTapButonInterpolate(
-                                    vad.findViewById(R.id.btn_confirm), context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-                    }
-                    run {
-                        Log.d(TAG, "SAVE ")
-
-                    }
+        val b = AlertDialog.Builder(context, R.style.MyDialogTheme)
+        b.setMessage(getString(R.string.save_request_msg))
+                .setIcon(R.drawable.kfloppy)
+                .setTitle(getString(R.string.save))
+                .setPositiveButton(getString(R.string.save),
+                        DialogInterface.OnClickListener (){
+                            di: DialogInterface, i: Int ->
+                            Log.d(TAG, "SAVzE ")
+                            saveVars()
+                        })
+                .setNegativeButton(getString(R.string.dont_save),
+                DialogInterface.OnClickListener { dialog, which ->
+                    Log.d(TAG, "Dontsave $which ")
+                    dialog.dismiss()
                 })
-            }
-            b.create()
-        }
-        ald?.show()
-
-
-        return false
+        val ad = b.create()
+        ad.show()
     }
 
     private fun compareSavedVars() : Boolean {
