@@ -35,6 +35,30 @@
         android1:layout_marginRight="@dimen/margin_10"
         android1:paddingTop="@dimen/margin_10"
         android1:paddingBottom="@dimen/margin_10"
-        />
 
+        />
+    <LinearLayout
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:orientation="horizontal"
+        android1:gravity="center"
+        >
+        <Button
+            android1:layout_width="@dimen/max_btn_height_2"
+            android1:layout_height="@dimen/max_btn_height"
+            android1:id="@+id/btn_cancel"
+            android1:background="@drawable/skew_btn"
+            android1:text="@string/dont_save"
+            android1:textColor="@color/white"
+            />
+        <Button
+            android1:layout_width="@dimen/max_btn_height_2"
+            android1:layout_height="@dimen/max_btn_height"
+            android1:id="@+id/btn_confirm"
+            android1:background="@drawable/skew_btn"
+            android1:text="@string/save"
+            android1:textColor="@color/white"
+            />
+
+    </LinearLayout>
 </LinearLayout>

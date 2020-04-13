@@ -47,6 +47,8 @@
     <string name="show_extra_costs">showExtraCost</string>
     <string name="no_of_extras">noOfExtras</string>
     <string name="save">Save</string>
+    <string name="save_request_msg">Do you want SAVE changes you\'ve made?</string>
+    <string name="dont_save">Don\'t save</string>
 
 
 
@@ -82,6 +84,5 @@
 	<h3>Governing Law</h3>
 	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">Ireland</span>.</p>
 	</string>
-    <string name="save_request_msg">Do you want SAVE changes you\'ve made?</string>
 
 </resources>

@@ -1,8 +1,11 @@
 package eu.rjch.kalkulatory.price_calculator
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +18,7 @@ import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import eu.rjch.kalkulatory.rjutil.CustomAlertDialogFragment
 import eu.rjch.kalkulatory.ui.main.MainFragment
+import kotlinx.android.synthetic.main.alert_dialog_layout.view.*
 import kotlinx.android.synthetic.main.pc_appearance_fragment.view.*
 
 class PCAppearanceFragment : Fragment() {
@@ -85,9 +89,31 @@ class PCAppearanceFragment : Fragment() {
 
     private fun doSave(v:View): Boolean {
 //todo ask for saving changes return true if yes
+        val ald :AlertDialog? = activity?.let {
+            val b = AlertDialog.Builder(it)
+            b.apply {
+                val vad = LayoutInflater.from(context).inflate(R.layout.alert_dialog_layout, null)
+                setView(vad)
 
-        var dialog = CustomAlertDialogFragment()
-        dialog?.show(activity?.supportFragmentManager!!, "dialog")
+                setPositiveButton(getString(R.string.save),
+                DialogInterface.OnClickListener{
+                    dialog, which ->
+                    when(which){
+                        R.id.btn_confirm->
+                            AnimationManager().didTapButonInterpolate(
+                                    vad.findViewById(R.id.btn_confirm), context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                    }
+                    run {
+                        Log.d(TAG, "SAVE ")
+
+                    }
+                })
+            }
+            b.create()
+        }
+        ald?.show()
+
+
         return false
     }
 
