@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
@@ -69,10 +70,8 @@ class PCAppearanceFragment : Fragment() {
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             // todo ask for saving the changes, check for changes?
             val displayAlert = compareSavedVars()
-            Log.d(TAG, "1 initbtn $displayAlert ")
             if(displayAlert) {
                 doSave(v)
-                Log.d(TAG, "2 initbtn $displayAlert")
 
             }
             switchFragment(PriceCalculatorSetupFragment())
@@ -108,6 +107,16 @@ class PCAppearanceFragment : Fragment() {
                     dialog.dismiss()
                 })
         val ad = b.create()
+        ad.setOnShowListener {
+            var savebtn = ad.getButton(DialogInterface.BUTTON_POSITIVE)
+            savebtn.background = ResourcesCompat.getDrawable(resources,
+                    R.drawable.skew_btn, null)
+
+            var dontsavebtn = ad.getButton(DialogInterface.BUTTON_NEGATIVE)
+            dontsavebtn.background = ResourcesCompat.getDrawable(resources,
+                    R.drawable.skew_btn, null)
+        }
+
         ad.show()
     }
 
