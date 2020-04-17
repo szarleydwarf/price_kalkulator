@@ -42,13 +42,13 @@ class PCValuesFragment : Fragment() {
     }
 
     private fun runApp(v: View) {
-//        if none of checkboxes is selected show default message
-        if(!v.chkb_profit_field.isChecked) {
-            Log.d(TAG, "box not checked")
-        } else {
-            Log.d(TAG, "box checked")
-
-        }
+//        check if there is any of the fragments checked/true from appearance sharedPrefs
+//        if(isAnyModuleVisible()) {
+//            Log.d(TAG, "yes")
+//        } else {
+//            Log.d(TAG, "no")
+//
+//        }
 //        else display / add proper fragments
 checkSavedVars()
     }
@@ -57,7 +57,10 @@ checkSavedVars()
         var tProfit = pref.getInt(getString(R.string.profit), 20)
         var tTax = pref.getFloat(getString(R.string.tax), 21f)
         var tExtras = pref.getInt(getString(R.string.extra_costs), 1)
-
+        var tNoExtraCosts = pref.getInt(getString(R.string.no_of_extras), 0)
+        Log.d(TAG,
+                "back btn !!! $tProfit / $tTax / $tExtras " +
+                        "/ $tNoExtraCosts")
     }
 
     private fun initVars() {
