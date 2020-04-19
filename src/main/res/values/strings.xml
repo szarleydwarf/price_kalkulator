@@ -45,6 +45,7 @@
     <string name="show_profit">showProfit</string>
     <string name="show_tax">showTax</string>
     <string name="show_extra_costs">showExtraCost</string>
+    <string name="max_profit">maxProfit</string>
     <string name="no_of_extras">noOfExtras</string>
     <string name="save">Save</string>
     <string name="save_request_msg">Do you want SAVE changes you\'ve made?</string>

@@ -15,6 +15,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.oops.PC_ObjectToSave
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import eu.rjch.kalkulatory.rjutil.CustomAlertDialogFragment
@@ -136,6 +137,9 @@ class PCAppearanceFragment : Fragment() {
 
     private fun compareSavedVars() : Boolean {
 //todo load vars and compare them return true if all the same
+        var obj = PC_ObjectToSave()
+        obj.loadSharedPrefs(context!!)
+
         var tProfit = pref.getBoolean(getString(R.string.show_profit), false)
         var tTax = pref.getBoolean(getString(R.string.show_tax), false)
         var tExtras = pref.getBoolean(getString(R.string.show_extra_costs), false)
