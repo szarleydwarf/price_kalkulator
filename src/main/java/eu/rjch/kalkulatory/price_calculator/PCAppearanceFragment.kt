@@ -69,8 +69,6 @@ class PCAppearanceFragment : Fragment() {
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             // todo ask for saving the changes, check for changes?
             val displayAlert = compareSavedVars()
-            Toast.makeText(context, "back btn !!! $profitChecked / $taxChecked / $extraCostChecked " +
-                    "/ $extraCostNumber", Toast.LENGTH_SHORT).show()
             if(displayAlert) {
                 doSave(v, true)
             } else {
@@ -81,8 +79,6 @@ class PCAppearanceFragment : Fragment() {
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             val displayAlert = compareSavedVars()
-            Toast.makeText(context, "back btn !!! $profitChecked / $taxChecked / $extraCostChecked " +
-                    "/ $extraCostNumber", Toast.LENGTH_SHORT).show()
             if(displayAlert) {
                 doSave(v, false)
             } else {
@@ -93,7 +89,6 @@ class PCAppearanceFragment : Fragment() {
 
     private fun saveVars() {
 //todo save into file or shared prefs
-        Log.d(TAG, "SAVING... ")
         var editor = pref?.edit() as SharedPreferences.Editor
         editor.putBoolean(getString(R.string.show_profit), profitChecked)
         editor.putBoolean(getString(R.string.show_tax), taxChecked)
@@ -109,14 +104,12 @@ class PCAppearanceFragment : Fragment() {
                 .setPositiveButton(getString(R.string.save),
                         DialogInterface.OnClickListener (){
                             di: DialogInterface, i: Int ->
-                            Log.d(TAG, "SAVE ")
                             saveVars()
                             if(backBtnPressed) switchFragment(PriceCalculatorSetupFragment())
                             else switchFragment(MainFragment())
                         })
                 .setNegativeButton(getString(R.string.dont_save),
                 DialogInterface.OnClickListener { dialog, which ->
-                    Log.d(TAG, "Dontsave $which ")
                     dialog.dismiss()
                     if(backBtnPressed) switchFragment(PriceCalculatorSetupFragment())
                     else switchFragment(MainFragment())
@@ -136,17 +129,22 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private fun compareSavedVars() : Boolean {
-//todo load vars and compare them return true if all the same
+//todo load vars and compare them return true if all the same #
+//  todo think about changing this to fun checking one var at a time as its skips after first true :/
         var obj = PC_ObjectToSave()
         obj.loadSharedPrefs(context!!)
+        Log.d(TAG, "Log.d ${obj.profit_field}")
 
-        var tProfit = pref.getBoolean(getString(R.string.show_profit), false)
+        var tProfit = obj.profit_field//pref.getBoolean(getString(R.string.show_profit), false)
         var tTax = pref.getBoolean(getString(R.string.show_tax), false)
         var tExtras = pref.getBoolean(getString(R.string.show_extra_costs), false)
         var tNoExtraCosts = pref.getInt(getString(R.string.no_of_extras), 0)
         if (tProfit != profitChecked) return true
         if (tTax != taxChecked) return true
+        Log.d(TAG, "Log.d $tExtras")
+
         if(tExtras != extraCostChecked){
+            Log.d(TAG, "Log.d $tNoExtraCosts")
             extraCostNumber = tNoExtraCosts
             return true
         }

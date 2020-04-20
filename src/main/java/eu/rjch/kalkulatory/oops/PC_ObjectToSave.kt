@@ -36,16 +36,18 @@ class PC_ObjectToSave {
             while (n < number_of_extras) {
                 var e = ExtraCost().load(pref, ctx) as ExtraCost
                 array_of_extras[n] = e
+                Log.d(TAG, "ex - ${e.extra_cost_name} - ${e.extra_cost_value}")
+
                 n++
             }
         }
         Log.d(TAG, "Printing values to Log.d.......")
         printElementinLog()
         Log.d(TAG, "End Printing values to Log.d.......")
+        // todo add boolean if loaded?
     }
 
     fun saveSharedPrefs(ctx: Context) {
-
     }
 
     fun printElementinLog() {
@@ -56,9 +58,7 @@ class PC_ObjectToSave {
                 " - $tax_field - $tax_in_percent\n" +
                 "extras\n" +
                 "- $extra_cost_field - $number_of_extras")
-        //todo lateinit property array_of_extras has not been initialized
-        for(ex in array_of_extras)
-            Log.d(TAG, "ex - ${ex.extra_cost_name} - ${ex.extra_cost_value}")
+        //todo lateinit property  has not been initialized
     }
 
     /*
