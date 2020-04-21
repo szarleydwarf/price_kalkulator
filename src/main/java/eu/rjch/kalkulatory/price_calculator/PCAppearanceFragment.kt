@@ -33,8 +33,9 @@ class PCAppearanceFragment : Fragment() {
     private var extraCostChecked: Boolean = false
     private var extraCostNumber : Int = 0
 
-    private val TAG = "PRICE_C_SETUP_FR"
+    private val TAG = "PCAF"
     lateinit var pref : SharedPreferences
+    var obj = PC_ObjectToSave()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -51,8 +52,39 @@ class PCAppearanceFragment : Fragment() {
     private fun runApp(v: View) {
         pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
 
+        obj.printElementinLog("1. Log.d ")
+        obj.loadSPAppearance(context!!)
+        obj.printElementinLog("2. Log.d ")
+
+        initFields(v)
         initButtons(v)
         setListeners(v)
+    }
+
+    private fun initFields(v: View) {
+        v.chkb_profit_field.isChecked = obj.profit_field
+        v.chkb_tax_field.isChecked = obj.tax_field
+        v.chkb_extra_costs_field.isChecked = obj.extra_cost_field
+        v.rd_gr_no_of_extra_costs.findViewById<RadioButton>(R.id.rbtn_five_extra_costs).isChecked = true
+    }
+
+    private fun saveVars() {
+//todo save into file or shared prefs
+        obj.profit_field = profitChecked
+        obj.tax_field = taxChecked
+        obj.extra_cost_field = extraCostChecked
+        obj.number_of_extras = extraCostNumber
+        obj.printElementinLog("3. Log.d ")
+
+        obj.saveSPAppearance(context!!)
+    }
+
+    private fun compareSavedVars() : Boolean {
+// todo load vars and compare them return true if all the same #
+//  todo think about changing this to fun checking one var at a time as its skips after first true :/
+
+
+        return true
     }
 
     private fun setListeners(v: View) {
@@ -60,7 +92,7 @@ class PCAppearanceFragment : Fragment() {
         v.chkb_tax_field.setOnClickListener { taxChecked = v.chkb_tax_field.isChecked }
         v.chkb_extra_costs_field.setOnClickListener { extraCostChecked = v.chkb_extra_costs_field.isChecked }
         v.rd_gr_no_of_extra_costs.setOnCheckedChangeListener { group, checkedId ->
-            extraCostNumber =  group.findViewById<RadioButton>(checkedId).text.toString().toInt()
+            this.extraCostNumber =  group.findViewById<RadioButton>(checkedId).text.toString().toInt()
         }
     }
 
@@ -87,15 +119,6 @@ class PCAppearanceFragment : Fragment() {
         }
     }
 
-    private fun saveVars() {
-//todo save into file or shared prefs
-        var editor = pref?.edit() as SharedPreferences.Editor
-        editor.putBoolean(getString(R.string.show_profit), profitChecked)
-        editor.putBoolean(getString(R.string.show_tax), taxChecked)
-        editor.putBoolean(getString(R.string.show_extra_costs), extraCostChecked)
-        editor.putInt(getString(R.string.no_of_extras), extraCostNumber)
-    }
-
     private fun doSave(v:View, backBtnPressed:Boolean){
         val b = AlertDialog.Builder(context, R.style.MyDialogTheme)
         b.setMessage(getString(R.string.save_request_msg))
@@ -109,11 +132,11 @@ class PCAppearanceFragment : Fragment() {
                             else switchFragment(MainFragment())
                         })
                 .setNegativeButton(getString(R.string.dont_save),
-                DialogInterface.OnClickListener { dialog, which ->
-                    dialog.dismiss()
-                    if(backBtnPressed) switchFragment(PriceCalculatorSetupFragment())
-                    else switchFragment(MainFragment())
-                })
+                        DialogInterface.OnClickListener { dialog, which ->
+                            dialog.dismiss()
+                            if(backBtnPressed) switchFragment(PriceCalculatorSetupFragment())
+                            else switchFragment(MainFragment())
+                        })
         val ad = b.create()
         ad.setOnShowListener {
             var savebtn = ad.getButton(DialogInterface.BUTTON_POSITIVE)
@@ -126,30 +149,6 @@ class PCAppearanceFragment : Fragment() {
         }
 
         ad.show()
-    }
-
-    private fun compareSavedVars() : Boolean {
-//todo load vars and compare them return true if all the same #
-//  todo think about changing this to fun checking one var at a time as its skips after first true :/
-        var obj = PC_ObjectToSave()
-        obj.loadSharedPrefs(context!!)
-        Log.d(TAG, "Log.d ${obj.profit_field}")
-
-        var tProfit = obj.profit_field//pref.getBoolean(getString(R.string.show_profit), false)
-        var tTax = pref.getBoolean(getString(R.string.show_tax), false)
-        var tExtras = pref.getBoolean(getString(R.string.show_extra_costs), false)
-        var tNoExtraCosts = pref.getInt(getString(R.string.no_of_extras), 0)
-        if (tProfit != profitChecked) return true
-        if (tTax != taxChecked) return true
-        Log.d(TAG, "Log.d $tExtras")
-
-        if(tExtras != extraCostChecked){
-            Log.d(TAG, "Log.d $tNoExtraCosts")
-            extraCostNumber = tNoExtraCosts
-            return true
-        }
-
-        return false
     }
 
     private fun switchFragment(frag: Fragment) {
