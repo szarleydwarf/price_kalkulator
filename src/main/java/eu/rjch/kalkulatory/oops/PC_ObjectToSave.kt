@@ -13,10 +13,11 @@ class PC_ObjectToSave {
     var profit_field:Boolean = false
     var tax_field:Boolean = false
     var extra_cost_field:Boolean = false
+    var number_of_extras:Int = 0
+
     var profit_percentage:Int = 0
     var max_profit_percentage:Int = 0
     var tax_in_percent:Float = 0.0f
-    var number_of_extras:Int = 0
     var array_of_extras:Array<ExtraCost> = Array(0){ ExtraCost() }
 
     fun loadSPAppearance(ctx : Context){

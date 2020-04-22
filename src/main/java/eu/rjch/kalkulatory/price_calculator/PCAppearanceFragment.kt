@@ -34,8 +34,8 @@ class PCAppearanceFragment : Fragment() {
     private var extraCostNumber : Int = 0
 
     private val TAG = "PCAF"
-    lateinit var pref : SharedPreferences
-    var obj = PC_ObjectToSave()
+//    lateinit var pref : SharedPreferences
+    var obj : PC_ObjectToSave? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -43,18 +43,17 @@ class PCAppearanceFragment : Fragment() {
 
         AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
-
         runApp(v)
 
         return v
     }
 
     private fun runApp(v: View) {
-        pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
-
-        obj.printElementinLog("1. Log.d ")
-        obj.loadSPAppearance(context!!)
-        obj.printElementinLog("2. Log.d ")
+//        pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
+        obj = PC_ObjectToSave()
+        obj?.printElementinLog("1. Log.d ")
+        obj?.loadSPAppearance(context!!)
+        obj?.printElementinLog("2. Log.d ")
 
         initFields(v)
         initButtons(v)
@@ -62,29 +61,57 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private fun initFields(v: View) {
-        v.chkb_profit_field.isChecked = obj.profit_field
-        v.chkb_tax_field.isChecked = obj.tax_field
-        v.chkb_extra_costs_field.isChecked = obj.extra_cost_field
-        v.rd_gr_no_of_extra_costs.findViewById<RadioButton>(R.id.rbtn_five_extra_costs).isChecked = true
+        v.chkb_profit_field.isChecked = obj!!.profit_field
+        profitChecked = obj!!.profit_field
+        v.chkb_tax_field.isChecked = obj!!.tax_field
+        taxChecked = obj!!.tax_field
+        v.chkb_extra_costs_field.isChecked = obj!!.extra_cost_field
+        extraCostChecked = obj!!.extra_cost_field
+        extraCostNumber = obj!!.number_of_extras
+        when(obj!!.number_of_extras) {
+            1 -> v.rd_gr_no_of_extra_costs.check(R.id.rbtn_one_extra_cost)
+            2 -> v.rd_gr_no_of_extra_costs.check(R.id.rbtn_two_extra_costs)
+            3 -> v.rd_gr_no_of_extra_costs.check(R.id.rbtn_three_extra_costs)
+            4 -> v.rd_gr_no_of_extra_costs.check(R.id.rbtn_four_extra_costs)
+            5 -> v.rd_gr_no_of_extra_costs.check(R.id.rbtn_five_extra_costs)
+            0 -> Toast.makeText(context, "Nothing selected", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun saveVars() {
-//todo save into file or shared prefs
-        obj.profit_field = profitChecked
-        obj.tax_field = taxChecked
-        obj.extra_cost_field = extraCostChecked
-        obj.number_of_extras = extraCostNumber
-        obj.printElementinLog("3. Log.d ")
+//        obj?.profit_field = profitChecked
+//        obj?.tax_field = taxChecked
+//        obj?.extra_cost_field = extraCostChecked
+//        obj?.number_of_extras = extraCostNumber
+        obj?.printElementinLog("3. Log.d ")
 
-        obj.saveSPAppearance(context!!)
+        obj?.saveSPAppearance(context!!)
     }
 
     private fun compareSavedVars() : Boolean {
-// todo load vars and compare them return true if all the same #
-//  todo think about changing this to fun checking one var at a time as its skips after first true :/
+        var changeFound = false
+        Log.d(TAG, "PROFIT ${obj!!.profit_field != profitChecked} - ${obj?.profit_field} - $profitChecked")
+        if(obj!!.profit_field != profitChecked) {
+            obj?.profit_field = profitChecked
+            changeFound = true
+        }
+        Log.d(TAG, "TAX ${obj!!.tax_field != taxChecked} - ${obj?.tax_field} - $taxChecked")
+        if(obj!!.tax_field != taxChecked) {
+            obj?.tax_field = taxChecked
+            changeFound = true
+        }
+        Log.d(TAG, "EXTRAS ${obj!!.extra_cost_field != extraCostChecked} - ${obj?.extra_cost_field} - $extraCostChecked")
+        if(obj!!.extra_cost_field != extraCostChecked) {
+            obj?.extra_cost_field = extraCostChecked
+            Log.d(TAG, "Log.d $extraCostNumber * ${obj?.number_of_extras}")
+            obj?.number_of_extras = extraCostNumber
+            Log.d(TAG, "Log.d $extraCostNumber * ${obj?.number_of_extras}")
+            changeFound = true
+        }
+        Log.d(TAG, "changes found $changeFound")
 
-
-        return true
+        return changeFound
     }
 
     private fun setListeners(v: View) {
@@ -95,13 +122,12 @@ class PCAppearanceFragment : Fragment() {
             this.extraCostNumber =  group.findViewById<RadioButton>(checkedId).text.toString().toInt()
         }
     }
-
+// todo No view found for id 0x7f070097 (eu.rjch.kalkulatory:id/main_act_container) for fragment MenuFragment{41b02960}
+// todo (17d34a04-a851-451d-a3ba-bc941e9ad59a) id=0x7f070097}
     private fun initButtons(v: View) {
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            // todo ask for saving the changes, check for changes?
-            val displayAlert = compareSavedVars()
-            if(displayAlert) {
+            if(compareSavedVars()) {
                 doSave(v, true)
             } else {
                 switchFragment(PriceCalculatorSetupFragment())
@@ -110,8 +136,7 @@ class PCAppearanceFragment : Fragment() {
 
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            val displayAlert = compareSavedVars()
-            if(displayAlert) {
+            if(compareSavedVars()) {
                 doSave(v, false)
             } else {
                 switchFragment(MainFragment())
@@ -137,6 +162,7 @@ class PCAppearanceFragment : Fragment() {
                             if(backBtnPressed) switchFragment(PriceCalculatorSetupFragment())
                             else switchFragment(MainFragment())
                         })
+
         val ad = b.create()
         ad.setOnShowListener {
             var savebtn = ad.getButton(DialogInterface.BUTTON_POSITIVE)
@@ -147,7 +173,6 @@ class PCAppearanceFragment : Fragment() {
             dontsavebtn.background = ResourcesCompat.getDrawable(resources,
                     R.drawable.skew_btn, null)
         }
-
         ad.show()
     }
 
