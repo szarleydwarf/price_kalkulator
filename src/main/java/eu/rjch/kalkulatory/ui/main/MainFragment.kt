@@ -81,7 +81,7 @@ class MainFragment : Fragment() {
     private fun switchFragment() {
         var menuFragment = MenuFragment()
         var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.main_act_container, menuFragment)
+        fragTransaction?.replace(R.id.main_fragment, menuFragment)
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }

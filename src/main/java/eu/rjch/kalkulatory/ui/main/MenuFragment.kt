@@ -31,11 +31,11 @@ class MenuFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
         var v = inflater.inflate(R.layout.calculators_menu, container, false)
+        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
         v.price_calculator_btn.setOnClickListener{btnClicked(v, R.id.price_calculator_btn)}
         v.other_calculator_btn.setOnClickListener { btnClicked(v, R.id.other_calculator_btn) }
 
-        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
         return v
     }
