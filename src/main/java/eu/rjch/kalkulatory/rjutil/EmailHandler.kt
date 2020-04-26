@@ -2,6 +2,7 @@ package eu.rjch.kalkulatory.rjutil
 
 import android.content.Intent
 import android.content.res.Resources
+import android.net.Uri
 import eu.rjch.kalkulatory.R
 
 class EmailHandler {
@@ -19,19 +20,18 @@ class EmailHandler {
     }
 
     fun sendEmail(subject: String, resources: Resources, error_email: Boolean=true) : Intent {
-        var msg : String = ""
-        var reciepent = arrayOf(resources.getString(R.string.reciepent_email))
+        var recepient = resources.getString(R.string.reciepent_email)
+        var body:String = ""
         if(error_email)
-            msg += getSystemInfo()
+            body += getSystemInfo()
+        body += "\n\n" + resources.getString(R.string.email_msg)
+        var uri = Uri.parse("mailto:"+recepient)
+                .buildUpon()
+                .appendQueryParameter("subject", subject)
+                .appendQueryParameter("body", body)
+                .build()
+        var i = Intent(Intent.ACTION_SENDTO, uri)
 
-        msg += "\n\n" +  resources.getString(R.string.email_msg)
-
-        val i = Intent(Intent.ACTION_SEND)
-        i.putExtra(Intent.EXTRA_EMAIL, reciepent)
-        i.putExtra(Intent.EXTRA_SUBJECT, subject)
-        i.putExtra(Intent.EXTRA_TEXT, msg)
-
-        i.setType("message/rfc822")
         return i
     }
 }

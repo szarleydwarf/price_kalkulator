@@ -81,7 +81,7 @@ testCase()
         val subject = resources.getString(R.string.email_subject)
         val eh = EmailHandler()
         startActivity(Intent.createChooser(eh.sendEmail(subject, resources),
-                R.string.choose_email_option.toString()))
+                getString(R.string.choose_email_option)))
     }
 
     private fun switchFragment(frag : Fragment) {
