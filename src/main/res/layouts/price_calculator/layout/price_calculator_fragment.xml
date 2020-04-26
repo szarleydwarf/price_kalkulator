@@ -20,7 +20,7 @@
             android:id="@+id/price_calculator_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".PriceCalculatorActivity"
+            tools:context=".activities.PriceCalculatorActivity"
             android:layout_gravity="center"
             >
 

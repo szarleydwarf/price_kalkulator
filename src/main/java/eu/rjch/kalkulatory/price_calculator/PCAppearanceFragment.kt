@@ -3,6 +3,7 @@ package eu.rjch.kalkulatory.price_calculator
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -122,15 +123,14 @@ class PCAppearanceFragment : Fragment() {
             this.extraCostNumber =  group.findViewById<RadioButton>(checkedId).text.toString().toInt()
         }
     }
-// todo No view found for id 0x7f070097 (eu.rjch.kalkulatory:id/main_act_container) for fragment MenuFragment{41b02960}
-// todo (17d34a04-a851-451d-a3ba-bc941e9ad59a) id=0x7f070097}
+
     private fun initButtons(v: View) {
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
             if(compareSavedVars()) {
                 doSave(v, true)
             } else {
-                switchFragment(PriceCalculatorSetupFragment())
+                switchFragment()
             }
         }
 
@@ -139,7 +139,7 @@ class PCAppearanceFragment : Fragment() {
             if(compareSavedVars()) {
                 doSave(v, false)
             } else {
-                switchFragment(MainFragment())
+                switchActivity()
             }
         }
     }
@@ -153,14 +153,14 @@ class PCAppearanceFragment : Fragment() {
                         DialogInterface.OnClickListener (){
                             di: DialogInterface, i: Int ->
                             saveVars()
-                            if(backBtnPressed) switchFragment(PriceCalculatorSetupFragment())
-                            else switchFragment(MainFragment())
+                            if(backBtnPressed) switchFragment()
+                            else switchActivity()
                         })
                 .setNegativeButton(getString(R.string.dont_save),
                         DialogInterface.OnClickListener { dialog, which ->
                             dialog.dismiss()
-                            if(backBtnPressed) switchFragment(PriceCalculatorSetupFragment())
-                            else switchFragment(MainFragment())
+                            if(backBtnPressed) switchFragment()
+                            else switchActivity()
                         })
 
         val ad = b.create()
@@ -176,10 +176,14 @@ class PCAppearanceFragment : Fragment() {
         ad.show()
     }
 
-    private fun switchFragment(frag: Fragment) {
-        var fragment = frag
+    private fun switchActivity(){
+        startActivity(Intent(context, MainActivity::class.java))
+    }
+
+    private fun switchFragment() {
+        var fragment = PriceCalculatorSetupFragment()
         var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.container_price_calculator, fragment)
+        fragTransaction?.replace(R.id.pc_settings_container, fragment)
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }

@@ -1,6 +1,7 @@
 package eu.rjch.kalkulatory.price_calculator
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -72,19 +73,19 @@ checkSavedVars()
     private fun initButtons(v: View) {
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment(PriceCalculatorFragment())
+            switchFragment()
         }
 
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment(MainFragment())
+            startActivity(Intent(context, MainActivity::class.java))
         }
     }
 
-    private fun switchFragment(frag : Fragment) {
-        var fragment = frag
+    private fun switchFragment() {
+        var fragment = PriceCalculatorSetupFragment()
         var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.container_price_calculator, fragment)
+        fragTransaction?.replace(R.id.pc_settings_container, fragment)
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }

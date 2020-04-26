@@ -2,10 +2,9 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_price_calculator"
+    android:id="@+id/pc_settings_container"
+    tools:context=".activities.PCSettingsActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.PriceCalculatorActivity"
-    >
+    android:layout_height="match_parent">
 
 </FrameLayout>

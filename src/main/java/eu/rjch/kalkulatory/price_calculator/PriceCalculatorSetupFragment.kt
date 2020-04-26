@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.activities.PriceCalculatorActivity
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import eu.rjch.kalkulatory.rjutil.EmailHandler
@@ -65,12 +66,13 @@ testCase()
 
         v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment(PriceCalculatorFragment())
+            startActivity(Intent(context, PriceCalculatorActivity::class.java))
+//            switchFragment(PriceCalculatorFragment())
         }
 
         v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
                 v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment(MainFragment())
+            startActivity(Intent(context, MainActivity::class.java))
         }
 
     }
@@ -85,7 +87,7 @@ testCase()
     private fun switchFragment(frag : Fragment) {
         var fragment = frag
         var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.container_price_calculator, fragment)
+        fragTransaction?.replace(R.id.pc_settings_container, fragment)
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }

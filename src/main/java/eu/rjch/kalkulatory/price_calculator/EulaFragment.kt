@@ -36,7 +36,7 @@ class EulaFragment : Fragment() {
     private fun switchFragment() {
         var fragment = PriceCalculatorSetupFragment()
         var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.container_price_calculator, fragment)
+        fragTransaction?.replace(R.id.pc_settings_container, fragment)
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }

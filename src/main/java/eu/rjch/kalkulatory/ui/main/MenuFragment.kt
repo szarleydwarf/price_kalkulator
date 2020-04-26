@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
-import eu.rjch.kalkulatory.PriceCalculatorActivity
+import eu.rjch.kalkulatory.activities.PriceCalculatorActivity
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager

@@ -23,7 +23,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PriceCalculatorActivity" />
+        <activity android:name=".activities.PriceCalculatorActivity"
+            />
+        <activity android:name=".activities.PCSettingsActivity"
+            />
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
