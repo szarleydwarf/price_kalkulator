@@ -1,5 +1,6 @@
 package eu.rjch.kalkulatory.price_calculator
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -22,73 +23,74 @@ class PriceCalculatorSetupFragment : Fragment(){
     companion object {
         fun newInstance() = PriceCalculatorSetupFragment()
     }
+    var actCallback : btnListener? = null
+    interface  btnListener {
+        fun switchFragment(frag: Fragment)
+        fun switchActivity(act : Class<*>)
+        fun sendEmail()
+    }
 
     private val TAG = "PRICE_C_SETUP_FR"
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            actCallback = context as btnListener
+        } catch (e:ClassCastException) {
+            Log.d(TAG, "Error with class cast: ${e.message}")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.price_calc_setup_frag, container, false)
 
         AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
-testCase()
         runApp(v)
         return v
     }
 
-    private fun testCase() {
-
-    }
-
-
     private fun runApp(v: View) {
-
-        v.btn_price_calculator_values.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_price_calculator_values, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment(PCValuesFragment())
-        }
-
-        v.btn_price_calculator_appearance.setOnClickListener {
-            AnimationManager().didTapButonInterpolate(
-                v.btn_price_calculator_appearance, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment(PCAppearanceFragment())
-        }
-
-        v.btn_eula.setOnClickListener {
-            AnimationManager().didTapButonInterpolate(
-                v.btn_eula, context, R.anim.bounce, MainActivity.amp, MainActivity.freq )
-            switchFragment(EulaFragment())
-        }
-
-        v.btn_contact.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_contact, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            sendEmail()
-        }
-
-        v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            startActivity(Intent(context, PriceCalculatorActivity::class.java))
-//            switchFragment(PriceCalculatorFragment())
-        }
-
-        v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            startActivity(Intent(context, MainActivity::class.java))
-        }
-
+        v.btn_price_calculator_values.setOnClickListener { btnClicked(v, R.id.btn_price_calculator_values) }
+        v.btn_price_calculator_appearance.setOnClickListener {btnClicked(v, R.id.btn_price_calculator_appearance) }
+        v.btn_eula.setOnClickListener { btnClicked(v, R.id.btn_eula) }
+        v.btn_contact.setOnClickListener { btnClicked(v, R.id.btn_contact)}
+        v.btn_go_back.setOnClickListener { btnClicked(v, R.id.btn_go_back) }
+        v.btn_home.setOnClickListener { btnClicked(v, R.id.btn_home) }
     }
 
-    private fun sendEmail() {
-        val subject = resources.getString(R.string.email_subject)
-        val eh = EmailHandler()
-        startActivity(Intent.createChooser(eh.sendEmail(subject, resources),
-                getString(R.string.choose_email_option)))
-    }
-
-    private fun switchFragment(frag : Fragment) {
-        var fragment = frag
-        var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.pc_settings_container, fragment)
-        fragTransaction?.addToBackStack(null)
-        fragTransaction?.commit()
+    private fun btnClicked(v: View, id: Int) {
+        when(id){
+            R.id.btn_price_calculator_values -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_price_calculator_values, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                actCallback?.switchFragment(PCValuesFragment())
+            }
+            R.id.btn_price_calculator_appearance -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_price_calculator_appearance, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                actCallback?.switchFragment(PCAppearanceFragment())
+            }
+            R.id.btn_eula -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_eula, context, R.anim.bounce, MainActivity.amp, MainActivity.freq )
+                actCallback?.switchFragment(EulaFragment())
+            }
+            R.id.btn_contact -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_contact, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                actCallback?.sendEmail()
+            }
+            R.id.btn_go_back -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                actCallback?.switchActivity(PriceCalculatorActivity::class.java)
+            }
+            R.id.btn_home -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                actCallback?.switchActivity(MainActivity::class.java)
+            }
+        }
     }
 }
