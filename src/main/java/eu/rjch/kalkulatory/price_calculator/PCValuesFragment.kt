@@ -22,7 +22,11 @@ import kotlinx.android.synthetic.main.pc_values_frag_layout.view.btn_home
 
 class PCValuesFragment : Fragment() {
 
+    companion object{
+        fun newInstance() = PCValuesFragment()
+    }
     private val TAG = "PRICE_C_SETUP_FR"
+
     var profitCheckBox:Boolean = false
     var taxCheckBox:Boolean = false
     var extraCostCheckBox:Boolean = false
@@ -89,4 +93,5 @@ checkSavedVars()
         fragTransaction?.addToBackStack(null)
         fragTransaction?.commit()
     }
+
 }

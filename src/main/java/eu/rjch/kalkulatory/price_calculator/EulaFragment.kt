@@ -1,6 +1,8 @@
 package eu.rjch.kalkulatory.price_calculator
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +19,20 @@ class EulaFragment : Fragment() {
     companion object {
         fun newInstance() = EulaFragment()
     }
+    var actCallback : btnListener? = null
+    interface btnListener{
+        fun switchFragment()
+    }
     private val TAG = "EULA_FRAG"
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try{
+            actCallback = context as btnListener
+        } catch (e : ClassCastException) {
+            Log.d(TAG, "Error with class cast: ${e.message}")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -25,12 +40,16 @@ class EulaFragment : Fragment() {
 
         AdsHandler().getAds(v.findViewById(R.id.adViewB)!!)
 
-        v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment()
+        v.btn_go_back.setOnClickListener { btnClicked(v) }
 
-        }
         return v
+    }
+
+    private fun btnClicked(v:View) {
+        Log.d(TAG, "EULA BTN CLICKED")
+        AnimationManager().didTapButonInterpolate(
+                v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+        actCallback?.switchFragment()
     }
 
     private fun switchFragment() {

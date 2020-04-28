@@ -2,13 +2,19 @@ package eu.rjch.kalkulatory.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.price_calculator.EulaFragment
 import eu.rjch.kalkulatory.price_calculator.PriceCalculatorSetupFragment
 import eu.rjch.kalkulatory.rjutil.EmailHandler
 
-class PCSettingsActivity : AppCompatActivity(), PriceCalculatorSetupFragment.btnListener {
+class PCSettingsActivity : AppCompatActivity(),
+        PriceCalculatorSetupFragment.btnListener,
+        EulaFragment.btnListener {
+
+    private val TAG = "PCSETACT"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +30,7 @@ class PCSettingsActivity : AppCompatActivity(), PriceCalculatorSetupFragment.btn
     }
 
     override fun switchFragment(frag: Fragment) {
+        Log.d(TAG, "SWITCH FRAGMENT")
         var fragment = frag
         var fragTransaction = supportFragmentManager?.beginTransaction()
         fragTransaction?.replace(R.id.pc_settings_container, fragment)
@@ -41,5 +48,11 @@ class PCSettingsActivity : AppCompatActivity(), PriceCalculatorSetupFragment.btn
         val eh = EmailHandler()
         startActivity(Intent.createChooser(eh.sendEmail(subject, resources),
                 getString(R.string.choose_email_option)))
+    }
+
+    override fun switchFragment() {
+        Log.d(TAG, "SWITCH EULA FRAGMENT")
+
+        switchFragment(PriceCalculatorSetupFragment())
     }
 }

@@ -64,17 +64,17 @@ class PriceCalculatorSetupFragment : Fragment(){
             R.id.btn_price_calculator_values -> {
                 AnimationManager().didTapButonInterpolate(
                         v.btn_price_calculator_values, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-                actCallback?.switchFragment(PCValuesFragment())
+                actCallback?.switchFragment(PCValuesFragment.newInstance())
             }
             R.id.btn_price_calculator_appearance -> {
                 AnimationManager().didTapButonInterpolate(
                         v.btn_price_calculator_appearance, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-                actCallback?.switchFragment(PCAppearanceFragment())
+                actCallback?.switchFragment(PCAppearanceFragment.newInstance())
             }
             R.id.btn_eula -> {
                 AnimationManager().didTapButonInterpolate(
                         v.btn_eula, context, R.anim.bounce, MainActivity.amp, MainActivity.freq )
-                actCallback?.switchFragment(EulaFragment())
+                actCallback?.switchFragment(EulaFragment.newInstance())
             }
             R.id.btn_contact -> {
                 AnimationManager().didTapButonInterpolate(
