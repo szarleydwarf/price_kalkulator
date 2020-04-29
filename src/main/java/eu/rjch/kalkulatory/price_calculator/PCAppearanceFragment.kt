@@ -42,7 +42,7 @@ class PCAppearanceFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.pc_appearance_fragment, container, false)
 
-        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
+//        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
         runApp(v)
 
@@ -105,6 +105,9 @@ class PCAppearanceFragment : Fragment() {
         Log.d(TAG, "EXTRAS ${obj!!.extra_cost_field != extraCostChecked} - ${obj?.extra_cost_field} - $extraCostChecked")
         if(obj!!.extra_cost_field != extraCostChecked) {
             obj?.extra_cost_field = extraCostChecked
+            changeFound = true
+        }
+        if(extraCostChecked) {
             Log.d(TAG, "Log.d $extraCostNumber * ${obj?.number_of_extras}")
             obj?.number_of_extras = extraCostNumber
             Log.d(TAG, "Log.d $extraCostNumber * ${obj?.number_of_extras}")

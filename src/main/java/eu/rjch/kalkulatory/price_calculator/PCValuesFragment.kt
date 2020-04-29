@@ -38,7 +38,7 @@ class PCValuesFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.pc_values_frag_layout, container, false)
 
-        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
+//        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
         initButtons(v)
         initVars()

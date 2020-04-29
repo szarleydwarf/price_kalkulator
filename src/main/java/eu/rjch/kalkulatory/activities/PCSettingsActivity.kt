@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.price_calculator.EulaFragment
 import eu.rjch.kalkulatory.price_calculator.PriceCalculatorSetupFragment
+import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.EmailHandler
 
 class PCSettingsActivity : AppCompatActivity(),
@@ -18,13 +19,16 @@ class PCSettingsActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pc_settings_activity_layout)
+        val v = R.layout.pc_settings_activity_layout
+        setContentView(v)
 
         if(savedInstanceState == null){
             supportFragmentManager.beginTransaction()
                     .replace(R.id.pc_settings_container,
                             PriceCalculatorSetupFragment.newInstance()
                     )
+                    .add(R.id.g_ads_container, AdsHandler.newInstance(),
+                            getString(R.string.googl_ads_fragment))
                     .commit()
         }
     }

@@ -45,12 +45,12 @@ class PriceCalculatorSetupFragment : Fragment(){
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.price_calc_setup_frag, container, false)
 
-        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
-        runApp(v)
+//        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
+        setBtnListeners(v)
         return v
     }
 
-    private fun runApp(v: View) {
+    private fun setBtnListeners(v: View) {
         v.btn_price_calculator_values.setOnClickListener { btnClicked(v, R.id.btn_price_calculator_values) }
         v.btn_price_calculator_appearance.setOnClickListener {btnClicked(v, R.id.btn_price_calculator_appearance) }
         v.btn_eula.setOnClickListener { btnClicked(v, R.id.btn_eula) }

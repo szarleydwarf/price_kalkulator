@@ -95,20 +95,20 @@
     </LinearLayout>
 
     <!--google add layout-->
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/blue_bcg_border"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/ad_mob_test"
-        ads:layout_constraintTop_toBottomOf="@id/linear_layout"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        />
+        <!--    <com.google.android.gms.ads.AdView-->
+        <!--        android:id="@+id/adViewB"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_alignParentBottom="true"-->
+        <!--        android:layout_centerHorizontal="true"-->
+        <!--        android:background="@drawable/blue_bcg_border"-->
+        <!--        ads:adSize="BANNER"-->
+        <!--        ads:adUnitId="@string/ad_mob_test"-->
+        <!--        ads:layout_constraintTop_toBottomOf="@id/linear_layout"-->
+        <!--        ads:layout_constraintEnd_toEndOf="parent"-->
+        <!--        ads:layout_constraintStart_toStartOf="parent"-->
+        <!--        ads:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        />-->
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout >

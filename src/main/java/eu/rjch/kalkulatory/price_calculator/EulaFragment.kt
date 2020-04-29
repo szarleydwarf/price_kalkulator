@@ -38,7 +38,7 @@ class EulaFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.eula_frag_layout, container, false)
 
-        AdsHandler().getAds(v.findViewById(R.id.adViewB)!!)
+//        AdsHandler().getAds(v.findViewById(R.id.adViewB)!!)
 
         v.btn_go_back.setOnClickListener { btnClicked(v) }
 
@@ -50,13 +50,5 @@ class EulaFragment : Fragment() {
         AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
         actCallback?.switchFragment()
-    }
-
-    private fun switchFragment() {
-        var fragment = PriceCalculatorSetupFragment()
-        var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.pc_settings_container, fragment)
-        fragTransaction?.addToBackStack(null)
-        fragTransaction?.commit()
     }
 }
