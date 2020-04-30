@@ -96,16 +96,16 @@
     </ScrollView>
 
     <!--google add layout-->
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/blue_bcg_border"
-        android:layout_marginTop="5dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/ad_mob_test"
-        />
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        android:id="@+id/adViewB"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@drawable/blue_bcg_border"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        ads:adSize="BANNER"-->
+<!--        ads:adUnitId="@string/ad_mob_test"-->
+<!--        />-->
 
 </RelativeLayout>

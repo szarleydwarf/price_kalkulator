@@ -1,12 +1,9 @@
 package eu.rjch.kalkulatory.price_calculator
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +14,7 @@ import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.oops.PC_ObjectToSave
-import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
-import eu.rjch.kalkulatory.rjutil.CustomAlertDialogFragment
-import eu.rjch.kalkulatory.ui.main.MainFragment
-import kotlinx.android.synthetic.main.alert_dialog_layout.view.*
 import kotlinx.android.synthetic.main.pc_appearance_fragment.view.*
 
 class PCAppearanceFragment : Fragment() {
@@ -52,9 +45,7 @@ class PCAppearanceFragment : Fragment() {
     private fun runApp(v: View) {
 //        pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
         obj = PC_ObjectToSave()
-        obj?.printElementinLog("1. Log.d ")
         obj?.loadSPAppearance(context!!)
-        obj?.printElementinLog("2. Log.d ")
 
         initFields(v)
         initButtons(v)
@@ -92,29 +83,22 @@ class PCAppearanceFragment : Fragment() {
 
     private fun compareSavedVars() : Boolean {
         var changeFound = false
-        Log.d(TAG, "PROFIT ${obj!!.profit_field != profitChecked} - ${obj?.profit_field} - $profitChecked")
         if(obj!!.profit_field != profitChecked) {
             obj?.profit_field = profitChecked
             changeFound = true
         }
-        Log.d(TAG, "TAX ${obj!!.tax_field != taxChecked} - ${obj?.tax_field} - $taxChecked")
         if(obj!!.tax_field != taxChecked) {
             obj?.tax_field = taxChecked
             changeFound = true
         }
-        Log.d(TAG, "EXTRAS ${obj!!.extra_cost_field != extraCostChecked} - ${obj?.extra_cost_field} - $extraCostChecked")
         if(obj!!.extra_cost_field != extraCostChecked) {
             obj?.extra_cost_field = extraCostChecked
             changeFound = true
         }
-        if(extraCostChecked) {
-            Log.d(TAG, "Log.d $extraCostNumber * ${obj?.number_of_extras}")
+        if(extraCostChecked && obj?.number_of_extras != extraCostNumber) {
             obj?.number_of_extras = extraCostNumber
-            Log.d(TAG, "Log.d $extraCostNumber * ${obj?.number_of_extras}")
             changeFound = true
         }
-        Log.d(TAG, "changes found $changeFound")
-
         return changeFound
     }
 

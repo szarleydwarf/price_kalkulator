@@ -24,17 +24,18 @@ class PCSettingsActivity : AppCompatActivity(),
 
         if(savedInstanceState == null){
             supportFragmentManager.beginTransaction()
+                    .replace(R.id.g_ads_container, AdsHandler.newInstance(),
+                            getString(R.string.googl_ads_fragment))
+                    .commit()
+            supportFragmentManager.beginTransaction()
                     .replace(R.id.pc_settings_container,
                             PriceCalculatorSetupFragment.newInstance()
                     )
-                    .add(R.id.g_ads_container, AdsHandler.newInstance(),
-                            getString(R.string.googl_ads_fragment))
                     .commit()
         }
     }
 
     override fun switchFragment(frag: Fragment) {
-        Log.d(TAG, "SWITCH FRAGMENT")
         var fragment = frag
         var fragTransaction = supportFragmentManager?.beginTransaction()
         fragTransaction?.replace(R.id.pc_settings_container, fragment)
@@ -55,7 +56,6 @@ class PCSettingsActivity : AppCompatActivity(),
     }
 
     override fun switchFragment() {
-        Log.d(TAG, "SWITCH EULA FRAGMENT")
 
         switchFragment(PriceCalculatorSetupFragment())
     }

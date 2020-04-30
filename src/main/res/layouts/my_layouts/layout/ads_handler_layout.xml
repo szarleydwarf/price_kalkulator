@@ -10,8 +10,7 @@
         android:id="@+id/adViewB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+
         android:background="@drawable/blue_bcg_border"
         ads:adSize="BANNER"
         ads:adUnitId="@string/ad_mob_test"
