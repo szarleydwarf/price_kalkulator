@@ -21,7 +21,7 @@ class EulaFragment : Fragment() {
     }
     var actCallback : btnListener? = null
     interface btnListener{
-        fun switchFragment()
+        fun switchFragment(frag: Fragment)
     }
     private val TAG = "EULA_FRAG"
 
@@ -49,6 +49,6 @@ class EulaFragment : Fragment() {
         Log.d(TAG, "EULA BTN CLICKED")
         AnimationManager().didTapButonInterpolate(
                 v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-        actCallback?.switchFragment()
+        actCallback?.switchFragment(PriceCalculatorSetupFragment.newInstance())
     }
 }

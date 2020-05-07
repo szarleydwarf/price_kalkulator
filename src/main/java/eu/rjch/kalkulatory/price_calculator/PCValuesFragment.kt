@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.MainActivity
 import eu.rjch.kalkulatory.R
+import eu.rjch.kalkulatory.oops.PC_ObjectToSave
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.AnimationManager
 import eu.rjch.kalkulatory.ui.main.MainFragment
@@ -25,20 +26,31 @@ class PCValuesFragment : Fragment() {
     companion object{
         fun newInstance() = PCValuesFragment()
     }
-    private val TAG = "PRICE_C_SETUP_FR"
+    var actCallback : btnListener? = null
+    interface btnListener{
+        fun switchFragment(frag: Fragment)
+        fun switchActivity(act : Class<*>)
+    }
 
+    private val TAG = "PC_VAL_FR"
+    var obj : PC_ObjectToSave? = null
     var profitCheckBox:Boolean = false
     var taxCheckBox:Boolean = false
     var extraCostCheckBox:Boolean = false
     var numberOfExtraCostFragments = 0
 
-    lateinit var pref : SharedPreferences
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try{
+            actCallback = context as btnListener
+        } catch (e : ClassCastException) {
+            Log.d(TAG, "Error with class cast: ${e.message}")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.pc_values_frag_layout, container, false)
-
-//        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
         initButtons(v)
         initVars()
@@ -48,50 +60,45 @@ class PCValuesFragment : Fragment() {
 
     private fun runApp(v: View) {
 //        check if there is any of the fragments checked/true from appearance sharedPrefs
-//        if(isAnyModuleVisible()) {
-//            Log.d(TAG, "yes")
-//        } else {
-//            Log.d(TAG, "no")
-//
-//        }
+        if(isAnyModuleVisible()) {
+            Log.d(TAG, "yes")
+        } else {
+            Log.d(TAG, "no")
+
+        }
 //        else display / add proper fragments
-checkSavedVars()
     }
 
-    private fun checkSavedVars() {
-        var tProfit = pref.getInt(getString(R.string.profit), 20)
-        var tTax = pref.getFloat(getString(R.string.tax), 21f)
-        var tExtras = pref.getInt(getString(R.string.extra_costs), 1)
-        var tNoExtraCosts = pref.getInt(getString(R.string.no_of_extras), 0)
-        Log.d(TAG,
-                "back btn !!! $tProfit / $tTax / $tExtras " +
-                        "/ $tNoExtraCosts")
+    private fun isAnyModuleVisible(): Boolean {
+        obj?.printElementinLog(TAG)
+
+
+        return false
     }
 
     private fun initVars() {
-        pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
-        var editor = pref?.edit() as SharedPreferences.Editor
-
+        obj = PC_ObjectToSave()
+        obj?.loadSPAppearance(context!!)
     }
 
     private fun initButtons(v: View) {
-        v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            switchFragment()
-        }
-
-        v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            startActivity(Intent(context, MainActivity::class.java))
-        }
+        v.btn_go_back.setOnClickListener { btnClicked(v, R.id.btn_go_back) }
+        v.btn_home.setOnClickListener { btnClicked(v, R.id.btn_home)}
     }
 
-    private fun switchFragment() {
-        var fragment = PriceCalculatorSetupFragment()
-        var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.pc_settings_container, fragment)
-        fragTransaction?.addToBackStack(null)
-        fragTransaction?.commit()
+    private fun btnClicked(v: View, id: Int) {
+        when (id) {
+            R.id.btn_go_back->{
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                actCallback?.switchFragment(PriceCalculatorSetupFragment.newInstance())
+            }
+            R.id.btn_home -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                actCallback?.switchActivity(MainActivity::class.java)
+            }
+        }
     }
 
 }

@@ -1,9 +1,12 @@
 package eu.rjch.kalkulatory.price_calculator
 
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,20 +25,33 @@ class PCAppearanceFragment : Fragment() {
         fun newInstance() = PCAppearanceFragment()
     }
 
+    var actCallback : btnListener? = null
+    interface btnListener{
+        fun switchFragment(frag: Fragment)
+        fun switchActivity(act : Class<*>)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try{
+            actCallback = context as btnListener
+        } catch (e : ClassCastException) {
+            Log.d(TAG, "Error with class cast: ${e.message}")
+        }
+    }
+
     private var taxChecked: Boolean = false
     private var profitChecked: Boolean = false
     private var extraCostChecked: Boolean = false
     private var extraCostNumber : Int = 0
 
     private val TAG = "PCAF"
-//    lateinit var pref : SharedPreferences
     var obj : PC_ObjectToSave? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.pc_appearance_fragment, container, false)
 
-//        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
 
         runApp(v)
 
@@ -43,7 +59,6 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private fun runApp(v: View) {
-//        pref = context?.getSharedPreferences(getString(R.string.price_calc_pref), Context.MODE_PRIVATE) as SharedPreferences
         obj = PC_ObjectToSave()
         obj?.loadSPAppearance(context!!)
 
@@ -112,21 +127,29 @@ class PCAppearanceFragment : Fragment() {
     }
 
     private fun initButtons(v: View) {
-        v.btn_go_back.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            if(compareSavedVars()) {
-                doSave(v, true)
-            } else {
-                switchFragment()
-            }
-        }
+        v.btn_go_back.setOnClickListener { btnClicked(v, R.id.btn_go_back) }
+        v.btn_home.setOnClickListener {btnClicked(v, R.id.btn_home) }
+    }
 
-        v.btn_home.setOnClickListener { AnimationManager().didTapButonInterpolate(
-                v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
-            if(compareSavedVars()) {
-                doSave(v, false)
-            } else {
-                switchActivity()
+    private fun btnClicked(v: View, id: Int) {
+        when(id) {
+            R.id.btn_go_back -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_go_back, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                if(compareSavedVars()) {
+                    doSave(v, true)
+                } else {
+                    actCallback?.switchFragment(PriceCalculatorSetupFragment.newInstance())
+                }
+            }
+            R.id.btn_home -> {
+                AnimationManager().didTapButonInterpolate(
+                        v.btn_home, context, R.anim.bounce, MainActivity.amp, MainActivity.freq)
+                if(compareSavedVars()) {
+                    doSave(v, false)
+                } else {
+                    actCallback?.switchActivity(MainActivity::class.java)
+                }
             }
         }
     }
@@ -140,14 +163,14 @@ class PCAppearanceFragment : Fragment() {
                         DialogInterface.OnClickListener (){
                             di: DialogInterface, i: Int ->
                             saveVars()
-                            if(backBtnPressed) switchFragment()
-                            else switchActivity()
+                            if(backBtnPressed) actCallback?.switchFragment(PriceCalculatorSetupFragment.newInstance())
+                            else actCallback?.switchActivity(MainActivity::class.java)
                         })
                 .setNegativeButton(getString(R.string.dont_save),
                         DialogInterface.OnClickListener { dialog, which ->
                             dialog.dismiss()
-                            if(backBtnPressed) switchFragment()
-                            else switchActivity()
+                            if(backBtnPressed) actCallback?.switchFragment(PriceCalculatorSetupFragment.newInstance())
+                            else actCallback?.switchActivity(MainActivity::class.java)
                         })
 
         val ad = b.create()
@@ -162,17 +185,4 @@ class PCAppearanceFragment : Fragment() {
         }
         ad.show()
     }
-
-    private fun switchActivity(){
-        startActivity(Intent(context, MainActivity::class.java))
-    }
-
-    private fun switchFragment() {
-        var fragment = PriceCalculatorSetupFragment()
-        var fragTransaction = activity?.supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.pc_settings_container, fragment)
-        fragTransaction?.addToBackStack(null)
-        fragTransaction?.commit()
-    }
-
 }

@@ -7,13 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import eu.rjch.kalkulatory.R
 import eu.rjch.kalkulatory.price_calculator.EulaFragment
+import eu.rjch.kalkulatory.price_calculator.PCAppearanceFragment
+import eu.rjch.kalkulatory.price_calculator.PCValuesFragment
 import eu.rjch.kalkulatory.price_calculator.PriceCalculatorSetupFragment
 import eu.rjch.kalkulatory.rjutil.AdsHandler
 import eu.rjch.kalkulatory.rjutil.EmailHandler
 
 class PCSettingsActivity : AppCompatActivity(),
         PriceCalculatorSetupFragment.btnListener,
-        EulaFragment.btnListener {
+        EulaFragment.btnListener,
+        PCValuesFragment.btnListener,
+        PCAppearanceFragment.btnListener{
 
     private val TAG = "PCSETACT"
 
@@ -54,10 +58,5 @@ class PCSettingsActivity : AppCompatActivity(),
         val eh = EmailHandler()
         startActivity(Intent.createChooser(eh.sendEmail(subject, resources),
                 getString(R.string.choose_email_option)))
-    }
-
-    override fun switchFragment() {
-
-        switchFragment(PriceCalculatorSetupFragment())
     }
 }

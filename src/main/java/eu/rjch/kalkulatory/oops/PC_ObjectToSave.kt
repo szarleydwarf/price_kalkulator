@@ -89,8 +89,8 @@ class PC_ObjectToSave {
     }
 
 
-    fun printElementinLog(msg:String) {
-        Log.d(TAG, msg+"\nprofit:" +
+    fun printElementinLog(tag:String) {
+        Log.d(tag, "\nprofit:" +
                 "- $profit_field - $profit_percentage - $max_profit_percentage" +
                 "\n" +
                 "tax" +
