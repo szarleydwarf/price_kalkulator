@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +7,7 @@
     >
     <!--todo Change to scrollview add framelayout's
     -->
+    <!-- value_icon -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,13 +24,67 @@
             />
     </LinearLayout>
 
+<!--  scroll_view_pc_values  -->
+    <ScrollView
+        android:id="@+id/scroll_view_pc_values"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:fillViewport="true"
+
+        >
+        <FrameLayout
+            android:id="@+id/pc_tax_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/pc_profit_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/pc_extra_1_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/pc_extra_2_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/pc_extra_3_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/pc_extra_4_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/pc_extra_5_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </FrameLayout>
+    </ScrollView>
+
     <!-- go_back_layout-->
     <LinearLayout
         android:id="@+id/go_back_btn_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_above="@id/home_btn_layout"
+
         >
 
         <Button
@@ -64,26 +119,4 @@
     </LinearLayout>
 
 
-    <ScrollView
-        android:id="@+id/scroll_view_pc_values"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/margin_10"
-        android:layout_marginRight="@dimen/margin_10"
-        android:fillViewport="true"
-        android:layout_above="@id/go_back_btn_layout"
-        android:layout_below="@id/value_icon"
-
-        >
-        <FrameLayout
-            android:id="@+id/pc_values_place_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-        </FrameLayout>
-
-
-
-    </ScrollView>
-</RelativeLayout>
+</LinearLayout>

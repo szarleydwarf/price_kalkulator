@@ -86,5 +86,6 @@
 	<p>This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of <span class="country">Ireland</span>.</p>
 	</string>
     <string name="googl_ads_fragment">G_ADS</string>
+    <string name="pc_settings_container_tag">PCSETTINGCONTAINER</string>
 
 </resources>

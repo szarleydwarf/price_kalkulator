@@ -28,6 +28,7 @@ class PriceCalculatorSetupFragment : Fragment(){
         fun switchFragment(frag: Fragment)
         fun switchActivity(act : Class<*>)
         fun sendEmail()
+        fun switchFragment(containerID: Int, frag: Fragment, tag: String)
     }
 
     private val TAG = "PRICE_C_SETUP_FR"
@@ -45,7 +46,6 @@ class PriceCalculatorSetupFragment : Fragment(){
                               savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.price_calc_setup_frag, container, false)
 
-//        AdsHandler().getAds(v?.findViewById(R.id.adViewB)!!)
         setBtnListeners(v)
         return v
     }

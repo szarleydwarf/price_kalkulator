@@ -23,24 +23,25 @@ class PCSettingsActivity : AppCompatActivity(),
         setContentView(v)
 
         if(savedInstanceState == null){
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.g_ads_container, AdsHandler.newInstance(),
-                            getString(R.string.googl_ads_fragment))
-                    .commit()
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.pc_settings_container,
-                            PriceCalculatorSetupFragment.newInstance()
-                    )
-                    .commit()
+            switchFragment(R.id.g_ads_container, AdsHandler.newInstance(),
+                    getString(R.string.googl_ads_fragment))
+            switchFragment(R.id.pc_settings_container, PriceCalculatorSetupFragment.newInstance(),
+                    getString(R.string.pc_settings_container_tag))
         }
     }
 
+    override fun switchFragment(containerID: Int, frag: Fragment, tag: String) {
+        supportFragmentManager?.beginTransaction()
+                .replace(containerID, frag, tag)
+                .addToBackStack(tag)
+                .commit()
+    }
+
     override fun switchFragment(frag: Fragment) {
-        var fragment = frag
-        var fragTransaction = supportFragmentManager?.beginTransaction()
-        fragTransaction?.replace(R.id.pc_settings_container, fragment)
-        fragTransaction?.addToBackStack(null)
-        fragTransaction?.commit()
+        supportFragmentManager?.beginTransaction()
+                .replace(R.id.pc_settings_container, frag)
+                .addToBackStack(null)
+                .commit()
     }
 
     override fun switchActivity(act: Class<*>) {
